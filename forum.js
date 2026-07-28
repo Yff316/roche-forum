@@ -1,221 +1,103 @@
 ;(function () {
-
 // ═══════════════════════════════════════════════════════════
-//  CSS
+// CSS
 // ═══════════════════════════════════════════════════════════
 const CSS = `
-.rf {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #fff; color: #000;
-  height: 100%; display: flex; flex-direction: column; overflow: hidden;
-  font-size: 14px;
-}
+.rf { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #fff; color: #000; height: 100%; display: flex; flex-direction: column; overflow: hidden; font-size: 14px; }
 .rf * { box-sizing: border-box; }
-
-/* ── top bar ── */
-.rf-topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 14px; border-bottom: 1px solid #e5e5e5; flex-shrink: 0;
-}
+.rf-topbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
 .rf-topbar-title { font-size: 16px; font-weight: 700; letter-spacing: .5px; }
-.rf-icon-btn {
-  background: none; border: none; cursor: pointer; padding: 4px;
-  display: flex; align-items: center; color: #000;
-}
+.rf-icon-btn { background: none; border: none; cursor: pointer; padding: 4px; display: flex; align-items: center; color: #000; }
 .rf-icon-btn:hover { opacity: .6; }
 .rf-icon-btn:disabled { opacity: .3; cursor: default; }
-
-/* ── bottom nav ── */
 .rf-bottomnav { display: flex; border-top: 1px solid #e5e5e5; flex-shrink: 0; }
-.rf-nav-item {
-  flex: 1; display: flex; flex-direction: column; align-items: center;
-  padding: 8px 0 6px; cursor: pointer; font-size: 11px; color: #888;
-  border: none; background: none; gap: 3px;
-}
+.rf-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 8px 0 6px; cursor: pointer; font-size: 11px; color: #888; border: none; background: none; gap: 3px; }
 .rf-nav-item.active { color: #000; font-weight: 700; }
 .rf-nav-item svg { width: 22px; height: 22px; }
-
-/* ── content scroll area ── */
 .rf-content { flex: 1; overflow-y: auto; position: relative; }
-
-/* ── post card ── */
-.rf-post {
-  display: flex; gap: 10px;
-  padding: 12px 14px; border-bottom: 1px solid #e5e5e5;
-}
-.rf-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  border: 1px solid #e5e5e5; background: #fff; flex-shrink: 0;
-  overflow: hidden; display: flex; align-items: center; justify-content: center;
-}
+.rf-post { display: flex; gap: 10px; padding: 12px 14px; border-bottom: 1px solid #e5e5e5; }
+.rf-avatar { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #e5e5e5; background: #fff; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .rf-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .rf-post-body { flex: 1; min-width: 0; }
-.rf-post-header {
-  display: flex; align-items: baseline; gap: 6px;
-  margin-bottom: 4px; flex-wrap: wrap;
-}
+.rf-post-header { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
 .rf-post-name { font-weight: 700; font-size: 14px; }
 .rf-post-handle { color: #666; font-size: 12px; }
-.rf-post-tag {
-  font-size: 10px; padding: 1px 5px; border: 1px solid #ccc;
-  border-radius: 10px; color: #666;
-}
+.rf-post-tag { font-size: 10px; padding: 1px 5px; border: 1px solid #ccc; border-radius: 10px; color: #666; }
 .rf-post-time { color: #999; font-size: 11px; margin-left: auto; }
 .rf-post-text { line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
 .rf-post-actions { display: flex; gap: 18px; margin-top: 10px; }
-.rf-post-action-btn {
-  background: none; border: none; cursor: pointer;
-  color: #888; font-size: 12px; display: flex; align-items: center; gap: 4px; padding: 0;
-}
+.rf-post-action-btn { background: none; border: none; cursor: pointer; color: #888; font-size: 12px; display: flex; align-items: center; gap: 4px; padding: 0; }
 .rf-post-action-btn:hover { color: #000; }
-
-/* ── comments ── */
-.rf-comments {
-  background: #fafafa; padding: 0 14px 8px 64px;
-  border-bottom: 1px solid #e5e5e5;
-}
-.rf-comment {
-  display: flex; gap: 8px; padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
+.rf-comments { background: #fafafa; padding: 0 14px 8px 64px; border-bottom: 1px solid #e5e5e5; }
+.rf-comment { display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
 .rf-comment:last-child { border-bottom: none; }
-.rf-comment-avatar {
-  width: 28px; height: 28px; border-radius: 50%;
-  border: 1px solid #e5e5e5; flex-shrink: 0; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; background: #fff;
-}
+.rf-comment-avatar { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #e5e5e5; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 11px; background: #fff; }
 .rf-comment-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .rf-comment-meta { font-weight: 600; font-size: 12px; color: #444; margin-bottom: 2px; }
 .rf-comment-text { font-size: 13px; line-height: 1.4; white-space: pre-wrap; word-break: break-word; }
-
-/* ── FAB ── */
-.rf-fab {
-  position: absolute; right: 18px; bottom: 18px;
-  width: 48px; height: 48px; border-radius: 50%;
-  border: none; background: #000; color: #fff;
-  font-size: 26px; cursor: pointer; z-index: 10;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,.2);
-}
+.rf-fab { position: absolute; right: 18px; bottom: 18px; width: 48px; height: 48px; border-radius: 50%; border: none; background: #000; color: #fff; font-size: 26px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
 .rf-fab:hover { background: #333; }
-
-/* ── compose modal ── */
-.rf-modal-overlay {
-  position: absolute; inset: 0; background: rgba(0,0,0,.35);
-  display: flex; align-items: flex-end; z-index: 100;
-}
-.rf-modal {
-  background: #fff; width: 100%;
-  border-radius: 16px 16px 0 0; padding: 16px;
-  max-height: 80%; overflow-y: auto;
-}
+.rf-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.35); display: flex; align-items: flex-end; z-index: 100; }
+.rf-modal { background: #fff; width: 100%; border-radius: 16px 16px 0 0; padding: 16px; max-height: 80%; overflow-y: auto; }
 .rf-modal-title { font-weight: 700; font-size: 15px; margin-bottom: 12px; }
-.rf-textarea {
-  width: 100%; border: 1px solid #e5e5e5; border-radius: 8px;
-  padding: 10px; font-size: 14px; resize: none; outline: none;
-  min-height: 80px; font-family: inherit;
-}
+.rf-textarea { width: 100%; border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px; font-size: 14px; resize: none; outline: none; min-height: 80px; font-family: inherit; }
 .rf-textarea:focus { border-color: #000; }
-
-/* ── buttons ── */
-.rf-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 8px 18px; border-radius: 20px;
-  border: none; cursor: pointer; font-size: 14px; font-weight: 600;
-  font-family: inherit;
-}
+.rf-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; border-radius: 20px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; font-family: inherit; }
 .rf-btn-primary { background: #000; color: #fff; }
 .rf-btn-primary:hover { background: #222; }
 .rf-btn-ghost { background: none; border: 1px solid #ccc; color: #000; }
 .rf-btn-ghost:hover { background: #f5f5f5; }
-
-/* ── section tabs ── */
 .rf-section-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
-.rf-section-tab {
-  flex: 1; text-align: center; padding: 10px 0;
-  cursor: pointer; font-size: 14px; color: #666;
-  border: none; background: none; border-bottom: 2px solid transparent;
-  font-family: inherit;
-}
+.rf-section-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 14px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
 .rf-section-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
-
-/* ── profile ── */
 .rf-profile-header { padding: 16px 14px 10px; border-bottom: 1px solid #e5e5e5; }
-.rf-profile-avatar {
-  width: 64px; height: 64px; border-radius: 50%;
-  border: 2px solid #000; background: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px; overflow: hidden; margin-bottom: 8px;
-}
+.rf-profile-avatar { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #000; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; overflow: hidden; margin-bottom: 8px; }
 .rf-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .rf-profile-name { font-size: 18px; font-weight: 700; }
 .rf-profile-handle { color: #666; font-size: 13px; margin-bottom: 4px; }
 .rf-profile-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
-.rf-profile-tab {
-  flex: 1; text-align: center; padding: 10px 0;
-  cursor: pointer; font-size: 12px; color: #666;
-  border: none; background: none; border-bottom: 2px solid transparent;
-  font-family: inherit;
-}
+.rf-profile-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 12px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
 .rf-profile-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
-
-/* ── settings ── */
-.rf-settings-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer;
-}
+.rf-settings-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
 .rf-settings-item:hover { background: #fafafa; }
 .rf-settings-label { font-size: 14px; }
 .rf-settings-value { color: #999; font-size: 13px; }
-
-/* ── form ── */
 .rf-form-group { padding: 10px 16px; border-bottom: 1px solid #f0f0f0; }
 .rf-form-label { font-size: 12px; color: #666; margin-bottom: 5px; }
-.rf-form-input {
-  width: 100%; border: 1px solid #e5e5e5; border-radius: 6px;
-  padding: 8px 10px; font-size: 14px; outline: none; font-family: inherit;
-}
+.rf-form-input { width: 100%; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px 10px; font-size: 14px; outline: none; font-family: inherit; }
 .rf-form-input:focus { border-color: #000; }
-.rf-worldview-text {
-  width: 100%; border: 1px solid #e5e5e5; border-radius: 6px;
-  padding: 8px 10px; font-size: 13px; outline: none;
-  font-family: inherit; resize: none; min-height: 280px; line-height: 1.6;
-}
+.rf-worldview-text { width: 100%; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px 10px; font-size: 13px; outline: none; font-family: inherit; resize: none; min-height: 280px; line-height: 1.6; }
 .rf-worldview-text:focus { border-color: #000; }
-
-/* ── worldbook ── */
-.rf-worldbook-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 12px 16px; border-bottom: 1px solid #f0f0f0;
-}
+.rf-worldbook-item { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; }
 .rf-worldbook-item input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
 .rf-worldbook-item label { flex: 1; font-size: 14px; cursor: pointer; }
-
-/* ── states ── */
 .rf-empty { text-align: center; color: #999; padding: 56px 24px; font-size: 14px; line-height: 1.8; }
 .rf-loading { text-align: center; color: #888; padding: 32px; font-size: 13px; }
-.rf-wip {
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; height: 100%; color: #aaa; gap: 12px; font-size: 14px;
-}
+.rf-wip { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #aaa; gap: 12px; font-size: 14px; }
 `
 
 // ═══════════════════════════════════════════════════════════
-//  SVG icons（简笔线条风）
+// SVG icons
 // ═══════════════════════════════════════════════════════════
 const ICONS = {
-  home:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>`,
+  home: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>`,
   section: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>`,
   message: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
   profile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
-  close:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`,
+  close: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`,
   refresh: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 018-8c2.2 0 4.2.9 5.7 2.3L21 9"/><path d="M20 12a8 8 0 01-8 8c-2.2 0-4.2-.9-5.7-2.3L3 15"/><polyline points="21 3 21 9 15 9"/><polyline points="3 21 3 15 9 15"/></svg>`,
-  menu:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
-  back:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 5 5 12 12 19"/></svg>`,
-  heart:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>`,
+  menu: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
+  back: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 5 5 12 12 19"/></svg>`,
+  heart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>`,
   comment: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
-  star:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>`,
+  star: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>`,
+  // 设置页图标
+  settingAvatar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
+  settingProfile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg>`,
+  settingWorld: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20"/><path d="M12 2a15.3 15.3 0 000 20"/></svg>`,
+  settingBook: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`,
+  settingTrash: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`,
+  chevronRight: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`,
 }
 
 function mkSvg(svgStr) {
@@ -225,7 +107,7 @@ function mkSvg(svgStr) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Helpers
+// Helpers
 // ═══════════════════════════════════════════════════════════
 function el(tag, attrs = {}, ...children) {
   const e = document.createElement(tag)
@@ -234,8 +116,7 @@ function el(tag, attrs = {}, ...children) {
     else if (k === 'style') {
       if (typeof v === 'string') e.setAttribute('style', v)
       else Object.assign(e.style, v)
-    }
-    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v)
+    } else if (k.startsWith('on')) e.addEventListener(k.slice(2), v)
     else e.setAttribute(k, v)
   }
   for (const c of children) {
@@ -266,25 +147,21 @@ function avatarEl(url, size = 40) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  State
+// State
 // ═══════════════════════════════════════════════════════════
 let roche = null
-
 const state = {
-  page: 'home',       // home | section | message | profile
-  sectionTab: 0,      // 0=跨界  1=平行
-  profileTab: 0,      // 0=动态  1=资料  2=收藏  3=更多
+  page: 'home',
+  sectionTab: 0,
+  profileTab: 0,
   loading: false,
-
   homePosts: [],
   crossPosts: [],
   parallelPosts: [],
   myPosts: [],
   savedPosts: [],
-
   userProfile: { handle: '', name: '', age: '', appearance: '', avatarUrl: '' },
-
-  worldview: `这是一个论坛，发帖人是角色本人发帖。发帖前，请确认是什么角色，根据角色的官方世界观、官方人设、性格、人物关系、剧情等各个方面来决定发帖内容和评论。
+  worldview: `这是一个论坛，发帖人是角色本人发帖。角色由AI自由选择，来自游戏、动漫、小说等高热门作品。
 $角色发帖日常、剧情、小烦恼等
 $角色可以从游戏、漫画、动漫、小说等各个方面选择（如：崩铁、原神、鸣潮、王者、蓝色监狱、咒术回战等高热门游戏、动漫、小说）
 $游戏用户是代入主角，禁止出现如开拓者（星、穹）、旅行者（空、荧）等主角角色的评论，这是绝对禁止
@@ -296,17 +173,13 @@ $绝对禁止出现耽美小说漫画等角色（禁止BL，不要出现任何BL
 2. 有没有出现开拓者/旅行者等游戏主角？有就改。
 3. 角色有没有将用户认为是男生？有就改。
 4. 有没有出现耽美角色？有就改。`,
-
   boundWorldbooks: [],
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Storage
+// Storage
 // ═══════════════════════════════════════════════════════════
-const STORAGE_KEYS = [
-  'homePosts', 'crossPosts', 'parallelPosts', 'myPosts', 'savedPosts',
-  'userProfile', 'worldview', 'boundWorldbooks',
-]
+const STORAGE_KEYS = ['homePosts','crossPosts','parallelPosts','myPosts','savedPosts','userProfile','worldview','boundWorldbooks']
 
 async function loadStorage() {
   for (const k of STORAGE_KEYS) {
@@ -320,20 +193,10 @@ async function save(key) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  AI post generation
+// AI post generation（不读取角色库，只用世界书 + AI 自由创作）
 // ═══════════════════════════════════════════════════════════
 async function generatePosts(mode) {
-  // 1. 读取角色列表
-  const chars = await roche.character.list()
-  const charList = chars.slice(0, 30).map(c => ({
-    id: c.id,
-    name: c.name || c.handle || '未知',
-    handle: c.handle || c.name || '未知',
-    avatar: c.avatar || '',
-    persona: c.persona || c.bio || '',
-  }))
-
-  // 2. 读取绑定世界书
+  // 只读取绑定的世界书，不调用 character.list()
   let wbContext = ''
   for (const catId of state.boundWorldbooks) {
     try {
@@ -351,36 +214,31 @@ async function generatePosts(mode) {
     state.userProfile.appearance,
   ].filter(Boolean).join('，')
 
-  const systemPrompt = `你是一个角色论坛AI内容生成器。
-  
+  const systemPrompt = `你是一个角色论坛AI内容生成器。角色由你自由选择，不受任何预设角色列表限制，从高人气游戏/动漫/小说中选取合适角色。
+
 世界观规则：
 ${state.worldview}
 
-${wbContext ? `世界书参考：\n${wbContext}` : ''}
-
-可用角色列表：
-${charList.map(c => `- ${c.name}（@${c.handle}）：${c.persona}`).join('\n')}
+${wbContext ? `世界书参考内容：\n${wbContext}` : ''}
 
 用户信息：论坛昵称 @${userHandle}，${userDesc || '女生'}。
 
 ⚠️ 输出格式：只输出 JSON，不要任何其他文字。`
 
   let userPrompt = ''
-
   if (mode === 'home') {
     userPrompt = `生成5条主页帖子。要求：
-- 每条帖子选一个角色发出，内容是角色日常/剧情/小烦恼
-- 每条帖子有2~4条评论，评论者也是角色
+- 自由选择你认为合适的角色（游戏、动漫、小说等），每条帖子选一个角色发出
+- 内容是角色日常/剧情/小烦恼
+- 每条帖子有2~4条评论，评论者也是角色（可以来自不同作品）
 - 严格遵守世界观规则
-
 JSON格式：
-{"posts":[{"authorName":"角色名","authorHandle":"昵称","avatar":"","text":"帖子内容","likes":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名"}]}]}`
+{"posts":[{"authorName":"角色名","authorHandle":"英文或拼音昵称","avatar":"","text":"帖子内容","likes":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名"}]}]}`
   } else if (mode === 'cross') {
     userPrompt = `生成5条跨界板块帖子。要求：
-- 发帖人可以来自不同作品
-- 评论区必须有其他作品角色的跨界反应，充满趣味
-- 严格遵守世界观规则
-
+- 发帖人来自不同作品世界
+- 评论区必须有其他作品角色的跨界反应，充满趣味和反差感
+- 自由选择角色，严格遵守世界观规则
 JSON格式：
 {"posts":[{"authorName":"角色名","authorHandle":"昵称","avatar":"","text":"帖子内容","likes":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名"}]}]}`
   } else {
@@ -388,8 +246,7 @@ JSON格式：
 - 帖子内容是角色与用户（@${userHandle}）在一起后的日常动态
 - 内容温馨乙女向，充满恋爱感
 - 评论可以是其他角色的祝福/羡慕/吐槽
-- 严格遵守世界观规则
-
+- 自由选择角色，严格遵守世界观规则
 JSON格式：
 {"posts":[{"authorName":"角色名","authorHandle":"昵称","avatar":"","text":"帖子内容","likes":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名"}]}]}`
   }
@@ -412,22 +269,19 @@ JSON格式：
     throw new Error('AI 返回格式错误，请重试')
   }
 
-  const charMap = {}
-  charList.forEach(c => { charMap[c.name] = c })
-
   return (parsed.posts || []).map(p => ({
     id: crypto.randomUUID(),
     timestamp: Date.now() - Math.floor(Math.random() * 7200000),
     authorName: p.authorName || '未知角色',
     authorHandle: p.authorHandle || p.authorName || '未知',
-    avatar: charMap[p.authorName]?.avatar || p.avatar || '',
+    avatar: '',
     text: p.text || '',
     likes: p.likes || Math.floor(Math.random() * 80),
     worldTag: p.worldTag || '',
     comments: (p.comments || []).map(c => ({
       name: c.name,
       handle: c.handle || c.name,
-      avatar: charMap[c.name]?.avatar || c.avatar || '',
+      avatar: '',
       text: c.text || '',
       worldTag: c.worldTag || '',
     })),
@@ -435,15 +289,13 @@ JSON格式：
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Post card
+// Post card
 // ═══════════════════════════════════════════════════════════
 function postCard(post, content, listKey) {
   const card = el('div', { class: 'rf-post' })
   card.appendChild(avatarEl(post.avatar, 40))
-
   const body = el('div', { class: 'rf-post-body' })
 
-  // header
   const header = el('div', { class: 'rf-post-header' })
   header.appendChild(el('span', { class: 'rf-post-name' }, post.authorName))
   header.appendChild(el('span', { class: 'rf-post-handle' }, '@' + post.authorHandle))
@@ -452,10 +304,8 @@ function postCard(post, content, listKey) {
   body.appendChild(header)
   body.appendChild(el('div', { class: 'rf-post-text' }, post.text))
 
-  // actions
   const actions = el('div', { class: 'rf-post-actions' })
 
-  // comment toggle
   const commentCount = post.comments?.length || 0
   const commentBtn = el('button', { class: 'rf-post-action-btn' })
   commentBtn.appendChild(mkSvg(ICONS.comment))
@@ -468,7 +318,6 @@ function postCard(post, content, listKey) {
   }
   actions.appendChild(commentBtn)
 
-  // like
   const likeBtn = el('button', { class: 'rf-post-action-btn' })
   likeBtn.appendChild(mkSvg(ICONS.heart))
   const likeCount = el('span', {}, ' ' + (post.likes || 0))
@@ -480,7 +329,6 @@ function postCard(post, content, listKey) {
   }
   actions.appendChild(likeBtn)
 
-  // bookmark
   const bookmarkBtn = el('button', { class: 'rf-post-action-btn' })
   bookmarkBtn.appendChild(mkSvg(ICONS.star))
   bookmarkBtn.title = '收藏'
@@ -523,7 +371,7 @@ function buildComments(post) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Top bar builder
+// Top bar
 // ═══════════════════════════════════════════════════════════
 function topBar(title, rightEl) {
   const bar = el('div', { class: 'rf-topbar' })
@@ -546,15 +394,15 @@ function backTopBar(title, onBack, rightEl) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Bottom nav
+// Bottom nav
 // ═══════════════════════════════════════════════════════════
 function bottomNav(container) {
   const nav = el('div', { class: 'rf-bottomnav' })
   const tabs = [
-    { label: '主页',  icon: 'home',    page: 'home' },
-    { label: '板块',  icon: 'section', page: 'section' },
-    { label: '私信',  icon: 'message', page: 'message' },
-    { label: '我的',  icon: 'profile', page: 'profile' },
+    { label: '主页', icon: 'home', page: 'home' },
+    { label: '板块', icon: 'section', page: 'section' },
+    { label: '私信', icon: 'message', page: 'message' },
+    { label: '我的', icon: 'profile', page: 'profile' },
   ]
   for (const tab of tabs) {
     const btn = el('button', { class: 'rf-nav-item' + (state.page === tab.page ? ' active' : '') })
@@ -567,16 +415,13 @@ function bottomNav(container) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Pages
+// Page: Home
 // ═══════════════════════════════════════════════════════════
-
-// ── Home ──────────────────────────────────────────────────
 function pageHome(container) {
   const wrap = el('div', { class: 'rf' })
   const refreshBtn = el('button', { class: 'rf-icon-btn' })
   refreshBtn.appendChild(mkSvg(ICONS.refresh))
   wrap.appendChild(topBar('✦ 论坛', refreshBtn))
-
   const content = el('div', { class: 'rf-content' })
   wrap.appendChild(content)
   wrap.appendChild(bottomNav(container))
@@ -609,7 +454,6 @@ function pageHome(container) {
     drawPosts()
   }
 
-  // compose
   fab.onclick = () => {
     const overlay = el('div', { class: 'rf-modal-overlay' })
     const modal = el('div', { class: 'rf-modal' })
@@ -618,43 +462,34 @@ function pageHome(container) {
     modal.appendChild(ta)
     const btnRow = el('div', { style: 'display:flex;gap:8px;margin-top:10px;justify-content:flex-end' })
     btnRow.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', onclick: () => overlay.remove() }, '取消'))
-    btnRow.appendChild(el('button', {
-      class: 'rf-btn rf-btn-primary',
-      onclick: async () => {
-        const text = ta.value.trim()
-        if (!text) return
-        const post = {
-          id: crypto.randomUUID(),
-          timestamp: Date.now(),
-          authorName: state.userProfile.handle || '我',
-          authorHandle: state.userProfile.handle || '我',
-          avatar: state.userProfile.avatarUrl || '',
-          text,
-          likes: 0,
-          worldTag: '',
-          comments: [],
-          isUserPost: true,
-        }
-        state.homePosts = [post, ...state.homePosts]
-        state.myPosts = [post, ...state.myPosts]
-        await save('homePosts')
-        await save('myPosts')
-        overlay.remove()
-        drawPosts()
-        roche.ui.toast('✦ 发布成功！')
+    btnRow.appendChild(el('button', { class: 'rf-btn rf-btn-primary', onclick: async () => {
+      const text = ta.value.trim()
+      if (!text) return
+      const post = {
+        id: crypto.randomUUID(), timestamp: Date.now(),
+        authorName: state.userProfile.handle || '我',
+        authorHandle: state.userProfile.handle || '我',
+        avatar: state.userProfile.avatarUrl || '',
+        text, likes: 0, worldTag: '', comments: [], isUserPost: true,
       }
-    }, '发布'))
+      state.homePosts = [post, ...state.homePosts]
+      state.myPosts = [post, ...state.myPosts]
+      await save('homePosts'); await save('myPosts')
+      overlay.remove(); drawPosts()
+      roche.ui.toast('✦ 发布成功！')
+    }}, '发布'))
     modal.appendChild(btnRow)
     overlay.appendChild(modal)
     overlay.onclick = e => { if (e.target === overlay) overlay.remove() }
     content.appendChild(overlay)
     setTimeout(() => ta.focus(), 50)
   }
-
   return wrap
 }
 
-// ── Section ───────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+// Page: Section
+// ═══════════════════════════════════════════════════════════
 function pageSection(container) {
   const wrap = el('div', { class: 'rf' })
   const refreshBtn = el('button', { class: 'rf-icon-btn' })
@@ -691,7 +526,6 @@ function pageSection(container) {
     tabEls.forEach((t, idx) => t.className = 'rf-section-tab' + (idx === i ? ' active' : ''))
     drawPosts()
   }
-
   drawPosts()
 
   refreshBtn.onclick = async () => {
@@ -709,11 +543,12 @@ function pageSection(container) {
     state.loading = false; refreshBtn.disabled = false
     drawPosts()
   }
-
   return wrap
 }
 
-// ── Message ───────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+// Page: Message
+// ═══════════════════════════════════════════════════════════
 function pageMessage(container) {
   const wrap = el('div', { class: 'rf' })
   wrap.appendChild(topBar('✦ 私信', null))
@@ -727,16 +562,16 @@ function pageMessage(container) {
   return wrap
 }
 
-// ── Profile ───────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+// Page: Profile
+// ═══════════════════════════════════════════════════════════
 function pageProfile(container) {
   const wrap = el('div', { class: 'rf' })
-
   const menuBtn = el('button', { class: 'rf-icon-btn' })
   menuBtn.appendChild(mkSvg(ICONS.menu))
   menuBtn.onclick = () => pageSettings(container)
   wrap.appendChild(topBar('✦ 我的', menuBtn))
 
-  // header
   const header = el('div', { class: 'rf-profile-header' })
   const av = el('div', { class: 'rf-profile-avatar' })
   if (state.userProfile.avatarUrl) {
@@ -749,7 +584,6 @@ function pageProfile(container) {
   header.appendChild(el('div', { class: 'rf-profile-handle' }, '@' + (state.userProfile.handle || 'user')))
   wrap.appendChild(header)
 
-  // tabs
   const tabNames = ['我的动态', '资料', '收藏', '更多']
   const profTabsEl = el('div', { class: 'rf-profile-tabs' })
   const profTabEls = tabNames.map((name, i) => {
@@ -768,7 +602,6 @@ function pageProfile(container) {
     if (state.profileTab === 0) {
       if (!state.myPosts.length) content.appendChild(el('div', { class: 'rf-empty' }, '还没有发过帖子'))
       else for (const p of state.myPosts) content.appendChild(postCard(p, content, 'myPosts'))
-
     } else if (state.profileTab === 1) {
       const rows = [
         ['论坛昵称', state.userProfile.handle],
@@ -783,17 +616,11 @@ function pageProfile(container) {
         content.appendChild(row)
       }
       const editWrap = el('div', { style: 'padding:16px' })
-      editWrap.appendChild(el('button', {
-        class: 'rf-btn rf-btn-primary',
-        style: 'width:100%',
-        onclick: () => pageProfileEdit(container),
-      }, '编辑资料'))
+      editWrap.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'width:100%', onclick: () => pageProfileEdit(container) }, '编辑资料'))
       content.appendChild(editWrap)
-
     } else if (state.profileTab === 2) {
       if (!state.savedPosts.length) content.appendChild(el('div', { class: 'rf-empty' }, '还没有收藏任何帖子'))
       else for (const p of state.savedPosts) content.appendChild(postCard(p, content, 'savedPosts'))
-
     } else {
       const wip = el('div', { class: 'rf-wip' })
       wip.appendChild(el('span', { style: 'font-size:30px' }, '🔧'))
@@ -807,33 +634,41 @@ function pageProfile(container) {
     profTabEls.forEach((t, idx) => t.className = 'rf-profile-tab' + (idx === i ? ' active' : ''))
     drawContent()
   }
-
   drawContent()
   return wrap
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Settings pages
+// Settings pages
 // ═══════════════════════════════════════════════════════════
-
 function pageSettings(container) {
   container.innerHTML = ''
   const wrap = el('div', { class: 'rf' })
   wrap.appendChild(backTopBar('设置', () => renderMain(container)))
   const content = el('div', { class: 'rf-content' })
+
   const items = [
-    { label: '🖼️  头像设置',   fn: () => pageAvatar(container) },
-    { label: '👤  资料设置',   fn: () => pageProfileEdit(container) },
-    { label: '🌏  世界观设定', fn: () => pageWorldview(container) },
-    { label: '📖  绑定世界书', fn: () => pageWorldbook(container) },
-    { label: '🗑️  清理数据',   fn: () => pageCleanup(container) },
+    { label: '头像设置', icon: 'settingAvatar', fn: () => pageAvatar(container) },
+    { label: '资料设置', icon: 'settingProfile', fn: () => pageProfileEdit(container) },
+    { label: '世界观设定', icon: 'settingWorld', fn: () => pageWorldview(container) },
+    { label: '绑定世界书', icon: 'settingBook', fn: () => pageWorldbook(container) },
+    { label: '清理数据', icon: 'settingTrash', fn: () => pageCleanup(container) },
   ]
+
   for (const item of items) {
     const row = el('div', { class: 'rf-settings-item', onclick: item.fn })
-    row.appendChild(el('span', { class: 'rf-settings-label' }, item.label))
-    row.appendChild(el('span', { class: 'rf-settings-value' }, '›'))
+    const left = el('div', { style: 'display:flex;align-items:center;gap:10px' })
+    const iconWrap = el('div', { style: 'width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;color:#444' })
+    iconWrap.appendChild(mkSvg(ICONS[item.icon]))
+    left.appendChild(iconWrap)
+    left.appendChild(el('span', { class: 'rf-settings-label' }, item.label))
+    row.appendChild(left)
+    const arrow = el('div', { style: 'width:16px;height:16px;color:#ccc;flex-shrink:0' })
+    arrow.appendChild(mkSvg(ICONS.chevronRight))
+    row.appendChild(arrow)
     content.appendChild(row)
   }
+
   wrap.appendChild(content)
   container.appendChild(wrap)
 }
@@ -843,13 +678,12 @@ function pageProfileEdit(container) {
   const wrap = el('div', { class: 'rf' })
   const saveBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:13px;padding:6px 14px' }, '保存')
   wrap.appendChild(backTopBar('编辑资料', () => pageSettings(container), saveBtn))
-
   const content = el('div', { class: 'rf-content' })
   const fields = [
-    { key: 'handle',     label: '论坛昵称（被@的名字）', placeholder: '例如：小樱' },
-    { key: 'name',       label: '姓名',         placeholder: '你的真实名字' },
-    { key: 'age',        label: '年龄',         placeholder: '例如：18' },
-    { key: 'appearance', label: '外貌描述',     placeholder: '例如：长黑发，琥珀色眼睛…' },
+    { key: 'handle', label: '论坛昵称（被@的名字）', placeholder: '例如：小樱' },
+    { key: 'name', label: '姓名', placeholder: '你的真实名字' },
+    { key: 'age', label: '年龄', placeholder: '例如：18' },
+    { key: 'appearance', label: '外貌描述', placeholder: '例如：长黑发，琥珀色眼睛…' },
   ]
   const inputs = {}
   for (const f of fields) {
@@ -862,7 +696,6 @@ function pageProfileEdit(container) {
     content.appendChild(grp)
   }
   wrap.appendChild(content)
-
   saveBtn.onclick = async () => {
     for (const f of fields) state.userProfile[f.key] = inputs[f.key].value.trim()
     await save('userProfile')
@@ -878,7 +711,6 @@ function pageAvatar(container) {
   wrap.appendChild(backTopBar('头像设置', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content', style: 'padding:20px 16px' })
 
-  // preview
   const previewWrap = el('div', { style: 'display:flex;justify-content:center;margin-bottom:20px' })
   const av = el('div', { class: 'rf-profile-avatar', style: 'margin:0' })
   if (state.userProfile.avatarUrl) {
@@ -889,7 +721,6 @@ function pageAvatar(container) {
   previewWrap.appendChild(av)
   content.appendChild(previewWrap)
 
-  // URL input
   const g1 = el('div', { class: 'rf-form-group' })
   g1.appendChild(el('div', { class: 'rf-form-label' }, '粘贴图片链接（URL）'))
   const urlInput = el('input', { class: 'rf-form-input', type: 'url', placeholder: 'https://…' })
@@ -897,7 +728,6 @@ function pageAvatar(container) {
   g1.appendChild(urlInput)
   content.appendChild(g1)
 
-  // file picker
   const g2 = el('div', { class: 'rf-form-group' })
   g2.appendChild(el('div', { class: 'rf-form-label' }, '或从相册选择（自动转 Base64）'))
   const fileInput = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
@@ -908,8 +738,7 @@ function pageAvatar(container) {
     reader.onload = ev => {
       urlInput.value = ev.target.result
       av.innerHTML = ''
-      const img = el('img', { src: ev.target.result, alt: '' })
-      av.appendChild(img)
+      av.appendChild(el('img', { src: ev.target.result, alt: '' }))
     }
     reader.readAsDataURL(file)
   }
@@ -927,7 +756,6 @@ function pageAvatar(container) {
     }
   }, '保存头像')
   content.appendChild(saveBtn)
-
   wrap.appendChild(content)
   container.appendChild(wrap)
 }
@@ -941,8 +769,7 @@ function pageWorldview(container) {
   const ta = el('textarea', { class: 'rf-worldview-text' })
   ta.value = state.worldview
   content.appendChild(ta)
-  content.appendChild(el('div', { style: 'font-size:11px;color:#999;margin-top:8px;line-height:1.6' },
-    '提示：修改世界观后，下次刷新帖子时生效。建议保留原有禁令规则。'))
+  content.appendChild(el('div', { style: 'font-size:11px;color:#999;margin-top:8px;line-height:1.6' }, '提示：修改世界观后，下次刷新帖子时生效。建议保留原有禁令规则。'))
   wrap.appendChild(content)
   saveBtn.onclick = async () => {
     state.worldview = ta.value.trim()
@@ -961,7 +788,6 @@ async function pageWorldbook(container) {
   content.appendChild(el('div', { class: 'rf-loading' }, '加载世界书分类…'))
   wrap.appendChild(content)
   container.appendChild(wrap)
-
   try {
     const categories = await roche.worldbook.list()
     content.innerHTML = ''
@@ -1001,13 +827,12 @@ async function pageCleanup(container) {
   const wrap = el('div', { class: 'rf' })
   wrap.appendChild(backTopBar('清理数据', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content' })
-
   const items = [
-    { label: '清理主页全部帖子',   key: 'homePosts' },
-    { label: '清理板块跨界帖子',   key: 'crossPosts' },
-    { label: '清理板块平行帖子',   key: 'parallelPosts' },
-    { label: '清理我发的帖子',     key: 'myPosts' },
-    { label: '清理全部收藏帖子',   key: 'savedPosts' },
+    { label: '清理主页全部帖子', key: 'homePosts' },
+    { label: '清理板块跨界帖子', key: 'crossPosts' },
+    { label: '清理板块平行帖子', key: 'parallelPosts' },
+    { label: '清理我发的帖子', key: 'myPosts' },
+    { label: '清理全部收藏帖子', key: 'savedPosts' },
   ]
   for (const item of items) {
     const row = el('div', { class: 'rf-settings-item', onclick: async () => {
@@ -1016,23 +841,29 @@ async function pageCleanup(container) {
       state[item.key] = []
       await save(item.key)
       roche.ui.toast(`✦ 已${item.label}`)
-    } })
-    row.appendChild(el('span', { class: 'rf-settings-label', style: 'color:#c00' }, item.label))
-    row.appendChild(el('span', { class: 'rf-settings-value' }, '›'))
+    }})
+    const left = el('div', { style: 'display:flex;align-items:center;gap:10px' })
+    const iconWrap = el('div', { style: 'width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;color:#c00' })
+    iconWrap.appendChild(mkSvg(ICONS.settingTrash))
+    left.appendChild(iconWrap)
+    left.appendChild(el('span', { class: 'rf-settings-label', style: 'color:#c00' }, item.label))
+    row.appendChild(left)
+    const arrow = el('div', { style: 'width:16px;height:16px;color:#ccc;flex-shrink:0' })
+    arrow.appendChild(mkSvg(ICONS.chevronRight))
+    row.appendChild(arrow)
     content.appendChild(row)
   }
-
   wrap.appendChild(content)
   container.appendChild(wrap)
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Main render
+// Main render
 // ═══════════════════════════════════════════════════════════
 function renderMain(container) {
   container.innerHTML = ''
   let wrap
-  if (state.page === 'home')    wrap = pageHome(container)
+  if (state.page === 'home') wrap = pageHome(container)
   if (state.page === 'section') wrap = pageSection(container)
   if (state.page === 'message') wrap = pageMessage(container)
   if (state.page === 'profile') wrap = pageProfile(container)
@@ -1040,10 +871,9 @@ function renderMain(container) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  Plugin registration
+// Plugin registration
 // ═══════════════════════════════════════════════════════════
 let _styleEl = null
-
 window.RochePlugin.register({
   id: 'roche-forum',
   name: '✦ 角色论坛',
@@ -1056,11 +886,9 @@ window.RochePlugin.register({
       iconImage: '',
       async mount(container, rocheApi) {
         roche = rocheApi
-
         _styleEl = document.createElement('style')
         _styleEl.textContent = CSS
         document.head.appendChild(_styleEl)
-
         await loadStorage()
         renderMain(container)
       },
@@ -1071,5 +899,4 @@ window.RochePlugin.register({
     },
   ],
 })
-
 })()
