@@ -1,84 +1,100 @@
 ;(function () {
-
 // ═══════════════════════════════════════════════════════════
 // CSS
 // ═══════════════════════════════════════════════════════════
 const CSS = `
-.rf { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #fff; color: #000; height: 100%; display: flex; flex-direction: column; overflow: hidden; font-size: 14px; }
-.rf * { box-sizing: border-box; }
-.rf-topbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
-.rf-topbar-title { font-size: 16px; font-weight: 700; letter-spacing: .5px; }
-.rf-icon-btn { background: none; border: none; cursor: pointer; padding: 4px; display: flex; align-items: center; color: #000; }
-.rf-icon-btn:hover { opacity: .6; }
-.rf-icon-btn:disabled { opacity: .3; cursor: default; }
-.rf-bottomnav { display: flex; border-top: 1px solid #e5e5e5; flex-shrink: 0; }
-.rf-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 8px 0 6px; cursor: pointer; font-size: 11px; color: #888; border: none; background: none; gap: 3px; }
-.rf-nav-item.active { color: #000; font-weight: 700; }
-.rf-nav-item svg { width: 22px; height: 22px; }
-.rf-content { flex: 1; overflow-y: auto; position: relative; }
-.rf-post { display: flex; gap: 10px; padding: 12px 14px; border-bottom: 1px solid #e5e5e5; }
-.rf-avatar { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #e5e5e5; background: #fff; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.rf-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.rf-post-body { flex: 1; min-width: 0; }
-.rf-post-header { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
-.rf-post-name { font-weight: 700; font-size: 14px; }
-.rf-post-handle { color: #666; font-size: 12px; }
-.rf-post-tag { font-size: 10px; padding: 1px 5px; border: 1px solid #ccc; border-radius: 10px; color: #666; }
-.rf-post-time { color: #999; font-size: 11px; margin-left: auto; }
-.rf-post-text { line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
-.rf-post-actions { display: flex; gap: 18px; margin-top: 10px; }
-.rf-post-action-btn { background: none; border: none; cursor: pointer; color: #888; font-size: 12px; display: flex; align-items: center; gap: 4px; padding: 0; }
-.rf-post-action-btn:hover { color: #000; }
-.rf-comments { background: #fafafa; padding: 0 14px 8px 64px; border-bottom: 1px solid #e5e5e5; }
-.rf-comment { display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
-.rf-comment:last-child { border-bottom: none; }
-.rf-comment-avatar { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #e5e5e5; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 11px; background: #fff; }
-.rf-comment-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.rf-comment-meta { font-weight: 600; font-size: 12px; color: #444; margin-bottom: 2px; }
-.rf-comment-text { font-size: 13px; line-height: 1.4; white-space: pre-wrap; word-break: break-word; }
-.rf-fab { position: absolute; right: 18px; bottom: 18px; width: 48px; height: 48px; border-radius: 50%; border: none; background: #000; color: #fff; font-size: 26px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
-.rf-fab:hover { background: #333; }
-.rf-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.35); display: flex; align-items: flex-end; z-index: 100; }
-.rf-modal { background: #fff; width: 100%; border-radius: 16px 16px 0 0; padding: 16px; max-height: 80%; overflow-y: auto; }
-.rf-modal-title { font-weight: 700; font-size: 15px; margin-bottom: 12px; }
-.rf-textarea { width: 100%; border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px; font-size: 14px; resize: none; outline: none; min-height: 80px; font-family: inherit; }
-.rf-textarea:focus { border-color: #000; }
-.rf-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; border-radius: 20px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; font-family: inherit; }
-.rf-btn-primary { background: #000; color: #fff; }
-.rf-btn-primary:hover { background: #222; }
-.rf-btn-ghost { background: none; border: 1px solid #ccc; color: #000; }
-.rf-btn-ghost:hover { background: #f5f5f5; }
-.rf-section-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
-.rf-section-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 14px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
-.rf-section-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
-.rf-profile-header { padding: 16px 14px 10px; border-bottom: 1px solid #e5e5e5; }
-.rf-profile-avatar { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #000; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; overflow: hidden; margin-bottom: 8px; }
-.rf-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.rf-profile-name { font-size: 18px; font-weight: 700; }
-.rf-profile-handle { color: #666; font-size: 13px; margin-bottom: 4px; }
-.rf-profile-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
-.rf-profile-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 12px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
-.rf-profile-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
-.rf-settings-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
-.rf-settings-item:hover { background: #fafafa; }
-.rf-settings-label { font-size: 14px; }
-.rf-settings-value { color: #999; font-size: 13px; }
-.rf-form-group { padding: 10px 16px; border-bottom: 1px solid #f0f0f0; }
-.rf-form-label { font-size: 12px; color: #666; margin-bottom: 5px; }
-.rf-form-input { width: 100%; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px 10px; font-size: 14px; outline: none; font-family: inherit; }
-.rf-form-input:focus { border-color: #000; }
-.rf-worldview-text { width: 100%; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px 10px; font-size: 13px; outline: none; font-family: inherit; resize: none; min-height: 280px; line-height: 1.6; }
-.rf-worldview-text:focus { border-color: #000; }
-.rf-worldbook-item { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; }
-.rf-worldbook-item input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
-.rf-worldbook-item label { flex: 1; font-size: 14px; cursor: pointer; }
-.rf-empty { text-align: center; color: #999; padding: 56px 24px; font-size: 14px; line-height: 1.8; }
-.rf-loading { text-align: center; color: #888; padding: 32px; font-size: 13px; }
-.rf-wip { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #aaa; gap: 12px; font-size: 14px; }
+  .rf { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #fff; color: #000; height: 100%; display: flex; flex-direction: column; overflow: hidden; font-size: 14px; }
+  .rf * { box-sizing: border-box; }
+  .rf-topbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
+  .rf-topbar-title { font-size: 16px; font-weight: 700; letter-spacing: .5px; }
+  .rf-topbar-right { display: flex; align-items: center; gap: 2px; }
+  .rf-icon-btn { background: none; border: none; cursor: pointer; padding: 4px; display: flex; align-items: center; color: #000; }
+  .rf-icon-btn:hover { opacity: .6; }
+  .rf-icon-btn:disabled { opacity: .3; cursor: default; }
+  .rf-bottomnav { display: flex; border-top: 1px solid #e5e5e5; flex-shrink: 0; }
+  .rf-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 8px 0 6px; cursor: pointer; font-size: 11px; color: #888; border: none; background: none; gap: 3px; }
+  .rf-nav-item.active { color: #000; font-weight: 700; }
+  .rf-nav-item svg { width: 22px; height: 22px; }
+  .rf-content { flex: 1; overflow-y: auto; position: relative; }
+  .rf-post { display: flex; gap: 10px; padding: 12px 14px; border-bottom: 1px solid #e5e5e5; cursor: pointer; }
+  .rf-post:hover { background: #fafafa; }
+  .rf-avatar { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #e5e5e5; background: #fff; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .rf-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .rf-post-body { flex: 1; min-width: 0; }
+  .rf-post-header { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
+  .rf-post-name { font-weight: 700; font-size: 14px; }
+  .rf-post-handle { color: #666; font-size: 12px; }
+  .rf-post-tag { font-size: 10px; padding: 1px 5px; border: 1px solid #ccc; border-radius: 10px; color: #666; }
+  .rf-post-time { color: #999; font-size: 11px; margin-left: auto; }
+  .rf-post-text { line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+  .rf-post-actions { display: flex; gap: 14px; margin-top: 10px; }
+  .rf-post-action-btn { background: none; border: none; cursor: pointer; color: #888; font-size: 12px; display: flex; align-items: center; gap: 4px; padding: 0; }
+  .rf-post-action-btn:hover { color: #000; }
+  .rf-post-action-btn svg { width: 16px; height: 16px; }
+  .rf-comments { background: #fafafa; padding: 0 14px 8px 64px; border-bottom: 1px solid #e5e5e5; }
+  .rf-comment { display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+  .rf-comment:last-child { border-bottom: none; }
+  .rf-comment-avatar { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #e5e5e5; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 11px; background: #fff; }
+  .rf-comment-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .rf-comment-meta { font-weight: 600; font-size: 12px; color: #444; margin-bottom: 2px; }
+  .rf-comment-text { font-size: 13px; line-height: 1.4; white-space: pre-wrap; word-break: break-word; }
+  .rf-fab { position: absolute; right: 18px; bottom: 18px; width: 48px; height: 48px; border-radius: 50%; border: none; background: #000; color: #fff; font-size: 26px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+  .rf-fab:hover { background: #333; }
+  .rf-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.35); display: flex; align-items: flex-end; z-index: 200; }
+  .rf-modal { background: #fff; width: 100%; border-radius: 16px 16px 0 0; padding: 16px; max-height: 80%; overflow-y: auto; }
+  .rf-modal-title { font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+  .rf-textarea { width: 100%; border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px; font-size: 14px; resize: none; outline: none; min-height: 80px; font-family: inherit; }
+  .rf-textarea:focus { border-color: #000; }
+  .rf-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; border-radius: 20px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; font-family: inherit; }
+  .rf-btn-primary { background: #000; color: #fff; }
+  .rf-btn-primary:hover { background: #222; }
+  .rf-btn-ghost { background: none; border: 1px solid #ccc; color: #000; }
+  .rf-btn-ghost:hover { background: #f5f5f5; }
+  .rf-btn-sm { padding: 5px 14px; font-size: 12px; }
+  .rf-section-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
+  .rf-section-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 14px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
+  .rf-section-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
+  .rf-profile-header { padding: 16px 14px 10px; border-bottom: 1px solid #e5e5e5; }
+  .rf-profile-avatar { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #000; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; overflow: hidden; margin-bottom: 8px; }
+  .rf-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .rf-profile-name { font-size: 18px; font-weight: 700; }
+  .rf-profile-handle { color: #666; font-size: 13px; margin-bottom: 4px; }
+  .rf-profile-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
+  .rf-profile-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 12px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
+  .rf-profile-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
+  .rf-settings-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+  .rf-settings-item:hover { background: #fafafa; }
+  .rf-settings-label { font-size: 14px; }
+  .rf-settings-value { color: #999; font-size: 13px; }
+  .rf-form-group { padding: 10px 16px; border-bottom: 1px solid #f0f0f0; }
+  .rf-form-label { font-size: 12px; color: #666; margin-bottom: 5px; }
+  .rf-form-input { width: 100%; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px 10px; font-size: 14px; outline: none; font-family: inherit; }
+  .rf-form-input:focus { border-color: #000; }
+  .rf-worldview-text { width: 100%; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px 10px; font-size: 13px; outline: none; font-family: inherit; resize: none; min-height: 280px; line-height: 1.6; }
+  .rf-worldview-text:focus { border-color: #000; }
+  .rf-worldbook-item { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; }
+  .rf-worldbook-item input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
+  .rf-worldbook-item label { flex: 1; font-size: 14px; cursor: pointer; }
+  .rf-empty { text-align: center; color: #999; padding: 56px 24px; font-size: 14px; line-height: 1.8; }
+  .rf-loading { text-align: center; color: #888; padding: 32px; font-size: 13px; }
+  .rf-wip { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #aaa; gap: 12px; font-size: 14px; }
+  .rf-detail-header { padding: 14px 14px 0; display: flex; gap: 10px; }
+  .rf-detail-text { padding: 8px 14px 12px; font-size: 15px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; border-bottom: 1px solid #e5e5e5; }
+  .rf-detail-stats { display: flex; gap: 18px; padding: 10px 14px; border-bottom: 1px solid #e5e5e5; font-size: 13px; color: #666; }
+  .rf-detail-stats span b { color: #000; font-weight: 700; }
+  .rf-detail-all-comments { padding: 0; }
+  .rf-detail-comment-input { padding: 10px 14px; border-top: 1px solid #e5e5e5; display: flex; gap: 8px; align-items: flex-end; flex-shrink: 0; }
+  .rf-detail-comment-input textarea { flex: 1; border: 1px solid #e5e5e5; border-radius: 20px; padding: 8px 12px; font-size: 13px; outline: none; font-family: inherit; resize: none; min-height: 36px; max-height: 100px; line-height: 1.4; }
+  .rf-detail-comment-input textarea:focus { border-color: #000; }
+  .rf-beauty-group { padding: 14px 16px; border-bottom: 1px solid #f0f0f0; }
+  .rf-beauty-label { font-size: 13px; color: #555; margin-bottom: 10px; display: flex; justify-content: space-between; }
+  .rf-beauty-label span { color: #000; font-weight: 600; }
+  .rf-beauty-slider { width: 100%; accent-color: #000; }
+  .rf-divider-label { font-size: 11px; color: #aaa; padding: 10px 16px 4px; text-transform: uppercase; letter-spacing: .5px; }
 `
 
 // ═══════════════════════════════════════════════════════════
-// SVG icons（全部简约线条风）
+// SVG Icons
 // ═══════════════════════════════════════════════════════════
 const ICONS = {
   home: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>`,
@@ -87,16 +103,18 @@ const ICONS = {
   profile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
   close: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`,
   refresh: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 018-8c2.2 0 4.2.9 5.7 2.3L21 9"/><path d="M20 12a8 8 0 01-8 8c-2.2 0-4.2-.9-5.7-2.3L3 15"/><polyline points="21 3 21 9 15 9"/><polyline points="3 21 3 15 9 15"/></svg>`,
+  settings: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>`,
   menu: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`,
   back: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 5 5 12 12 19"/></svg>`,
   heart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>`,
   comment: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+  retweet: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>`,
   star: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>`,
-  // 设置页专用线条图标
   settingAvatar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
-  settingProfile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg>`,
+  settingProfile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
   settingWorld: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20"/><path d="M12 2a15.3 15.3 0 000 20"/></svg>`,
   settingBook: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`,
+  settingBeauty: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>`,
   settingTrash: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`,
   chevronRight: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`,
 }
@@ -168,33 +186,31 @@ $角色可以从游戏、漫画、动漫、小说等各个方面选择（如：�
 $游戏用户是代入主角，禁止出现如开拓者（星、穹）、旅行者（空、荧）等主角角色的评论，这是绝对禁止
 $论坛偏乙女向（代入向），用户为女孩子，绝对禁止角色认为用户为男生
 $绝对禁止出现耽美小说漫画等角色（禁止BL，不要出现任何BL配对或角色）
-
 自检：
 1. 有没有根据角色世界观、人设发帖？有就继续。
 2. 有没有出现开拓者/旅行者等游戏主角？有就改。
 3. 角色有没有将用户认为是男生？有就改。
 4. 有没有出现耽美角色？有就改。`,
   boundWorldbooks: [],
+  beauty: { topbarPadding: 10 },
 }
 
 // ═══════════════════════════════════════════════════════════
 // Storage
 // ═══════════════════════════════════════════════════════════
-const STORAGE_KEYS = ['homePosts','crossPosts','parallelPosts','myPosts','savedPosts','userProfile','worldview','boundWorldbooks']
-
+const STORAGE_KEYS = ['homePosts','crossPosts','parallelPosts','myPosts','savedPosts','userProfile','worldview','boundWorldbooks','beauty']
 async function loadStorage() {
   for (const k of STORAGE_KEYS) {
     const v = await roche.storage.get(k)
     if (v !== null && v !== undefined) state[k] = v
   }
 }
-
 async function save(key) {
   await roche.storage.set(key, state[key])
 }
 
 // ═══════════════════════════════════════════════════════════
-// AI 帖子生成（不读取角色库，只用世界书 + AI 自由创作）
+// AI 帖子生成
 // ═══════════════════════════════════════════════════════════
 async function generatePosts(mode) {
   let wbContext = ''
@@ -214,15 +230,11 @@ async function generatePosts(mode) {
     state.userProfile.appearance,
   ].filter(Boolean).join('，')
 
-  const systemPrompt = `你是一个角色论坛AI内容生成器。角色由你自由选择，从高人气游戏/动漫/小说中选取合适角色，不受任何预设角色列表限制。
-
+  const systemPrompt = `你是一个角色论坛AI内容生成器。角色由你自由选择，从高人气游戏/动漫/小说中选取合适角色。
 世界观规则：
 ${state.worldview}
-
 ${wbContext ? `世界书参考内容：\n${wbContext}` : ''}
-
 用户信息：论坛昵称 @${userHandle}，${userDesc || '女生'}。
-
 ⚠️ 输出格式：只输出 JSON，不要任何其他文字。`
 
   let userPrompt = ''
@@ -230,25 +242,25 @@ ${wbContext ? `世界书参考内容：\n${wbContext}` : ''}
     userPrompt = `生成5条主页帖子。要求：
 - 自由选择你认为合适的角色（游戏、动漫、小说等），每条帖子选一个角色发出
 - 内容是角色日常/剧情/小烦恼
-- 每条帖子有2~4条评论，评论者也是角色（可以来自不同作品）
+- ⚠️ 每条帖子有2~4条评论，评论者必须来自与发帖角色【相同的作品/游戏】，绝对禁止跨作品评论
 - 严格遵守世界观规则
 JSON格式：
-{"posts":[{"authorName":"角色名","authorHandle":"英文或拼音昵称","avatar":"","text":"帖子内容","likes":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名"}]}]}`
+{"posts":[{"authorName":"角色名","authorHandle":"英文或拼音昵称","avatar":"","text":"帖子内容","likes":0,"retweets":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名（必须与发帖人相同）"}]}]}`
   } else if (mode === 'cross') {
     userPrompt = `生成5条跨界板块帖子。要求：
 - 发帖人来自不同作品世界
-- 评论区必须有其他作品角色的跨界反应，充满趣味和反差感
+- 评论区必须有其他作品角色的跨界反应，充满趣味和反差感（此板块允许不同作品评论）
 - 自由选择角色，严格遵守世界观规则
 JSON格式：
-{"posts":[{"authorName":"角色名","authorHandle":"昵称","avatar":"","text":"帖子内容","likes":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名"}]}]}`
+{"posts":[{"authorName":"角色名","authorHandle":"昵称","avatar":"","text":"帖子内容","likes":0,"retweets":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名"}]}]}`
   } else {
     userPrompt = `生成5条平行板块帖子。要求：
 - 帖子内容是角色与用户（@${userHandle}）在一起后的日常动态
 - 内容温馨乙女向，充满恋爱感
-- 评论可以是其他角色的祝福/羡慕/吐槽
+- ⚠️ 评论者必须来自与发帖角色【相同的作品】，不允许跨作品评论
 - 自由选择角色，严格遵守世界观规则
 JSON格式：
-{"posts":[{"authorName":"角色名","authorHandle":"昵称","avatar":"","text":"帖子内容","likes":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名"}]}]}`
+{"posts":[{"authorName":"角色名","authorHandle":"昵称","avatar":"","text":"帖子内容","likes":0,"retweets":0,"worldTag":"作品名","comments":[{"name":"角色名","handle":"昵称","avatar":"","text":"评论","worldTag":"作品名（必须与发帖人相同）"}]}]}`
   }
 
   const result = await roche.ai.chat({
@@ -258,7 +270,6 @@ JSON格式：
     ],
     temperature: 0.92,
   })
-
   let parsed
   try {
     const raw = result.text.trim()
@@ -268,7 +279,6 @@ JSON格式：
   } catch (e) {
     throw new Error('AI 返回格式错误，请重试')
   }
-
   return (parsed.posts || []).map(p => ({
     id: crypto.randomUUID(),
     timestamp: Date.now() - Math.floor(Math.random() * 7200000),
@@ -277,6 +287,7 @@ JSON格式：
     avatar: '',
     text: p.text || '',
     likes: p.likes || Math.floor(Math.random() * 80),
+    retweets: p.retweets || Math.floor(Math.random() * 30),
     worldTag: p.worldTag || '',
     comments: (p.comments || []).map(c => ({
       name: c.name,
@@ -289,11 +300,12 @@ JSON格式：
 }
 
 // ═══════════════════════════════════════════════════════════
-// Post card
+// Post card（列表卡片，点击进详情）
 // ═══════════════════════════════════════════════════════════
-function postCard(post, content, listKey) {
+function postCard(post, listKey, container, onOpenDetail) {
   const card = el('div', { class: 'rf-post' })
   card.appendChild(avatarEl(post.avatar, 40))
+
   const body = el('div', { class: 'rf-post-body' })
 
   const header = el('div', { class: 'rf-post-header' })
@@ -302,35 +314,52 @@ function postCard(post, content, listKey) {
   if (post.worldTag) header.appendChild(el('span', { class: 'rf-post-tag' }, post.worldTag))
   header.appendChild(el('span', { class: 'rf-post-time' }, fmtTime(post.timestamp)))
   body.appendChild(header)
+
   body.appendChild(el('div', { class: 'rf-post-text' }, post.text))
 
+  // Actions row
   const actions = el('div', { class: 'rf-post-actions' })
+  actions.onclick = e => e.stopPropagation()
 
+  // Comment btn
   const commentBtn = el('button', { class: 'rf-post-action-btn' })
   commentBtn.appendChild(mkSvg(ICONS.comment))
   commentBtn.appendChild(document.createTextNode(' ' + (post.comments?.length || 0)))
-  commentBtn.onclick = () => {
-    const existing = content.querySelector(`[data-cmt="${post.id}"]`)
-    if (existing) { existing.remove(); return }
-    card.after(buildComments(post))
-  }
+  commentBtn.onclick = (e) => { e.stopPropagation(); onOpenDetail && onOpenDetail(post) }
   actions.appendChild(commentBtn)
 
+  // Retweet btn
+  const rtBtn = el('button', { class: 'rf-post-action-btn' })
+  rtBtn.appendChild(mkSvg(ICONS.retweet))
+  const rtCount = el('span', {}, ' ' + (post.retweets || 0))
+  rtBtn.appendChild(rtCount)
+  rtBtn.onclick = (e) => {
+    e.stopPropagation()
+    post.retweets = (post.retweets || 0) + 1
+    rtCount.textContent = ' ' + post.retweets
+    save(listKey)
+  }
+  actions.appendChild(rtBtn)
+
+  // Like btn
   const likeBtn = el('button', { class: 'rf-post-action-btn' })
   likeBtn.appendChild(mkSvg(ICONS.heart))
   const likeCount = el('span', {}, ' ' + (post.likes || 0))
   likeBtn.appendChild(likeCount)
-  likeBtn.onclick = () => {
+  likeBtn.onclick = (e) => {
+    e.stopPropagation()
     post.likes = (post.likes || 0) + 1
     likeCount.textContent = ' ' + post.likes
     save(listKey)
   }
   actions.appendChild(likeBtn)
 
+  // Bookmark btn
   const bookmarkBtn = el('button', { class: 'rf-post-action-btn' })
   bookmarkBtn.appendChild(mkSvg(ICONS.star))
   bookmarkBtn.title = '收藏'
-  bookmarkBtn.onclick = async () => {
+  bookmarkBtn.onclick = async (e) => {
+    e.stopPropagation()
     if (state.savedPosts.find(p => p.id === post.id)) {
       state.savedPosts = state.savedPosts.filter(p => p.id !== post.id)
       roche.ui.toast('已取消收藏')
@@ -344,35 +373,111 @@ function postCard(post, content, listKey) {
 
   body.appendChild(actions)
   card.appendChild(body)
+
+  // Click card → detail
+  card.onclick = () => onOpenDetail && onOpenDetail(post)
+
   return card
 }
 
-function buildComments(post) {
-  const wrap = el('div', { class: 'rf-comments' })
-  wrap.setAttribute('data-cmt', post.id)
+// ═══════════════════════════════════════════════════════════
+// Post Detail Page
+// ═══════════════════════════════════════════════════════════
+function pagePostDetail(container, post, listKey, onBack) {
+  container.innerHTML = ''
+  const wrap = el('div', { class: 'rf' })
+  wrap.appendChild(backTopBar('帖子详情', onBack))
+
+  const content = el('div', { class: 'rf-content' })
+
+  // Post header in detail
+  const dHeader = el('div', { class: 'rf-detail-header' })
+  dHeader.appendChild(avatarEl(post.avatar, 44))
+  const dMeta = el('div', { style: 'flex:1;min-width:0' })
+  dMeta.appendChild(el('div', { class: 'rf-post-name' }, post.authorName))
+  const subLine = el('div', { style: 'display:flex;gap:6px;align-items:center;margin-top:2px' })
+  subLine.appendChild(el('span', { class: 'rf-post-handle' }, '@' + post.authorHandle))
+  if (post.worldTag) subLine.appendChild(el('span', { class: 'rf-post-tag' }, post.worldTag))
+  dMeta.appendChild(subLine)
+  dHeader.appendChild(dMeta)
+  content.appendChild(dHeader)
+
+  content.appendChild(el('div', { class: 'rf-detail-text' }, post.text))
+  content.appendChild(el('div', { class: 'rf-post-time', style: 'padding:6px 14px;border-bottom:1px solid #e5e5e5;font-size:11px' }, fmtTime(post.timestamp)))
+
+  // Stats row
+  const stats = el('div', { class: 'rf-detail-stats' })
+  const rtSpan = el('span', {}, '')
+  rtSpan.innerHTML = `<b>${post.retweets || 0}</b> 转发`
+  const likeSpan = el('span', {}, '')
+  likeSpan.innerHTML = `<b>${post.likes || 0}</b> 点赞`
+  const cmtSpan = el('span', {}, '')
+  cmtSpan.innerHTML = `<b>${post.comments?.length || 0}</b> 评论`
+  stats.appendChild(rtSpan)
+  stats.appendChild(likeSpan)
+  stats.appendChild(cmtSpan)
+  content.appendChild(stats)
+
+  // All comments
+  const cmtSection = el('div', { class: 'rf-detail-all-comments' })
   if (!post.comments?.length) {
-    wrap.appendChild(el('div', { style: 'color:#aaa;font-size:12px;padding:8px 0' }, '暂无评论'))
-    return wrap
+    cmtSection.appendChild(el('div', { style: 'text-align:center;color:#aaa;padding:24px;font-size:13px' }, '暂无评论，来发第一条吧'))
+  } else {
+    for (const c of post.comments) {
+      const row = el('div', { class: 'rf-comment', style: 'padding:10px 14px' })
+      const cav = el('div', { class: 'rf-comment-avatar' })
+      if (c.avatar) { const img = el('img', { src: c.avatar }); img.onerror = () => img.remove(); cav.appendChild(img) }
+      row.appendChild(cav)
+      const cbody = el('div', { style: 'flex:1;min-width:0' })
+      cbody.appendChild(el('div', { class: 'rf-comment-meta' }, (c.handle || c.name) + (c.worldTag ? ` ·【${c.worldTag}】` : '')))
+      cbody.appendChild(el('div', { class: 'rf-comment-text' }, c.text))
+      row.appendChild(cbody)
+      cmtSection.appendChild(row)
+    }
   }
-  for (const c of post.comments) {
-    const row = el('div', { class: 'rf-comment' })
-    const cav = el('div', { class: 'rf-comment-avatar' })
-    if (c.avatar) { const img = el('img', { src: c.avatar }); img.onerror = () => img.remove(); cav.appendChild(img) }
-    row.appendChild(cav)
-    const cbody = el('div', { style: 'flex:1;min-width:0' })
-    cbody.appendChild(el('div', { class: 'rf-comment-meta' }, (c.handle || c.name) + (c.worldTag ? ` ·【${c.worldTag}】` : '')))
-    cbody.appendChild(el('div', { class: 'rf-comment-text' }, c.text))
-    row.appendChild(cbody)
-    wrap.appendChild(row)
+  content.appendChild(cmtSection)
+  wrap.appendChild(content)
+
+  // Comment input bar
+  const inputBar = el('div', { class: 'rf-detail-comment-input' })
+  const ta = el('textarea', { placeholder: '发表评论…', rows: '1' })
+  ta.addEventListener('input', () => {
+    ta.style.height = 'auto'
+    ta.style.height = Math.min(ta.scrollHeight, 100) + 'px'
+  })
+  inputBar.appendChild(ta)
+  const sendBtn = el('button', { class: 'rf-btn rf-btn-primary rf-btn-sm' }, '发送')
+  sendBtn.onclick = async () => {
+    const text = ta.value.trim()
+    if (!text) return
+    const newComment = {
+      name: state.userProfile.handle || '我',
+      handle: state.userProfile.handle || '我',
+      avatar: state.userProfile.avatarUrl || '',
+      text,
+      worldTag: '',
+    }
+    post.comments = post.comments || []
+    post.comments.push(newComment)
+    ta.value = ''
+    ta.style.height = 'auto'
+    await save(listKey)
+    // re-render detail
+    pagePostDetail(container, post, listKey, onBack)
+    roche.ui.toast('✦ 评论已发送')
   }
-  return wrap
+  inputBar.appendChild(sendBtn)
+  wrap.appendChild(inputBar)
+
+  container.appendChild(wrap)
 }
 
 // ═══════════════════════════════════════════════════════════
 // Top bar builders
 // ═══════════════════════════════════════════════════════════
 function topBar(title, rightEl) {
-  const bar = el('div', { class: 'rf-topbar' })
+  const p = state.beauty?.topbarPadding ?? 10
+  const bar = el('div', { class: 'rf-topbar', style: `padding:${p}px 14px` })
   const closeBtn = el('button', { class: 'rf-icon-btn', onclick: () => roche.ui.closeApp() })
   closeBtn.appendChild(mkSvg(ICONS.close))
   bar.appendChild(closeBtn)
@@ -382,7 +487,8 @@ function topBar(title, rightEl) {
 }
 
 function backTopBar(title, onBack, rightEl) {
-  const bar = el('div', { class: 'rf-topbar' })
+  const p = state.beauty?.topbarPadding ?? 10
+  const bar = el('div', { class: 'rf-topbar', style: `padding:${p}px 14px` })
   const backBtn = el('button', { class: 'rf-icon-btn', onclick: onBack })
   backBtn.appendChild(mkSvg(ICONS.back))
   bar.appendChild(backBtn)
@@ -417,24 +523,44 @@ function bottomNav(container) {
 // ═══════════════════════════════════════════════════════════
 function pageHome(container) {
   const wrap = el('div', { class: 'rf' })
+
+  // Topbar: close | title | [settings, refresh]
+  const rightGroup = el('div', { class: 'rf-topbar-right' })
+  const settingsBtn = el('button', { class: 'rf-icon-btn', onclick: () => pageSettings(container) })
+  settingsBtn.appendChild(mkSvg(ICONS.settings))
   const refreshBtn = el('button', { class: 'rf-icon-btn' })
   refreshBtn.appendChild(mkSvg(ICONS.refresh))
-  wrap.appendChild(topBar('✦ 论坛', refreshBtn))
+  rightGroup.appendChild(settingsBtn)
+  rightGroup.appendChild(refreshBtn)
+  wrap.appendChild(topBar('✦ 论坛', rightGroup))
+
   const content = el('div', { class: 'rf-content' })
   wrap.appendChild(content)
   wrap.appendChild(bottomNav(container))
 
+  // FAB inside wrap (not content) so overlay is not clipped
   const fab = el('button', { class: 'rf-fab' }, '+')
-  content.appendChild(fab)
+  fab.style.position = 'absolute'
+  fab.style.right = '18px'
+  fab.style.bottom = '70px'
+  fab.style.zIndex = '50'
+  wrap.style.position = 'relative'
+  wrap.appendChild(fab)
+
+  function openDetail(post) {
+    pagePostDetail(container, post, 'homePosts', () => {
+      container.innerHTML = ''
+      container.appendChild(renderHomePage(container))
+    })
+  }
 
   function drawPosts() {
     content.innerHTML = ''
-    content.appendChild(fab)
     if (!state.homePosts.length) {
       content.appendChild(el('div', { class: 'rf-empty' }, '暂无帖子\n点击右上角刷新按钮生成帖子 ↑'))
       return
     }
-    for (const p of state.homePosts) content.appendChild(postCard(p, content, 'homePosts'))
+    for (const p of state.homePosts) content.appendChild(postCard(p, 'homePosts', content, openDetail))
   }
   drawPosts()
 
@@ -447,7 +573,9 @@ function pageHome(container) {
       const posts = await generatePosts('home')
       state.homePosts = [...posts, ...state.homePosts].slice(0, 60)
       await save('homePosts')
-    } catch (e) { roche.ui.toast('生成失败：' + e.message) }
+    } catch (e) {
+      roche.ui.toast('生成失败：' + e.message)
+    }
     state.loading = false; refreshBtn.disabled = false
     drawPosts()
   }
@@ -460,28 +588,34 @@ function pageHome(container) {
     modal.appendChild(ta)
     const btnRow = el('div', { style: 'display:flex;gap:8px;margin-top:10px;justify-content:flex-end' })
     btnRow.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', onclick: () => overlay.remove() }, '取消'))
-    btnRow.appendChild(el('button', { class: 'rf-btn rf-btn-primary', onclick: async () => {
-      const text = ta.value.trim()
-      if (!text) return
-      const post = {
-        id: crypto.randomUUID(), timestamp: Date.now(),
-        authorName: state.userProfile.handle || '我',
-        authorHandle: state.userProfile.handle || '我',
-        avatar: state.userProfile.avatarUrl || '',
-        text, likes: 0, worldTag: '', comments: [], isUserPost: true,
+    btnRow.appendChild(el('button', {
+      class: 'rf-btn rf-btn-primary',
+      onclick: async () => {
+        const text = ta.value.trim()
+        if (!text) return
+        const post = {
+          id: crypto.randomUUID(),
+          timestamp: Date.now(),
+          authorName: state.userProfile.handle || '我',
+          authorHandle: state.userProfile.handle || '我',
+          avatar: state.userProfile.avatarUrl || '',
+          text, likes: 0, retweets: 0, worldTag: '', comments: [], isUserPost: true,
+        }
+        state.homePosts = [post, ...state.homePosts]
+        state.myPosts = [post, ...state.myPosts]
+        await save('homePosts'); await save('myPosts')
+        overlay.remove(); drawPosts()
+        roche.ui.toast('✦ 发布成功！')
       }
-      state.homePosts = [post, ...state.homePosts]
-      state.myPosts = [post, ...state.myPosts]
-      await save('homePosts'); await save('myPosts')
-      overlay.remove(); drawPosts()
-      roche.ui.toast('✦ 发布成功！')
-    }}, '发布'))
+    }, '发布'))
     modal.appendChild(btnRow)
     overlay.appendChild(modal)
     overlay.onclick = e => { if (e.target === overlay) overlay.remove() }
-    content.appendChild(overlay)
+    // Append to wrap so it's not clipped by content overflow
+    wrap.appendChild(overlay)
     setTimeout(() => ta.focus(), 50)
   }
+
   return wrap
 }
 
@@ -490,9 +624,15 @@ function pageHome(container) {
 // ═══════════════════════════════════════════════════════════
 function pageSection(container) {
   const wrap = el('div', { class: 'rf' })
+
+  const rightGroup = el('div', { class: 'rf-topbar-right' })
+  const settingsBtn = el('button', { class: 'rf-icon-btn', onclick: () => pageSettings(container) })
+  settingsBtn.appendChild(mkSvg(ICONS.settings))
   const refreshBtn = el('button', { class: 'rf-icon-btn' })
   refreshBtn.appendChild(mkSvg(ICONS.refresh))
-  wrap.appendChild(topBar('✦ 板块', refreshBtn))
+  rightGroup.appendChild(settingsBtn)
+  rightGroup.appendChild(refreshBtn)
+  wrap.appendChild(topBar('✦ 板块', rightGroup))
 
   const tabsEl = el('div', { class: 'rf-section-tabs' })
   const tabNames = ['跨界', '平行']
@@ -508,14 +648,22 @@ function pageSection(container) {
 
   const keyMap = ['crossPosts', 'parallelPosts']
 
+  function openDetail(post, key) {
+    pagePostDetail(container, post, key, () => {
+      container.innerHTML = ''
+      container.appendChild(pageSection(container))
+    })
+  }
+
   function drawPosts() {
     content.innerHTML = ''
-    const posts = state[keyMap[state.sectionTab]]
+    const key = keyMap[state.sectionTab]
+    const posts = state[key]
     if (!posts.length) {
       content.appendChild(el('div', { class: 'rf-empty' }, `暂无「${tabNames[state.sectionTab]}」帖子\n点击刷新生成 ↑`))
       return
     }
-    for (const p of posts) content.appendChild(postCard(p, content, keyMap[state.sectionTab]))
+    for (const p of posts) content.appendChild(postCard(p, key, content, (post) => openDetail(post, key)))
   }
 
   function switchTab(i) {
@@ -536,10 +684,13 @@ function pageSection(container) {
       const posts = await generatePosts(mode)
       state[key] = [...posts, ...state[key]].slice(0, 60)
       await save(key)
-    } catch (e) { roche.ui.toast('生成失败：' + e.message) }
+    } catch (e) {
+      roche.ui.toast('生成失败：' + e.message)
+    }
     state.loading = false; refreshBtn.disabled = false
     drawPosts()
   }
+
   return wrap
 }
 
@@ -593,11 +744,18 @@ function pageProfile(container) {
   wrap.appendChild(content)
   wrap.appendChild(bottomNav(container))
 
+  function openDetail(post, key) {
+    pagePostDetail(container, post, key, () => {
+      container.innerHTML = ''
+      container.appendChild(pageProfile(container))
+    })
+  }
+
   function drawContent() {
     content.innerHTML = ''
     if (state.profileTab === 0) {
       if (!state.myPosts.length) content.appendChild(el('div', { class: 'rf-empty' }, '还没有发过帖子'))
-      else for (const p of state.myPosts) content.appendChild(postCard(p, content, 'myPosts'))
+      else for (const p of state.myPosts) content.appendChild(postCard(p, 'myPosts', content, (post) => openDetail(post, 'myPosts')))
     } else if (state.profileTab === 1) {
       const rows = [
         ['论坛昵称', state.userProfile.handle],
@@ -616,7 +774,7 @@ function pageProfile(container) {
       content.appendChild(editWrap)
     } else if (state.profileTab === 2) {
       if (!state.savedPosts.length) content.appendChild(el('div', { class: 'rf-empty' }, '还没有收藏任何帖子'))
-      else for (const p of state.savedPosts) content.appendChild(postCard(p, content, 'savedPosts'))
+      else for (const p of state.savedPosts) content.appendChild(postCard(p, 'savedPosts', content, (post) => openDetail(post, 'savedPosts')))
     } else {
       const wip = el('div', { class: 'rf-wip' })
       wip.appendChild(el('span', { style: 'font-size:30px' }, '🔧'))
@@ -644,13 +802,13 @@ function pageSettings(container) {
   const content = el('div', { class: 'rf-content' })
 
   const items = [
-    { label: '头像设置',   icon: 'settingAvatar',  fn: () => pageAvatar(container) },
-    { label: '资料设置',   icon: 'settingProfile', fn: () => pageProfileEdit(container) },
-    { label: '世界观设定', icon: 'settingWorld',   fn: () => pageWorldview(container) },
-    { label: '绑定世界书', icon: 'settingBook',    fn: () => pageWorldbook(container) },
-    { label: '清理数据',   icon: 'settingTrash',   fn: () => pageCleanup(container) },
+    { label: '头像设置', icon: 'settingAvatar', fn: () => pageAvatar(container) },
+    { label: '资料设置', icon: 'settingProfile', fn: () => pageProfileEdit(container) },
+    { label: '世界观设定', icon: 'settingWorld', fn: () => pageWorldview(container) },
+    { label: '绑定世界书', icon: 'settingBook', fn: () => pageWorldbook(container) },
+    { label: '美化设置', icon: 'settingBeauty', fn: () => pageBeauty(container) },
+    { label: '清理数据', icon: 'settingTrash', fn: () => pageCleanup(container) },
   ]
-
   for (const item of items) {
     const row = el('div', { class: 'rf-settings-item', onclick: item.fn })
     const left = el('div', { style: 'display:flex;align-items:center;gap:10px' })
@@ -664,8 +822,42 @@ function pageSettings(container) {
     row.appendChild(arrow)
     content.appendChild(row)
   }
+  wrap.appendChild(content)
+  container.appendChild(wrap)
+}
+
+function pageBeauty(container) {
+  container.innerHTML = ''
+  const wrap = el('div', { class: 'rf' })
+  const saveBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:13px;padding:6px 14px' }, '保存')
+  wrap.appendChild(backTopBar('美化设置', () => pageSettings(container), saveBtn))
+  const content = el('div', { class: 'rf-content' })
+
+  content.appendChild(el('div', { class: 'rf-divider-label' }, '顶部栏'))
+
+  // Topbar padding slider
+  const padGroup = el('div', { class: 'rf-beauty-group' })
+  const padVal = el('span', {}, (state.beauty?.topbarPadding ?? 10) + 'px')
+  const padLabel = el('div', { class: 'rf-beauty-label' })
+  padLabel.appendChild(document.createTextNode('顶部栏上下间距'))
+  padLabel.appendChild(padVal)
+  padGroup.appendChild(padLabel)
+  const padSlider = el('input', { class: 'rf-beauty-slider', type: 'range', min: '4', max: '22', step: '1' })
+  padSlider.value = state.beauty?.topbarPadding ?? 10
+  padSlider.oninput = () => { padVal.textContent = padSlider.value + 'px' }
+  padGroup.appendChild(padSlider)
+  content.appendChild(padGroup)
 
   wrap.appendChild(content)
+
+  saveBtn.onclick = async () => {
+    state.beauty = state.beauty || {}
+    state.beauty.topbarPadding = parseInt(padSlider.value)
+    await save('beauty')
+    roche.ui.toast('✦ 美化设置已保存')
+    pageSettings(container)
+  }
+
   container.appendChild(wrap)
 }
 
@@ -676,10 +868,10 @@ function pageProfileEdit(container) {
   wrap.appendChild(backTopBar('编辑资料', () => pageSettings(container), saveBtn))
   const content = el('div', { class: 'rf-content' })
   const fields = [
-    { key: 'handle',     label: '论坛昵称（被@的名字）', placeholder: '例如：小樱' },
-    { key: 'name',       label: '姓名',         placeholder: '你的真实名字' },
-    { key: 'age',        label: '年龄',         placeholder: '例如：18' },
-    { key: 'appearance', label: '外貌描述',     placeholder: '例如：长黑发，琥珀色眼睛…' },
+    { key: 'handle', label: '论坛昵称（被@的名字）', placeholder: '例如：小樱' },
+    { key: 'name', label: '姓名', placeholder: '你的真实名字' },
+    { key: 'age', label: '年龄', placeholder: '例如：18' },
+    { key: 'appearance', label: '外貌描述', placeholder: '例如：长黑发，琥珀色眼睛…' },
   ]
   const inputs = {}
   for (const f of fields) {
@@ -706,7 +898,6 @@ function pageAvatar(container) {
   const wrap = el('div', { class: 'rf' })
   wrap.appendChild(backTopBar('头像设置', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content', style: 'padding:20px 16px' })
-
   const previewWrap = el('div', { style: 'display:flex;justify-content:center;margin-bottom:20px' })
   const av = el('div', { class: 'rf-profile-avatar', style: 'margin:0' })
   if (state.userProfile.avatarUrl) {
@@ -716,14 +907,12 @@ function pageAvatar(container) {
   }
   previewWrap.appendChild(av)
   content.appendChild(previewWrap)
-
   const g1 = el('div', { class: 'rf-form-group' })
   g1.appendChild(el('div', { class: 'rf-form-label' }, '粘贴图片链接（URL）'))
   const urlInput = el('input', { class: 'rf-form-input', type: 'url', placeholder: 'https://…' })
   urlInput.value = state.userProfile.avatarUrl || ''
   g1.appendChild(urlInput)
   content.appendChild(g1)
-
   const g2 = el('div', { class: 'rf-form-group' })
   g2.appendChild(el('div', { class: 'rf-form-label' }, '或从相册选择（自动转 Base64）'))
   const fileInput = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
@@ -740,10 +929,8 @@ function pageAvatar(container) {
   }
   g2.appendChild(fileInput)
   content.appendChild(g2)
-
   content.appendChild(el('button', {
-    class: 'rf-btn rf-btn-primary',
-    style: 'margin:12px 16px;width:calc(100% - 32px)',
+    class: 'rf-btn rf-btn-primary', style: 'margin:12px 16px;width:calc(100% - 32px)',
     onclick: async () => {
       state.userProfile.avatarUrl = urlInput.value.trim()
       await save('userProfile')
@@ -751,7 +938,6 @@ function pageAvatar(container) {
       pageSettings(container)
     }
   }, '保存头像'))
-
   wrap.appendChild(content)
   container.appendChild(wrap)
 }
@@ -802,8 +988,7 @@ async function pageWorldbook(container) {
       content.appendChild(item)
     }
     content.appendChild(el('button', {
-      class: 'rf-btn rf-btn-primary',
-      style: 'margin:12px 16px;width:calc(100% - 32px)',
+      class: 'rf-btn rf-btn-primary', style: 'margin:12px 16px;width:calc(100% - 32px)',
       onclick: async () => {
         state.boundWorldbooks = [...selected]
         await save('boundWorldbooks')
@@ -822,22 +1007,23 @@ async function pageCleanup(container) {
   const wrap = el('div', { class: 'rf' })
   wrap.appendChild(backTopBar('清理数据', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content' })
-
   const items = [
     { label: '清理主页全部帖子', key: 'homePosts' },
     { label: '清理板块跨界帖子', key: 'crossPosts' },
     { label: '清理板块平行帖子', key: 'parallelPosts' },
-    { label: '清理我发的帖子',   key: 'myPosts' },
+    { label: '清理我发的帖子', key: 'myPosts' },
     { label: '清理全部收藏帖子', key: 'savedPosts' },
   ]
   for (const item of items) {
-    const row = el('div', { class: 'rf-settings-item', onclick: async () => {
-      const ok = await roche.ui.confirm({ title: '确认清理', message: `确定要${item.label}吗？此操作不可撤销。` })
-      if (!ok) return
-      state[item.key] = []
-      await save(item.key)
-      roche.ui.toast(`✦ 已${item.label}`)
-    }})
+    const row = el('div', {
+      class: 'rf-settings-item', onclick: async () => {
+        const ok = await roche.ui.confirm({ title: '确认清理', message: `确定要${item.label}吗？此操作不可撤销。` })
+        if (!ok) return
+        state[item.key] = []
+        await save(item.key)
+        roche.ui.toast(`✦ 已${item.label}`)
+      }
+    })
     const left = el('div', { style: 'display:flex;align-items:center;gap:10px' })
     const iconWrap = el('div', { style: 'width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;color:#c00' })
     iconWrap.appendChild(mkSvg(ICONS.settingTrash))
@@ -859,7 +1045,7 @@ async function pageCleanup(container) {
 function renderMain(container) {
   container.innerHTML = ''
   let wrap
-  if (state.page === 'home')    wrap = pageHome(container)
+  if (state.page === 'home') wrap = pageHome(container)
   if (state.page === 'section') wrap = pageSection(container)
   if (state.page === 'message') wrap = pageMessage(container)
   if (state.page === 'profile') wrap = pageProfile(container)
@@ -873,7 +1059,7 @@ let _styleEl = null
 window.RochePlugin.register({
   id: 'roche-forum',
   name: '✦ 角色论坛',
-  version: '2.0.0',
+  version: '3.0.0',
   apps: [
     {
       id: 'roche-forum-main',
@@ -895,5 +1081,4 @@ window.RochePlugin.register({
     },
   ],
 })
-
 })()
