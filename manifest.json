@@ -1,0 +1,17 @@
+{
+  "id": "roche-forum",
+  "name": "✦ 角色论坛",
+  "version": "1.0.0",
+  "description": "模拟 X 风格角色论坛，角色根据世界观发帖互动，支持跨界/平行板块",
+  "author": "朵朵",
+  "entry": "https://raw.githubusercontent.com/Yff316/roche-forum/main/forum.js",
+  "hash": "",
+  "permissions": [
+    "persona:read",
+    "character:read",
+    "worldbook:read",
+    "ai:chat",
+    "storage",
+    "ui"
+  ]
+}
