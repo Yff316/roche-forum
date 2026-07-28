@@ -1,15 +1,10 @@
 {
   "id": "roche-forum",
   "name": "✦ 角色论坛",
-  "version": "3.0.0",
-  "description": "模拟 X 风格角色论坛，AI 自由生成角色发帖互动，支持跨界/平行板块",
+  "version": "4.0.0",
+  "description": "模拟 X 风格角色论坛，AI 自由生成角色发帖互动",
   "author": "朵朵",
   "entry": "https://raw.githubusercontent.com/Yff316/roche-forum/main/forum.js",
   "hash": "",
-  "permissions": [
-    "worldbook:read",
-    "ai:chat",
-    "storage",
-    "ui"
-  ]
+  "permissions": ["worldbook:read", "ai:chat", "storage", "ui"]
 }
