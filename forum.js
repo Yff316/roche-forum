@@ -10,11 +10,10 @@ const CSS = `
 .rf-topbar-title { font-family: 'Dancing Script', cursive; font-size: 20px; font-weight: 700; letter-spacing: .5px; flex: 1; text-align: center; pointer-events: none; }
 .rf-topbar-left, .rf-topbar-right { display: flex; align-items: center; gap: 2px; min-width: 72px; flex-shrink: 0; }
 .rf-topbar-right { justify-content: flex-end; }
-.rf-icon-btn { background: none; border: none; cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; color: #000; border-radius: 50%; flex-shrink: 0; }
+.rf-icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; align-items: center; justify-content: center; color: #000; border-radius: 50%; flex-shrink: 0; }
 .rf-icon-btn:hover { background: #f0f0f0; }
 .rf-icon-btn:disabled { opacity: .3; cursor: default; }
-/* ★ 关键修复：图标按钮里的 SVG 必须有尺寸 */
-.rf-icon-btn svg { width: 22px; height: 22px; display: block; }
+.rf-icon-btn svg { width: 20px; height: 20px; display: block; }
 .rf-bottomnav { display: flex; border-top: 1px solid #e5e5e5; flex-shrink: 0; }
 .rf-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 8px 0 6px; cursor: pointer; font-size: 11px; color: #888; border: none; background: none; gap: 3px; }
 .rf-nav-item.active { color: #000; font-weight: 700; }
@@ -33,8 +32,8 @@ const CSS = `
 .rf-post-actions { display: flex; gap: 14px; margin-top: 10px; }
 .rf-post-action-btn { background: none; border: none; cursor: pointer; color: #888; font-size: 12px; display: flex; align-items: center; gap: 4px; padding: 0; }
 .rf-post-action-btn:hover { color: #000; }
-.rf-post-action-btn svg { width: 16px; height: 16px; }
-.rf-fab { position: absolute; right: 18px; bottom: 18px; width: 48px; height: 48px; border-radius: 50%; border: none; background: #000; color: #fff; font-size: 26px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+.rf-post-action-btn svg { width: 15px; height: 15px; }
+.rf-fab { position: absolute; right: 18px; bottom: 18px; width: 46px; height: 46px; border-radius: 50%; border: none; background: #000; color: #fff; font-size: 24px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
 .rf-fab:hover { background: #333; }
 .rf-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.35); display: flex; align-items: flex-end; z-index: 200; }
 .rf-modal { background: #fff; width: 100%; border-radius: 16px 16px 0 0; padding: 16px; max-height: 85%; overflow-y: auto; }
@@ -46,7 +45,7 @@ const CSS = `
 .rf-btn-primary:hover { background: #222; }
 .rf-btn-ghost { background: none; border: 1px solid #ccc; color: #000; }
 .rf-btn-ghost:hover { background: #f5f5f5; }
-.rf-btn-sm { padding: 5px 14px; font-size: 12px; }
+.rf-btn-sm { padding: 5px 14px; font-size: 12px; border-radius: 16px; }
 .rf-section-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
 .rf-section-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 14px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
 .rf-section-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
@@ -78,27 +77,29 @@ const CSS = `
 .rf-worldbook-item label { flex: 1; font-size: 14px; cursor: pointer; }
 .rf-empty { text-align: center; color: #999; padding: 56px 24px; font-size: 14px; line-height: 1.8; }
 .rf-wip { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #aaa; gap: 12px; font-size: 14px; }
-/* Detail page */
+/* Detail */
 .rf-detail-header { padding: 14px 14px 0; display: flex; gap: 10px; }
 .rf-detail-text { padding: 8px 14px 12px; font-size: 15px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; border-bottom: 1px solid #e5e5e5; }
 .rf-detail-stats { display: flex; gap: 18px; padding: 10px 14px; border-bottom: 1px solid #e5e5e5; font-size: 13px; color: #666; }
 .rf-detail-stats span b { color: #000; font-weight: 700; }
-.rf-detail-comment-input { padding: 10px 14px; border-top: 1px solid #e5e5e5; display: flex; gap: 8px; align-items: flex-end; flex-shrink: 0; }
+.rf-detail-comment-input { padding: 8px 12px; border-top: 1px solid #e5e5e5; display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
 .rf-detail-comment-input textarea { flex: 1; border: 1px solid #e5e5e5; border-radius: 20px; padding: 8px 12px; font-size: 13px; outline: none; font-family: inherit; resize: none; min-height: 36px; max-height: 100px; line-height: 1.4; }
 .rf-detail-comment-input textarea:focus { border-color: #000; }
-.rf-comment-row { display: flex; gap: 8px; padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+.rf-comment-row { display: flex; gap: 8px; padding: 10px 14px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+.rf-comment-row:hover { background: #fafafa; }
+.rf-comment-row.replying { background: #f8f8f8; }
 .rf-comment-avatar { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e5e5e5; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 11px; background: #f0f0f0; }
 .rf-comment-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .rf-comment-meta { font-weight: 600; font-size: 12px; color: #444; margin-bottom: 2px; }
 .rf-comment-text { font-size: 13px; line-height: 1.4; white-space: pre-wrap; word-break: break-word; }
-.rf-comment-reply-btn { background: none; border: none; color: #aaa; font-size: 11px; cursor: pointer; padding: 2px 0; margin-top: 3px; }
-.rf-comment-reply-btn:hover { color: #666; }
-.rf-reply-area { background: #f8f8f8; border-radius: 8px; margin-top: 4px; padding: 6px 10px; }
-.rf-reply-item { font-size: 12px; color: #555; padding: 3px 0; border-bottom: 1px solid #eee; line-height: 1.4; }
+.rf-reply-area { background: #f0f0f0; border-radius: 8px; margin-top: 4px; padding: 6px 10px; }
+.rf-reply-item { font-size: 12px; color: #555; padding: 3px 0; border-bottom: 1px solid #e8e8e8; line-height: 1.4; }
 .rf-reply-item:last-child { border-bottom: none; }
 .rf-reply-item b { color: #000; }
+.rf-inline-reply { display: flex; gap: 6px; margin-top: 6px; align-items: center; }
+.rf-inline-reply input { flex: 1; border: 1px solid #e5e5e5; border-radius: 14px; padding: 5px 10px; font-size: 12px; outline: none; font-family: inherit; }
+.rf-inline-reply input:focus { border-color: #000; }
 /* DM */
-.rf-dm-list { flex: 1; overflow-y: auto; }
 .rf-dm-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
 .rf-dm-item:hover { background: #fafafa; }
 .rf-dm-av { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #e5e5e5; background: #f0f0f0; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 20px; }
@@ -118,11 +119,13 @@ const CSS = `
 .rf-chat-msg.me .rf-chat-bubble { background: #000; color: #fff; border-bottom-right-radius: 4px; }
 .rf-chat-av { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e5e5e5; background: #f0f0f0; flex-shrink: 0; overflow: hidden; font-size: 14px; display: flex; align-items: center; justify-content: center; }
 .rf-chat-av img { width: 100%; height: 100%; object-fit: cover; }
-.rf-chat-input { padding: 10px 14px; border-top: 1px solid #e5e5e5; display: flex; gap: 8px; align-items: flex-end; flex-shrink: 0; }
+.rf-chat-input { padding: 8px 12px; border-top: 1px solid #e5e5e5; display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
 .rf-chat-input textarea { flex: 1; border: 1px solid #e5e5e5; border-radius: 20px; padding: 8px 14px; font-size: 14px; outline: none; font-family: inherit; resize: none; min-height: 38px; max-height: 100px; line-height: 1.4; }
 .rf-chat-input textarea:focus { border-color: #000; }
 .rf-chat-typing { color: #aaa; font-size: 12px; padding: 4px 8px; font-style: italic; }
-/* Loading */
+.rf-chat-shared-post { background: #f8f8f8; border: 1px solid #e5e5e5; border-radius: 10px; padding: 8px 12px; font-size: 12px; color: #666; margin-top: 4px; }
+.rf-chat-shared-post b { color: #000; }
+/* Loading overlay */
 .rf-loading-overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; gap: 12px; }
 .rf-loading-spinner { font-size: 52px; animation: rf-spin 1s linear infinite; display: inline-block; }
 .rf-loading-hint { font-size: 13px; color: #888; }
@@ -141,37 +144,62 @@ const CSS = `
 .rf-library-del { background: none; border: none; color: #ccc; cursor: pointer; padding: 2px; flex-shrink: 0; margin-top: 1px; }
 .rf-library-del:hover { color: #c00; }
 .rf-library-del svg { width: 16px; height: 16px; }
+/* Memory */
+.rf-memory-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border-bottom: 1px solid #f0f0f0; }
+.rf-memory-item input[type=checkbox] { margin-top: 3px; width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+.rf-memory-body { flex: 1; min-width: 0; }
+.rf-memory-date { font-size: 10px; color: #888; margin-bottom: 3px; }
+.rf-memory-text { font-size: 13px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; color: #333; }
+.rf-memory-del { background: none; border: none; color: #ccc; cursor: pointer; padding: 2px; flex-shrink: 0; }
+.rf-memory-del:hover { color: #c00; }
+.rf-memory-del svg { width: 16px; height: 16px; }
+/* Toggle switch */
+.rf-toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; }
+.rf-toggle-label { font-size: 14px; }
+.rf-toggle { position: relative; width: 44px; height: 24px; }
+.rf-toggle input { opacity: 0; width: 0; height: 0; }
+.rf-toggle-slider { position: absolute; inset: 0; background: #ccc; border-radius: 24px; cursor: pointer; transition: .2s; }
+.rf-toggle-slider:before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: .2s; }
+.rf-toggle input:checked + .rf-toggle-slider { background: #000; }
+.rf-toggle input:checked + .rf-toggle-slider:before { transform: translateX(20px); }
 `
 
 // ═══════════════════════════════════════════════════════════
-// SVG Icons（简体线条风）
+// SVG Icons（细线条风）stroke-width 1.5
 // ═══════════════════════════════════════════════════════════
 const ICONS = {
-  home:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>`,
-  section: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>`,
-  message: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
-  profile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
-  close:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>`,
-  refresh: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 018-8c2.2 0 4.2.9 5.7 2.3L21 9"/><path d="M20 12a8 8 0 01-8 8c-2.2 0-4.2-.9-5.7-2.3L3 15"/><polyline points="21 3 21 9 15 9"/><polyline points="3 21 3 15 9 15"/></svg>`,
-  settings:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>`,
-  back:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 5 5 12 12 19"/></svg>`,
-  heart:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>`,
-  comment: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
-  retweet: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>`,
-  star:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>`,
-  summon:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
-  plus:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
-  send:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`,
-  trash:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`,
-  chevronRight: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`,
-  settingAvatar:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
-  settingProfile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
-  settingWorld:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20"/><path d="M12 2a15.3 15.3 0 000 20"/></svg>`,
-  settingBook:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`,
-  settingBeauty:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>`,
-  settingPost:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>`,
-  settingLibrary: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>`,
-  settingTrash:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`,
+  home: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>`,
+  section: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>`,
+  message: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+  profile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
+  // 〈 退出 — 用 chevron-left
+  close: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`,
+  refresh: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 018-8c2.2 0 4.2.9 5.7 2.3L21 9"/><path d="M20 12a8 8 0 01-8 8c-2.2 0-4.2-.9-5.7-2.3L3 15"/><polyline points="21 3 21 9 15 9"/><polyline points="3 21 3 15 9 15"/></svg>`,
+  settings: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>`,
+  back: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 5 5 12 12 19"/></svg>`,
+  heart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>`,
+  comment: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+  retweet: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>`,
+  star: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>`,
+  // 人形+加号 → 召唤
+  summon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>`,
+  plus: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
+  send: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`,
+  // 笔形 → 编辑
+  edit: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+  // 纸飞机 → 转发到私信
+  share: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`,
+  trash: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`,
+  chevronRight: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`,
+  settingAvatar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
+  settingProfile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+  settingWorld: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20"/><path d="M12 2a15.3 15.3 0 000 20"/></svg>`,
+  settingBook: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`,
+  settingBeauty: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>`,
+  settingPost: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>`,
+  settingLibrary: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>`,
+  settingMemory: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 00-5 5v3H5a2 2 0 00-2 2v8a2 2 0 002 2h14a2 2 0 002-2v-8a2 2 0 00-2-2h-2V7a5 5 0 00-5-5z"/><circle cx="12" cy="16" r="1.5"/></svg>`,
+  settingTrash: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`,
 }
 
 function mkSvg(s) { const d = document.createElement('div'); d.innerHTML = s; return d.firstElementChild }
@@ -194,7 +222,6 @@ function el(tag, attrs = {}, ...children) {
   }
   return e
 }
-
 function fmtTime(ts) {
   const diff = (Date.now() - ts) / 1000
   if (diff < 60) return '刚刚'
@@ -202,19 +229,24 @@ function fmtTime(ts) {
   if (diff < 86400) return `${Math.floor(diff/3600)}小时前`
   const d = new Date(ts); return `${d.getMonth()+1}月${d.getDate()}日`
 }
-
 function avatarEl(url, size = 40) {
   const wrap = el('div', { class: 'rf-avatar', style: `width:${size}px;height:${size}px` })
   if (url) { const img = el('img', { src: url, alt: '' }); img.onerror = () => img.remove(); wrap.appendChild(img) }
   return wrap
 }
-
+function mkToggle(checked, onChange) {
+  const label = el('label', { class: 'rf-toggle' })
+  const inp = el('input', { type: 'checkbox' }); inp.checked = checked
+  inp.onchange = () => onChange(inp.checked)
+  const slider = el('span', { class: 'rf-toggle-slider' })
+  label.appendChild(inp); label.appendChild(slider)
+  return label
+}
 function showLoadingOverlay(mountEl, hint = 'AI 生成中…') {
   const ov = el('div', { class: 'rf-loading-overlay' })
   ov.appendChild(el('div', { class: 'rf-loading-spinner' }, '🍘'))
   ov.appendChild(el('div', { class: 'rf-loading-hint' }, hint))
-  mountEl.appendChild(ov)
-  return ov
+  mountEl.appendChild(ov); return ov
 }
 function hideLoadingOverlay(ov) { ov && ov.remove() }
 
@@ -242,20 +274,21 @@ $绝对禁止出现耽美小说漫画等角色（禁止BL，不要出现任何BL
   beauty: { topbarPadding: 10 },
   postSettings: { postCount: 5, commentPerPost: 3 },
   dataLibrary: [],
+  memories: [], // [{id, date, summary, enabled}]
 }
 
 // ═══════════════════════════════════════════════════════════
 // Storage
 // ═══════════════════════════════════════════════════════════
 const STORAGE_KEYS = ['homePosts','crossPosts','parallelPosts','myPosts','savedPosts','dmConversations',
-  'userProfile','worldview','boundWorldbooks','beauty','postSettings','dataLibrary']
+  'userProfile','worldview','boundWorldbooks','beauty','postSettings','dataLibrary','memories']
 async function loadStorage() {
   for (const k of STORAGE_KEYS) { const v = await roche.storage.get(k); if (v !== null && v !== undefined) state[k] = v }
 }
 async function save(key) { await roche.storage.set(key, state[key]) }
 
 // ═══════════════════════════════════════════════════════════
-// AI 生成
+// AI Context
 // ═══════════════════════════════════════════════════════════
 async function buildContext() {
   let wbContext = ''
@@ -263,78 +296,105 @@ async function buildContext() {
     try { const entries = await roche.worldbook.getEntries({ categoryId: catId }); if (entries?.length) wbContext += entries.map(e => e.content || e.text || '').filter(Boolean).join('\n') + '\n' } catch (_) {}
   }
   const libContext = state.dataLibrary.filter(e => e.enabled !== false).map(e => (e.category ? `[${e.category}] ` : '') + e.content).join('\n')
-  return { wbContext, libContext }
+  const memContext = state.memories.filter(m => m.enabled !== false).map(m => `[${m.date}] ${m.summary}`).join('\n')
+  return { wbContext, libContext, memContext }
 }
 
 function getRecentMemory(listKey, count = 4) {
   return (state[listKey] || []).slice(0, count).map(p => `${p.authorName}（${p.worldTag || '?'}）`).join('、')
 }
 
+// ═══════════════════════════════════════════════════════════
+// Generate Posts
+// ═══════════════════════════════════════════════════════════
 async function generatePosts(mode) {
-  const { wbContext, libContext } = await buildContext()
+  const { wbContext, libContext, memContext } = await buildContext()
   const userHandle = state.userProfile.handle || '用户'
   const userDesc = [state.userProfile.name, state.userProfile.age ? state.userProfile.age + '岁' : '', state.userProfile.appearance].filter(Boolean).join('，')
   const postCount = state.postSettings?.postCount || 5
   const commentPerPost = state.postSettings?.commentPerPost || 3
   const listKey = mode === 'home' ? 'homePosts' : mode === 'cross' ? 'crossPosts' : 'parallelPosts'
   const recentMemory = getRecentMemory(listKey)
-
   const systemPrompt = `你是一个角色论坛AI内容生成器。只能从高人气游戏/动漫/小说中选取角色，绝对禁止真人、电视剧、影视剧、综艺角色。
 世界观规则：
 ${state.worldview}
 ${wbContext ? `世界书参考：\n${wbContext}` : ''}
 ${libContext ? `资料库参考：\n${libContext}` : ''}
+${memContext ? `论坛记忆参考：\n${memContext}` : ''}
 用户：论坛昵称 @${userHandle}，${userDesc || '女生'}。
 ⚠️ 只输出JSON，不要其他文字。`
-
   const memHint = recentMemory ? `\n⚠️ 记忆提示：最近已出现过这些角色，请尽量选择不同角色：${recentMemory}` : ''
   const jsonFmt = `{"posts":[{"name":"角色名","worldTag":"作品名（游戏/动漫/小说）","text":"帖子内容","likes":0,"retweets":0,"comments":[{"name":"角色名","worldTag":"同一作品名","text":"评论内容"}]}]}`
   const jsonFmtCross = `{"posts":[{"name":"角色名","worldTag":"作品名","text":"帖子内容","likes":0,"retweets":0,"comments":[{"name":"角色名","worldTag":"任意作品名","text":"评论内容"}]}]}`
-
   let userPrompt = ''
-  if (mode === 'home') {
-    userPrompt = `生成${postCount}条主页帖子。每条帖子选一个游戏/动漫/小说角色，内容是角色日常/剧情/小烦恼。⚠️每条帖子恰好${commentPerPost}条评论，评论者必须来自与发帖角色【完全相同的作品】。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmt}`
-  } else if (mode === 'cross') {
-    userPrompt = `生成${postCount}条跨界板块帖子，发帖人来自不同游戏/动漫/小说作品。评论区有其他作品角色跨界评论（此板块允许跨作品）。恰好${commentPerPost}条评论。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmtCross}`
-  } else {
-    userPrompt = `生成${postCount}条平行板块帖子，内容是游戏/动漫/小说角色与用户@${userHandle}的恋爱日常，温馨乙女向。⚠️${commentPerPost}条评论，评论者必须来自与发帖角色【相同的作品】。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmt}`
-  }
-
+  if (mode === 'home') userPrompt = `生成${postCount}条主页帖子。每条帖子选一个游戏/动漫/小说角色，内容是角色日常/剧情/小烦恼。⚠️每条帖子恰好${commentPerPost}条评论，评论者必须来自与发帖角色【完全相同的作品】。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmt}`
+  else if (mode === 'cross') userPrompt = `生成${postCount}条跨界板块帖子，发帖人来自不同游戏/动漫/小说作品。评论区有其他作品角色跨界评论（此板块允许跨作品）。恰好${commentPerPost}条评论。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmtCross}`
+  else userPrompt = `生成${postCount}条平行板块帖子，内容是游戏/动漫/小说角色与用户@${userHandle}的恋爱日常，温馨乙女向。⚠️${commentPerPost}条评论，评论者必须来自与发帖角色【相同的作品】。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmt}`
   const result = await roche.ai.chat({ messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userPrompt }], temperature: 0.93 })
   let parsed
-  try { const raw = result.text.trim(); parsed = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1)) }
-  catch (e) { throw new Error('AI返回格式错误，请重试') }
+  try { const raw = result.text.trim(); parsed = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1)) } catch (e) { throw new Error('AI返回格式错误，请重试') }
   return (parsed.posts || []).map(p => ({
-    id: crypto.randomUUID(),
-    timestamp: Date.now() - Math.floor(Math.random() * 7200000),
-    authorName: p.name || '未知角色',
-    worldTag: p.worldTag || '',
-    text: p.text || '',
-    likes: p.likes || Math.floor(Math.random() * 80),
-    retweets: p.retweets || Math.floor(Math.random() * 30),
+    id: crypto.randomUUID(), timestamp: Date.now() - Math.floor(Math.random() * 7200000),
+    authorName: p.name || '未知角色', worldTag: p.worldTag || '', text: p.text || '',
+    likes: p.likes || Math.floor(Math.random() * 80), retweets: p.retweets || Math.floor(Math.random() * 30),
     comments: (p.comments || []).map(c => ({ name: c.name || '角色', worldTag: c.worldTag || p.worldTag || '', text: c.text || '', avatar: '', replies: [] })),
   }))
 }
 
-async function summonComments(post) {
-  const { libContext } = await buildContext()
+// ═══════════════════════════════════════════════════════════
+// Summon comments（发帖人 + 其他角色混合召唤）
+// ═══════════════════════════════════════════════════════════
+async function summonComments(post, triggerByUser = false) {
+  const { libContext, memContext } = await buildContext()
   const count = state.postSettings?.commentPerPost || 3
-  const sys = `你是角色论坛AI。只能召唤来自游戏/动漫/小说的角色，绝对禁止真人、电视剧、影视剧角色。只输出JSON，不要其他文字。${libContext ? `资料库参考：\n${libContext}` : ''}`
-  const usr = `以下帖子需要新评论：
+  const userHandle = state.userProfile.handle || '用户'
+  const replyHint = triggerByUser
+    ? `用户 @${userHandle} 刚刚发表了评论，请召唤：1.发帖人${post.authorName}回复用户的评论；2.其他来自${post.worldTag || '同一作品'}的角色也来评论。总共${count}条。`
+    : `请召唤${count}条来自【${post.worldTag || '同一作品'}】的游戏/动漫/小说角色评论。可以包含发帖人${post.authorName}自己的回复。`
+  const sys = `你是角色论坛AI。只能召唤来自游戏/动漫/小说的角色，绝对禁止真人、电视剧、影视剧角色。只输出JSON，不要其他文字。
+${libContext ? `资料库参考：\n${libContext}` : ''}
+${memContext ? `论坛记忆：\n${memContext}` : ''}`
+  const usr = `帖子：
 作者：${post.authorName}（${post.worldTag}）
 内容：${post.text}
-请召唤${count}条来自【${post.worldTag || '同一作品'}】的游戏/动漫/小说角色评论，禁止BL角色、游戏主角、真人、电视剧角色。
+${replyHint}
+禁止BL角色、游戏主角、真人、电视剧角色。
 JSON格式：{"comments":[{"name":"角色名","worldTag":"${post.worldTag || '同一作品'}","text":"评论内容"}]}`
   const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, { role: 'user', content: usr }], temperature: 0.9 })
   let parsed
-  try { const raw = result.text.trim(); parsed = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1)) }
-  catch (e) { throw new Error('AI返回格式错误') }
+  try { const raw = result.text.trim(); parsed = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1)) } catch (e) { throw new Error('AI返回格式错误') }
   return (parsed.comments || []).map(c => ({ name: c.name, worldTag: c.worldTag || post.worldTag || '', text: c.text || '', avatar: '', replies: [] }))
 }
 
+// ═══════════════════════════════════════════════════════════
+// Memory: summarize today's posts
+// ═══════════════════════════════════════════════════════════
+async function summarizeToMemory() {
+  const allPosts = [...state.homePosts, ...state.crossPosts, ...state.parallelPosts].slice(0, 20)
+  if (!allPosts.length) throw new Error('暂无帖子可总结')
+  const postSummaries = allPosts.map(p => `${p.authorName}（${p.worldTag}）：${p.text.slice(0, 60)}`).join('\n')
+  const sys = `你是论坛记忆总结AI。请用简洁的中文总结今日论坛发生的主要事件/话题/角色动态，100字以内，分点列出。只输出总结文字，不要其他内容。`
+  const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, { role: 'user', content: `今日帖子：\n${postSummaries}` }], temperature: 0.7 })
+  const now = new Date()
+  const dateStr = `${now.getMonth()+1}/${now.getDate()}`
+  const mem = { id: crypto.randomUUID(), date: dateStr, summary: result.text.trim(), enabled: true }
+  state.memories = [mem, ...state.memories].slice(0, 30)
+  await save('memories')
+  return mem
+}
+
+// ═══════════════════════════════════════════════════════════
+// DM AI reply
+// ═══════════════════════════════════════════════════════════
 async function dmAiReply(conv) {
+  const { memContext } = await buildContext()
   const lastMsgs = conv.messages.slice(-8).map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text }))
-  const sys = `你现在扮演${conv.charName}（来自${conv.worldTag || '动漫/游戏'}），以角色身份与用户私信聊天。保持角色人设，不要出戏。用户是女生，请用符合角色语气的中文回复，不要超过100字。`
+  const recentPosts = conv.showRecentPosts !== false
+    ? state.homePosts.slice(0, 3).map(p => `${p.authorName}（${p.worldTag}）：${p.text.slice(0, 50)}`).join('；')
+    : ''
+  const persona = conv.persona ? `角色人设补充：${conv.persona}\n` : ''
+  const sys = `你现在扮演${conv.charName}（来自${conv.worldTag || '动漫/游戏'}），以角色身份与用户私信聊天。保持角色人设，不要出戏。用户是女生，请用符合角色语气的中文回复，不要超过100字。
+${persona}${recentPosts ? `论坛近期动态参考：${recentPosts}\n` : ''}${conv.useMemory !== false && memContext ? `论坛记忆：${memContext}\n` : ''}`
   const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, ...lastMsgs], temperature: 0.88 })
   return result.text.trim()
 }
@@ -354,18 +414,22 @@ function postCard(post, listKey, onOpenDetail) {
   body.appendChild(el('div', { class: 'rf-post-text' }, post.text))
   const actions = el('div', { class: 'rf-post-actions' })
   actions.onclick = e => e.stopPropagation()
+  // comment
   const cmtBtn = el('button', { class: 'rf-post-action-btn' })
   cmtBtn.appendChild(mkSvg(ICONS.comment)); cmtBtn.appendChild(document.createTextNode(' ' + (post.comments?.length || 0)))
   cmtBtn.onclick = e => { e.stopPropagation(); onOpenDetail && onOpenDetail(post) }
   actions.appendChild(cmtBtn)
+  // retweet
   const rtBtn = el('button', { class: 'rf-post-action-btn' })
   rtBtn.appendChild(mkSvg(ICONS.retweet)); const rtCount = el('span', {}, ' ' + (post.retweets || 0)); rtBtn.appendChild(rtCount)
   rtBtn.onclick = e => { e.stopPropagation(); post.retweets = (post.retweets || 0) + 1; rtCount.textContent = ' ' + post.retweets; save(listKey) }
   actions.appendChild(rtBtn)
+  // like
   const likeBtn = el('button', { class: 'rf-post-action-btn' })
   likeBtn.appendChild(mkSvg(ICONS.heart)); const likeCount = el('span', {}, ' ' + (post.likes || 0)); likeBtn.appendChild(likeCount)
   likeBtn.onclick = e => { e.stopPropagation(); post.likes = (post.likes || 0) + 1; likeCount.textContent = ' ' + post.likes; save(listKey) }
   actions.appendChild(likeBtn)
+  // bookmark
   const bkBtn = el('button', { class: 'rf-post-action-btn' }); bkBtn.appendChild(mkSvg(ICONS.star))
   bkBtn.onclick = async e => {
     e.stopPropagation()
@@ -374,9 +438,42 @@ function postCard(post, listKey, onOpenDetail) {
     await save('savedPosts')
   }
   actions.appendChild(bkBtn)
+  // share to DM
+  const shareBtn = el('button', { class: 'rf-post-action-btn' }); shareBtn.appendChild(mkSvg(ICONS.share)); shareBtn.title = '转发到私信'
+  shareBtn.onclick = e => { e.stopPropagation(); showShareToDmModal(post, card.closest('.rf')) }
+  actions.appendChild(shareBtn)
   body.appendChild(actions); card.appendChild(body)
   card.onclick = () => onOpenDetail && onOpenDetail(post)
   return card
+}
+
+// ═══════════════════════════════════════════════════════════
+// Share to DM modal
+// ═══════════════════════════════════════════════════════════
+function showShareToDmModal(post, wrapEl) {
+  if (!wrapEl) return roche.ui.toast('无法找到页面容器')
+  if (!state.dmConversations.length) return roche.ui.toast('还没有私信对象，请先创建私信')
+  const overlay = el('div', { class: 'rf-modal-overlay' })
+  const modal = el('div', { class: 'rf-modal' })
+  modal.appendChild(el('div', { class: 'rf-modal-title' }, '转发到私信'))
+  for (const conv of state.dmConversations) {
+    const item = el('div', { class: 'rf-settings-item', onclick: async () => {
+      const sharedText = `📌 转发帖子\n【${post.authorName}·${post.worldTag}】\n${post.text}`
+      conv.messages.push({ role: 'shared', text: sharedText, ts: Date.now() })
+      await save('dmConversations')
+      overlay.remove()
+      roche.ui.toast(`✦ 已转发给 ${conv.charName}`)
+    }})
+    const av = el('div', { class: 'rf-dm-av', style: 'width:36px;height:36px;font-size:14px' })
+    if (conv.avatar) { const img = el('img', { src: conv.avatar }); img.onerror = () => img.remove(); av.appendChild(img) }
+    item.appendChild(av)
+    item.appendChild(el('span', { class: 'rf-settings-label' }, conv.charName + (conv.worldTag ? ` ·【${conv.worldTag}】` : '')))
+    modal.appendChild(item)
+  }
+  modal.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', style: 'margin:12px 0 0;width:100%', onclick: () => overlay.remove() }, '取消'))
+  overlay.appendChild(modal)
+  overlay.onclick = e => { if (e.target === overlay) overlay.remove() }
+  wrapEl.appendChild(overlay)
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -385,9 +482,10 @@ function postCard(post, listKey, onOpenDetail) {
 function pagePostDetail(container, post, listKey, onBack) {
   container.innerHTML = ''
   const wrap = el('div', { class: 'rf', style: 'position:relative' })
-  const summonBtn = el('button', { class: 'rf-icon-btn', title: '召唤角色评论' })
-  summonBtn.appendChild(mkSvg(ICONS.summon))
-  const rightGroup = el('div', { class: 'rf-topbar-right' }); rightGroup.appendChild(summonBtn)
+  // topbar right: summon + edit
+  const summonBtn = el('button', { class: 'rf-icon-btn', title: '召唤角色评论' }); summonBtn.appendChild(mkSvg(ICONS.summon))
+  const editBtn = el('button', { class: 'rf-icon-btn', title: '编辑/删除帖子' }); editBtn.appendChild(mkSvg(ICONS.edit))
+  const rightGroup = el('div', { class: 'rf-topbar-right' }); rightGroup.appendChild(editBtn); rightGroup.appendChild(summonBtn)
   wrap.appendChild(buildBackTopBar('Post', onBack, rightGroup))
   const content = el('div', { class: 'rf-content' })
   const dh = el('div', { class: 'rf-detail-header' })
@@ -396,7 +494,8 @@ function pagePostDetail(container, post, listKey, onBack) {
   dm.appendChild(el('div', { class: 'rf-post-name' }, post.authorName))
   if (post.worldTag) { const sub = el('div', { style: 'margin-top:2px' }); sub.appendChild(el('span', { class: 'rf-post-tag' }, post.worldTag)); dm.appendChild(sub) }
   dh.appendChild(dm); content.appendChild(dh)
-  content.appendChild(el('div', { class: 'rf-detail-text' }, post.text))
+  const detailText = el('div', { class: 'rf-detail-text' }, post.text)
+  content.appendChild(detailText)
   content.appendChild(el('div', { class: 'rf-post-time', style: 'padding:6px 14px;border-bottom:1px solid #e5e5e5;font-size:11px' }, fmtTime(post.timestamp)))
   const stats = el('div', { class: 'rf-detail-stats' })
   const rtSpan = el('span'); rtSpan.innerHTML = `<b>${post.retweets || 0}</b> 转发`
@@ -404,15 +503,28 @@ function pagePostDetail(container, post, listKey, onBack) {
   const cmtSpan = el('span'); cmtSpan.innerHTML = `<b>${post.comments?.length || 0}</b> 评论`
   stats.appendChild(rtSpan); stats.appendChild(likeSpan); stats.appendChild(cmtSpan)
   content.appendChild(stats)
+  // active reply target
+  let replyTarget = null // null = reply to post, index = reply to comment[index]
   const cmtSection = el('div', {})
+  const inputBar = el('div', { class: 'rf-detail-comment-input' })
+  const ta = el('textarea', { placeholder: '回复帖子…', rows: '1' })
+  ta.addEventListener('input', () => { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 100) + 'px' })
+  const sendBtn = el('button', { class: 'rf-icon-btn', style: 'color:#000;padding:8px;flex-shrink:0' }); sendBtn.appendChild(mkSvg(ICONS.send))
+  function setReplyTarget(idx) {
+    replyTarget = idx
+    if (idx === null) { ta.placeholder = '回复帖子…' }
+    else { ta.placeholder = `回复 ${post.comments[idx].name}…` }
+    ta.focus()
+    renderComments()
+  }
   function renderComments() {
     cmtSection.innerHTML = ''
     if (!post.comments?.length) {
       cmtSection.appendChild(el('div', { style: 'text-align:center;color:#aaa;padding:24px;font-size:13px' }, '暂无评论，发第一条吧'))
     } else {
-      for (const c of post.comments) {
-        const row = el('div', { class: 'rf-comment-row' })
-        // ★ 修复：渲染评论头像
+      post.comments.forEach((c, idx) => {
+        const isActive = replyTarget === idx
+        const row = el('div', { class: 'rf-comment-row' + (isActive ? ' replying' : ''), onclick: () => setReplyTarget(isActive ? null : idx) })
         const cav = el('div', { class: 'rf-comment-avatar' })
         if (c.avatar) { const img = el('img', { src: c.avatar, alt: '' }); img.onerror = () => img.remove(); cav.appendChild(img) }
         row.appendChild(cav)
@@ -424,48 +536,72 @@ function pagePostDetail(container, post, listKey, onBack) {
           for (const r of c.replies) { const ri = el('div', { class: 'rf-reply-item' }); ri.innerHTML = `<b>${r.name}：</b>${r.text}`; ra.appendChild(ri) }
           cbody.appendChild(ra)
         }
-        const replyBtn = el('button', { class: 'rf-comment-reply-btn' }, '↩ 回复')
-        replyBtn.onclick = () => {
-          const existing = cbody.querySelector('.rf-inline-reply')
-          if (existing) { existing.remove(); return }
-          const box = el('div', { class: 'rf-inline-reply', style: 'display:flex;gap:6px;margin-top:6px;align-items:center' })
-          const inp = el('input', { class: 'rf-form-input', type: 'text', placeholder: `回复 ${c.name}…`, style: 'flex:1;font-size:12px;padding:5px 10px;border-radius:14px' })
-          const sendR = el('button', { class: 'rf-btn rf-btn-primary rf-btn-sm' }, '发')
-          sendR.onclick = async () => {
-            const text = inp.value.trim(); if (!text) return
-            c.replies = c.replies || []; c.replies.push({ name: state.userProfile.handle || '我', text })
-            await save(listKey); box.remove(); renderComments()
-          }
-          box.appendChild(inp); box.appendChild(sendR); cbody.appendChild(box)
-          setTimeout(() => inp.focus(), 30)
+        if (isActive) {
+          const hint = el('div', { style: 'font-size:11px;color:#999;margin-top:4px' }, '↓ 在下方输入框回复')
+          cbody.appendChild(hint)
         }
-        cbody.appendChild(replyBtn); row.appendChild(cbody); cmtSection.appendChild(row)
-      }
+        row.appendChild(cbody); cmtSection.appendChild(row)
+      })
     }
     cmtSpan.innerHTML = `<b>${post.comments?.length || 0}</b> 评论`
   }
   renderComments(); content.appendChild(cmtSection); wrap.appendChild(content)
-  summonBtn.onclick = async () => {
-    const ov = showLoadingOverlay(wrap, '召唤角色中…')
-    try {
-      const newComments = await summonComments(post)
-      post.comments = [...(post.comments || []), ...newComments]
-      await save(listKey); renderComments(); roche.ui.toast(`✦ 召唤了 ${newComments.length} 条评论`)
-    } catch (e) { roche.ui.toast('召唤失败：' + e.message) } finally { hideLoadingOverlay(ov) }
-  }
-  const inputBar = el('div', { class: 'rf-detail-comment-input' })
-  const ta = el('textarea', { placeholder: '发表评论…', rows: '1' })
-  ta.addEventListener('input', () => { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 100) + 'px' })
-  const sendBtn = el('button', { class: 'rf-btn rf-btn-primary rf-btn-sm' }, '发送')
+  // send
   sendBtn.onclick = async () => {
     const text = ta.value.trim(); if (!text) return
-    post.comments = post.comments || []
-    // ★ 修复：用户评论带头像
-    post.comments.push({ name: state.userProfile.handle || '我', worldTag: '', text, avatar: state.userProfile.avatarUrl || '', replies: [] })
+    const newComment = { name: state.userProfile.handle || '我', worldTag: '', text, avatar: state.userProfile.avatarUrl || '', replies: [] }
+    if (replyTarget !== null && post.comments[replyTarget]) {
+      post.comments[replyTarget].replies = post.comments[replyTarget].replies || []
+      post.comments[replyTarget].replies.push({ name: state.userProfile.handle || '我', text })
+    } else {
+      post.comments = post.comments || []
+      post.comments.push(newComment)
+    }
     ta.value = ''; ta.style.height = 'auto'
-    await save(listKey); renderComments(); roche.ui.toast('✦ 评论已发送')
+    await save(listKey); renderComments(); roche.ui.toast('✦ 已发送')
+    // 自动召唤
+    setReplyTarget(null)
+    const ov = showLoadingOverlay(wrap, '召唤角色回应…')
+    try {
+      const newComments = await summonComments(post, true)
+      post.comments = [...(post.comments || []), ...newComments]
+      await save(listKey); renderComments()
+    } catch (e) { } finally { hideLoadingOverlay(ov) }
   }
-  inputBar.appendChild(ta); inputBar.appendChild(sendBtn); wrap.appendChild(inputBar)
+  inputBar.appendChild(ta); inputBar.appendChild(sendBtn)
+  // click post to reply to post
+  detailText.onclick = () => setReplyTarget(null)
+  // summon
+  summonBtn.onclick = async () => {
+    const ov = showLoadingOverlay(wrap, '召唤角色中…')
+    try { const nc = await summonComments(post, false); post.comments = [...(post.comments || []), ...nc]; await save(listKey); renderComments(); roche.ui.toast(`✦ 召唤了 ${nc.length} 条`) }
+    catch (e) { roche.ui.toast('召唤失败：' + e.message) } finally { hideLoadingOverlay(ov) }
+  }
+  // edit/delete
+  editBtn.onclick = () => {
+    const overlay = el('div', { class: 'rf-modal-overlay' })
+    const modal = el('div', { class: 'rf-modal' })
+    modal.appendChild(el('div', { class: 'rf-modal-title' }, '编辑 / 删除帖子'))
+    const ta2 = el('textarea', { class: 'rf-textarea' }); ta2.value = post.text; modal.appendChild(ta2)
+    const btnRow = el('div', { style: 'display:flex;gap:8px;margin-top:10px;justify-content:space-between' })
+    const delBtn = el('button', { class: 'rf-btn', style: 'background:#fff;color:#c00;border:1px solid #c00', onclick: async () => {
+      const ok = await roche.ui.confirm({ title: '删除帖子', message: '确定删除这条帖子吗？' }); if (!ok) return
+      state[listKey] = state[listKey].filter(p => p.id !== post.id)
+      state.myPosts = state.myPosts.filter(p => p.id !== post.id)
+      await save(listKey); await save('myPosts')
+      overlay.remove(); onBack()
+    }}, '删除')
+    btnRow.appendChild(delBtn)
+    const rightBtns = el('div', { style: 'display:flex;gap:8px' })
+    rightBtns.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', onclick: () => overlay.remove() }, '取消'))
+    const saveEdit = el('button', { class: 'rf-btn rf-btn-primary' }, '保存')
+    saveEdit.onclick = async () => { post.text = ta2.value.trim(); await save(listKey); overlay.remove(); detailText.textContent = post.text }
+    rightBtns.appendChild(saveEdit); btnRow.appendChild(rightBtns)
+    modal.appendChild(btnRow); overlay.appendChild(modal)
+    overlay.onclick = e => { if (e.target === overlay) overlay.remove() }
+    wrap.appendChild(overlay)
+  }
+  wrap.appendChild(inputBar)
   container.appendChild(wrap)
 }
 
@@ -475,19 +611,14 @@ function pagePostDetail(container, post, listKey, onBack) {
 function buildTopBar(title, leftEl, rightEl) {
   const p = state.beauty?.topbarPadding ?? 10
   const bar = el('div', { class: 'rf-topbar', style: `padding:${p}px 14px` })
-  const left = el('div', { class: 'rf-topbar-left' })
-  if (leftEl) left.appendChild(leftEl)
+  const left = el('div', { class: 'rf-topbar-left' }); if (leftEl) left.appendChild(leftEl)
   bar.appendChild(left)
   bar.appendChild(el('span', { class: 'rf-topbar-title' }, title))
-  const right = el('div', { class: 'rf-topbar-right' })
-  if (rightEl) right.appendChild(rightEl)
-  bar.appendChild(right)
-  return bar
+  const right = el('div', { class: 'rf-topbar-right' }); if (rightEl) right.appendChild(rightEl)
+  bar.appendChild(right); return bar
 }
-
 function buildBackTopBar(title, onBack, rightEl) {
-  const backBtn = el('button', { class: 'rf-icon-btn', onclick: onBack })
-  backBtn.appendChild(mkSvg(ICONS.back))
+  const backBtn = el('button', { class: 'rf-icon-btn', onclick: onBack }); backBtn.appendChild(mkSvg(ICONS.back))
   return buildTopBar(title, backBtn, rightEl)
 }
 
@@ -507,7 +638,7 @@ function bottomNav(container) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// Page: Home  顶栏：✕exit | title | 🔄refresh
+// Page: Home 顶栏：〈exit | title | 🔄refresh
 // ═══════════════════════════════════════════════════════════
 function pageHome(container) {
   const wrap = el('div', { class: 'rf', style: 'position:relative' })
@@ -553,7 +684,7 @@ function pageHome(container) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// Page: Section  顶栏：✕exit | title | 🔄refresh
+// Page: Section
 // ═══════════════════════════════════════════════════════════
 function pageSection(container) {
   const wrap = el('div', { class: 'rf', style: 'position:relative' })
@@ -586,7 +717,7 @@ function pageSection(container) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// Page: Message — 抖音风格私信
+// Page: Message
 // ═══════════════════════════════════════════════════════════
 function pageMessage(container) {
   const wrap = el('div', { class: 'rf', style: 'position:relative' })
@@ -601,12 +732,13 @@ function pageMessage(container) {
     if (!state.dmConversations.length) { content.appendChild(el('div', { class: 'rf-empty' }, '还没有私信\n点击右上角 + 开始新对话')); return }
     for (const conv of state.dmConversations) {
       const item = el('div', { class: 'rf-dm-item', onclick: () => openChat(conv) })
-      const av = el('div', { class: 'rf-dm-av' }); if (conv.avatar) { const img = el('img', { src: conv.avatar }); img.onerror = () => img.remove(); av.appendChild(img) }
+      const av = el('div', { class: 'rf-dm-av' })
+      if (conv.avatar) { const img = el('img', { src: conv.avatar }); img.onerror = () => img.remove(); av.appendChild(img) }
       item.appendChild(av)
       const info = el('div', { class: 'rf-dm-info' })
       info.appendChild(el('div', { class: 'rf-dm-name' }, conv.charName + (conv.worldTag ? ` ·【${conv.worldTag}】` : '')))
       const lastMsg = conv.messages[conv.messages.length - 1]
-      info.appendChild(el('div', { class: 'rf-dm-preview' }, lastMsg ? lastMsg.text : '开始聊天吧…'))
+      info.appendChild(el('div', { class: 'rf-dm-preview' }, lastMsg ? lastMsg.text.slice(0, 30) : '开始聊天吧…'))
       item.appendChild(info)
       if (lastMsg) item.appendChild(el('div', { class: 'rf-dm-time' }, fmtTime(lastMsg.ts || Date.now())))
       if (conv.unread) item.appendChild(el('div', { class: 'rf-dm-unread' }))
@@ -631,7 +763,7 @@ function pageMessage(container) {
       try {
         const sys = `你现在扮演${charName}（来自${worldInput.value.trim() || '动漫/游戏'}），以角色身份主动给用户发第一条私信。用符合角色人设的语气，简短自然，不要超过60字。`
         const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, { role: 'user', content: '发出第一条私信' }], temperature: 0.9 })
-        const conv = { id: crypto.randomUUID(), charName, worldTag: worldInput.value.trim() || '', avatar: '', messages: [{ role: 'char', text: result.text.trim(), ts: Date.now() }], unread: true }
+        const conv = { id: crypto.randomUUID(), charName, worldTag: worldInput.value.trim() || '', avatar: '', persona: '', showRecentPosts: true, useMemory: true, messages: [{ role: 'char', text: result.text.trim(), ts: Date.now() }], unread: true }
         state.dmConversations = [conv, ...state.dmConversations]; await save('dmConversations'); drawDmList(); openChat(conv)
       } catch (e) { roche.ui.toast('创建失败：' + e.message) } finally { hideLoadingOverlay(ov) }
     }
@@ -642,16 +774,32 @@ function pageMessage(container) {
   return wrap
 }
 
+// ═══════════════════════════════════════════════════════════
+// DM Chat Page
+// ═══════════════════════════════════════════════════════════
 function pageDmChat(container, conv, onBack) {
   container.innerHTML = ''
   const wrap = el('div', { class: 'rf', style: 'position:relative' })
   conv.unread = false; save('dmConversations')
-  wrap.appendChild(buildBackTopBar(conv.charName + (conv.worldTag ? ` ·【${conv.worldTag}】` : ''), onBack))
+  // topbar: back | title | settings
+  const settingsBtn = el('button', { class: 'rf-icon-btn' }); settingsBtn.appendChild(mkSvg(ICONS.settings))
+  settingsBtn.onclick = () => pageDmSettings(container, conv, () => pageDmChat(container, conv, onBack))
+  wrap.appendChild(buildBackTopBar(conv.charName + (conv.worldTag ? ` ·【${conv.worldTag}】` : ''), onBack, settingsBtn))
   const chatWrap = el('div', { class: 'rf-chat-wrap' })
   const messages = el('div', { class: 'rf-chat-messages' })
   function renderMessages() {
     messages.innerHTML = ''
     for (const m of conv.messages) {
+      if (m.role === 'shared') {
+        // shared post card
+        const row = el('div', { class: 'rf-chat-msg them' })
+        const av = el('div', { class: 'rf-chat-av' }); if (conv.avatar) { const img = el('img', { src: conv.avatar }); img.onerror = () => img.remove(); av.appendChild(img) }
+        row.appendChild(av)
+        const bubble = el('div', { class: 'rf-chat-bubble' })
+        const sp = el('div', { class: 'rf-chat-shared-post' }); sp.innerHTML = m.text.replace(/\n/g, '<br>'); bubble.appendChild(sp)
+        row.appendChild(bubble); messages.appendChild(row)
+        continue
+      }
       const isMe = m.role === 'user'
       const row = el('div', { class: 'rf-chat-msg ' + (isMe ? 'me' : 'them') })
       if (!isMe) { const av = el('div', { class: 'rf-chat-av' }); if (conv.avatar) { const img = el('img', { src: conv.avatar }); img.onerror = () => img.remove(); av.appendChild(img) }; row.appendChild(av) }
@@ -663,7 +811,7 @@ function pageDmChat(container, conv, onBack) {
   const inputBar = el('div', { class: 'rf-chat-input' })
   const ta = el('textarea', { placeholder: '发消息…', rows: '1' })
   ta.addEventListener('input', () => { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 100) + 'px' })
-  const sendBtn = el('button', { class: 'rf-icon-btn', style: 'color:#000;padding:8px' }); sendBtn.appendChild(mkSvg(ICONS.send))
+  const sendBtn = el('button', { class: 'rf-icon-btn', style: 'color:#000;padding:8px;flex-shrink:0' }); sendBtn.appendChild(mkSvg(ICONS.send))
   sendBtn.onclick = async () => {
     const text = ta.value.trim(); if (!text) return
     conv.messages.push({ role: 'user', text, ts: Date.now() }); ta.value = ''; ta.style.height = 'auto'; renderMessages(); await save('dmConversations')
@@ -681,7 +829,76 @@ function pageDmChat(container, conv, onBack) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// Page: Profile  顶栏：✕exit | title | ⚙️settings
+// DM Settings Page（角色人设、头像、近期帖子、记忆）
+// ═══════════════════════════════════════════════════════════
+function pageDmSettings(container, conv, onBack) {
+  container.innerHTML = ''
+  const wrap = el('div', { class: 'rf' })
+  const saveBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:13px;padding:6px 14px' }, '保存')
+  wrap.appendChild(buildBackTopBar(conv.charName + ' 设置', onBack, saveBtn))
+  const scroll = el('div', { class: 'rf-content' })
+  // 角色头像
+  scroll.appendChild(el('div', { class: 'rf-divider-label' }, '角色头像'))
+  const avPrev = el('div', { style: 'display:flex;justify-content:center;padding:14px 0 8px' })
+  const avCircle = el('div', { class: 'rf-profile-avatar', style: 'margin:0;width:60px;height:60px' })
+  if (conv.avatar) { const img = el('img', { src: conv.avatar, alt: '' }); img.onerror = () => img.remove(); avCircle.appendChild(img) }
+  avPrev.appendChild(avCircle); scroll.appendChild(avPrev)
+  const ag1 = el('div', { class: 'rf-form-group' }); ag1.appendChild(el('div', { class: 'rf-form-label' }, '头像 URL'))
+  const avUrl = el('input', { class: 'rf-form-input', type: 'url', placeholder: 'https://…' }); avUrl.value = conv.avatar || ''; ag1.appendChild(avUrl); scroll.appendChild(ag1)
+  const ag2 = el('div', { class: 'rf-form-group' }); ag2.appendChild(el('div', { class: 'rf-form-label' }, '或从相册选择'))
+  const avFile = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
+  avFile.onchange = e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = ev => { avUrl.value = ev.target.result; avCircle.innerHTML = ''; avCircle.appendChild(el('img', { src: ev.target.result, alt: '' })) }; r.readAsDataURL(f) }
+  ag2.appendChild(avFile); scroll.appendChild(ag2)
+  // 角色人设
+  scroll.appendChild(el('div', { class: 'rf-divider-label' }, '角色人设补充'))
+  const pg = el('div', { class: 'rf-form-group' }); pg.appendChild(el('div', { class: 'rf-form-label' }, '额外人设描述（私聊时AI参考）'))
+  const personaTa = el('textarea', { class: 'rf-worldview-text', style: 'min-height:100px' }); personaTa.value = conv.persona || ''; pg.appendChild(personaTa); scroll.appendChild(pg)
+  // 开关
+  scroll.appendChild(el('div', { class: 'rf-divider-label' }, '私聊参考选项'))
+  const row1 = el('div', { class: 'rf-toggle-row' })
+  row1.appendChild(el('span', { class: 'rf-toggle-label' }, '可看到最近发的帖子'))
+  let showRecent = conv.showRecentPosts !== false
+  const tog1 = mkToggle(showRecent, v => { showRecent = v })
+  row1.appendChild(tog1); scroll.appendChild(row1)
+  const row2 = el('div', { class: 'rf-toggle-row' })
+  row2.appendChild(el('span', { class: 'rf-toggle-label' }, '读取论坛记忆'))
+  let useMem = conv.useMemory !== false
+  const tog2 = mkToggle(useMem, v => { useMem = v })
+  row2.appendChild(tog2); scroll.appendChild(row2)
+  // 动态预览
+  scroll.appendChild(el('div', { class: 'rf-divider-label' }, '我的动态（最近帖子）'))
+  const postsPreview = el('div', {})
+  if (!state.myPosts.length) postsPreview.appendChild(el('div', { style: 'color:#aaa;font-size:13px;padding:10px 16px' }, '还没有发过帖子'))
+  else state.myPosts.slice(0, 5).forEach(p => {
+    const row = el('div', { class: 'rf-settings-item', style: 'cursor:default' })
+    row.appendChild(el('span', { class: 'rf-settings-label', style: 'font-size:13px' }, p.text.slice(0, 40) + (p.text.length > 40 ? '…' : '')))
+    postsPreview.appendChild(row)
+  })
+  scroll.appendChild(postsPreview)
+  // 删除对话
+  scroll.appendChild(el('div', { class: 'rf-divider-label' }, '操作'))
+  const delRow = el('div', { class: 'rf-settings-item', onclick: async () => {
+    const ok = await roche.ui.confirm({ title: '删除对话', message: `确定删除与 ${conv.charName} 的全部私信吗？` }); if (!ok) return
+    state.dmConversations = state.dmConversations.filter(c => c.id !== conv.id)
+    await save('dmConversations'); roche.ui.toast('✦ 已删除'); state.page = 'message'; renderMain(container)
+  }})
+  const delLeft = el('div', { style: 'display:flex;align-items:center;gap:10px' })
+  const delIw = el('div', { style: 'width:20px;height:20px;flex-shrink:0;color:#c00' }); delIw.appendChild(mkSvg(ICONS.settingTrash))
+  delLeft.appendChild(delIw); delLeft.appendChild(el('span', { class: 'rf-settings-label', style: 'color:#c00' }, '删除此对话'))
+  delRow.appendChild(delLeft); scroll.appendChild(delRow)
+  wrap.appendChild(scroll)
+  saveBtn.onclick = async () => {
+    conv.avatar = avUrl.value.trim()
+    conv.persona = personaTa.value.trim()
+    conv.showRecentPosts = showRecent
+    conv.useMemory = useMem
+    await save('dmConversations'); roche.ui.toast('✦ 设置已保存'); onBack()
+  }
+  container.appendChild(wrap)
+}
+
+// ═══════════════════════════════════════════════════════════
+// Page: Profile 顶栏：〈exit | title | ⚙️settings
 // ═══════════════════════════════════════════════════════════
 function pageProfile(container) {
   const wrap = el('div', { class: 'rf' })
@@ -696,7 +913,7 @@ function pageProfile(container) {
   const av = el('div', { class: 'rf-profile-avatar' })
   if (state.userProfile.avatarUrl) { const img = el('img', { src: state.userProfile.avatarUrl, alt: '' }); img.onerror = () => img.remove(); av.appendChild(img) }
   header.appendChild(av); header.appendChild(el('div', { class: 'rf-profile-name' }, state.userProfile.handle || '未设置昵称')); header.appendChild(el('div', { class: 'rf-profile-handle' }, '@' + (state.userProfile.handle || 'user'))); scroll.appendChild(header)
-  const tabNames = ['我的动态', '资料', '收藏', '更多']
+  const tabNames = ['我的动态', '资料', '收藏']
   const profTabsEl = el('div', { class: 'rf-profile-tabs' })
   const profTabEls = tabNames.map((name, i) => el('button', { class: 'rf-profile-tab' + (state.profileTab === i ? ' active' : ''), onclick: () => switchPTab(i) }, name))
   profTabEls.forEach(t => profTabsEl.appendChild(t)); scroll.appendChild(profTabsEl)
@@ -712,17 +929,17 @@ function pageProfile(container) {
       const rows = [['论坛昵称', state.userProfile.handle], ['姓名', state.userProfile.name], ['年龄', state.userProfile.age], ['外貌', state.userProfile.appearance]]
       for (const [label, val] of rows) { const row = el('div', { class: 'rf-settings-item' }); row.appendChild(el('span', { class: 'rf-settings-label' }, label)); row.appendChild(el('span', { class: 'rf-settings-value' }, val || '—')); tabContent.appendChild(row) }
       const ew = el('div', { style: 'padding:16px' }); ew.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'width:100%', onclick: () => pageProfileEdit(container) }, '编辑资料')); tabContent.appendChild(ew)
-    } else if (state.profileTab === 2) {
+    } else {
       if (!state.savedPosts.length) tabContent.appendChild(el('div', { class: 'rf-empty' }, '还没有收藏任何帖子'))
       else for (const p of state.savedPosts) tabContent.appendChild(postCard(p, 'savedPosts', post => openDetail(post, 'savedPosts')))
-    } else { const wip = el('div', { class: 'rf-wip' }); wip.appendChild(el('span', { style: 'font-size:30px' }, '🔧')); wip.appendChild(el('span', {}, '更多功能开发中…')); tabContent.appendChild(wip) }
+    }
   }
   function switchPTab(i) { state.profileTab = i; profTabEls.forEach((t, idx) => t.className = 'rf-profile-tab' + (idx === i ? ' active' : '')); drawContent() }
   drawContent(); return wrap
 }
 
 // ═══════════════════════════════════════════════════════════
-// Settings pages
+// Settings
 // ═══════════════════════════════════════════════════════════
 function pageSettings(container) {
   container.innerHTML = ''
@@ -735,6 +952,7 @@ function pageSettings(container) {
     { label: '绑定世界书', icon: 'settingBook', fn: () => pageWorldbook(container) },
     { label: '帖子设置', icon: 'settingPost', fn: () => pagePostSettings(container) },
     { label: '资料库', icon: 'settingLibrary', fn: () => pageDataLibrary(container) },
+    { label: '记忆系统', icon: 'settingMemory', fn: () => pageMemorySystem(container) },
     { label: '美化设置', icon: 'settingBeauty', fn: () => pageBeauty(container) },
     { label: '清理数据', icon: 'settingTrash', fn: () => pageCleanup(container) },
   ]
@@ -747,6 +965,42 @@ function pageSettings(container) {
     content.appendChild(row)
   }
   wrap.appendChild(content); container.appendChild(wrap)
+}
+
+// ═══════════════════════════════════════════════════════════
+// Memory System
+// ═══════════════════════════════════════════════════════════
+function pageMemorySystem(container) {
+  container.innerHTML = ''
+  const wrap = el('div', { class: 'rf' })
+  const genBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:12px;padding:5px 12px' }, '总结今日')
+  wrap.appendChild(buildBackTopBar('Memory', () => pageSettings(container), genBtn))
+  const content = el('div', { class: 'rf-content' }); wrap.appendChild(content)
+  function renderMemories() {
+    content.innerHTML = ''
+    content.appendChild(el('div', { style: 'font-size:11px;color:#aaa;padding:10px 16px;line-height:1.6;border-bottom:1px solid #f0f0f0' }, '勾选的记忆条目将在刷新帖子和私信时提供给AI作为参考。点击"总结今日"自动总结当前帖子。'))
+    if (!state.memories.length) { content.appendChild(el('div', { class: 'rf-empty' }, '暂无记忆\n点击右上角「总结今日」创建')); return }
+    for (let i = 0; i < state.memories.length; i++) {
+      const mem = state.memories[i]
+      const row = el('div', { class: 'rf-memory-item' })
+      const cb = el('input', { type: 'checkbox' }); cb.checked = mem.enabled !== false
+      cb.onchange = async () => { mem.enabled = cb.checked; await save('memories') }; row.appendChild(cb)
+      const body = el('div', { class: 'rf-memory-body' })
+      body.appendChild(el('div', { class: 'rf-memory-date' }, mem.date))
+      body.appendChild(el('div', { class: 'rf-memory-text' }, mem.summary)); row.appendChild(body)
+      const delBtn = el('button', { class: 'rf-memory-del' }); delBtn.appendChild(mkSvg(ICONS.trash))
+      delBtn.onclick = async () => { state.memories.splice(i, 1); await save('memories'); renderMemories() }
+      row.appendChild(delBtn); content.appendChild(row)
+    }
+  }
+  renderMemories()
+  genBtn.onclick = async () => {
+    genBtn.disabled = true; const ov = showLoadingOverlay(wrap, '总结记忆中…')
+    try { const m = await summarizeToMemory(); renderMemories(); roche.ui.toast(`✦ 已保存 ${m.date} 记忆`) }
+    catch (e) { roche.ui.toast('总结失败：' + e.message) }
+    finally { hideLoadingOverlay(ov); genBtn.disabled = false }
+  }
+  container.appendChild(wrap)
 }
 
 function pagePostSettings(container) {
@@ -796,13 +1050,14 @@ function pageDataLibrary(container) {
     const cg = el('div', { style: 'margin-bottom:10px' }); cg.appendChild(el('div', { class: 'rf-form-label' }, '分类（选填）'))
     const catInput = el('input', { class: 'rf-form-input', type: 'text', placeholder: '例如：崩铁角色' }); cg.appendChild(catInput); modal.appendChild(cg)
     const mg = el('div', { style: 'margin-bottom:10px' }); mg.appendChild(el('div', { class: 'rf-form-label' }, '条款内容'))
-    const ta = el('textarea', { class: 'rf-textarea', placeholder: '例如：银狼是崩铁中的黑客少女，喜欢游戏，说话傲娇…', style: 'min-height:100px' }); mg.appendChild(ta); modal.appendChild(mg)
+    const ta = el('textarea', { class: 'rf-textarea', placeholder: '例如：银狼是崩铁中的黑客少女…', style: 'min-height:100px' }); mg.appendChild(ta); modal.appendChild(mg)
     const btnRow = el('div', { style: 'display:flex;gap:8px;justify-content:flex-end' })
     btnRow.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', onclick: () => overlay.remove() }, '取消'))
     const confBtn = el('button', { class: 'rf-btn rf-btn-primary' }, '添加')
     confBtn.onclick = async () => { const c2 = ta.value.trim(); if (!c2) return; state.dataLibrary.push({ id: crypto.randomUUID(), category: catInput.value.trim(), content: c2, enabled: true }); await save('dataLibrary'); overlay.remove(); renderLib(); roche.ui.toast('✦ 已添加') }
     btnRow.appendChild(confBtn); modal.appendChild(btnRow); overlay.appendChild(modal)
-    overlay.onclick = e => { if (e.target === overlay) overlay.remove() }; wrap.appendChild(overlay); setTimeout(() => ta.focus(), 50)
+    overlay.onclick = e => { if (e.target === overlay) overlay.remove() }
+    wrap.appendChild(overlay); setTimeout(() => ta.focus(), 50)
   }
   container.appendChild(wrap)
 }
@@ -819,7 +1074,7 @@ function pageAvatar(container) {
   const coverInput = el('input', { class: 'rf-form-input', type: 'url', placeholder: 'https://…' }); coverInput.value = state.userProfile.coverUrl || ''; cg1.appendChild(coverInput); content.appendChild(cg1)
   const cg2 = el('div', { class: 'rf-form-group' }); cg2.appendChild(el('div', { class: 'rf-form-label' }, '或从相册选择封面'))
   const coverFile = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
-  coverFile.onchange = e => { const file = e.target.files[0]; if (!file) return; const r = new FileReader(); r.onload = ev => { coverInput.value = ev.target.result; coverPreview.innerHTML = ''; coverPreview.appendChild(el('img', { src: ev.target.result, alt: '', style: 'width:100%;height:100%;object-fit:cover' })) }; r.readAsDataURL(file) }
+  coverFile.onchange = e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = ev => { coverInput.value = ev.target.result; coverPreview.innerHTML = ''; coverPreview.appendChild(el('img', { src: ev.target.result, alt: '', style: 'width:100%;height:100%;object-fit:cover' })) }; r.readAsDataURL(f) }
   cg2.appendChild(coverFile); content.appendChild(cg2)
   content.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', style: 'margin:8px 16px;width:calc(100% - 32px)', onclick: async () => { state.userProfile.coverUrl = coverInput.value.trim(); await save('userProfile'); roche.ui.toast('✦ 封面已保存') } }, '保存封面'))
   content.appendChild(el('div', { class: 'rf-divider-label', style: 'margin-top:8px' }, '头像'))
@@ -831,7 +1086,7 @@ function pageAvatar(container) {
   const urlInput = el('input', { class: 'rf-form-input', type: 'url', placeholder: 'https://…' }); urlInput.value = state.userProfile.avatarUrl || ''; ag1.appendChild(urlInput); content.appendChild(ag1)
   const ag2 = el('div', { class: 'rf-form-group' }); ag2.appendChild(el('div', { class: 'rf-form-label' }, '或从相册选择头像'))
   const fileInput = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
-  fileInput.onchange = e => { const file = e.target.files[0]; if (!file) return; const r = new FileReader(); r.onload = ev => { urlInput.value = ev.target.result; avCircle.innerHTML = ''; avCircle.appendChild(el('img', { src: ev.target.result, alt: '' })) }; r.readAsDataURL(file) }
+  fileInput.onchange = e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = ev => { urlInput.value = ev.target.result; avCircle.innerHTML = ''; avCircle.appendChild(el('img', { src: ev.target.result, alt: '' })) }; r.readAsDataURL(f) }
   ag2.appendChild(fileInput); content.appendChild(ag2)
   content.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'margin:12px 16px;width:calc(100% - 32px)', onclick: async () => { state.userProfile.avatarUrl = urlInput.value.trim(); await save('userProfile'); roche.ui.toast('✦ 头像已保存') } }, '保存头像'))
   wrap.appendChild(content); container.appendChild(wrap)
@@ -896,10 +1151,11 @@ async function pageCleanup(container) {
   container.innerHTML = ''
   const wrap = el('div', { class: 'rf' }); wrap.appendChild(buildBackTopBar('Clear Data', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content' })
-  const items = [{ label: '清理主页全部帖子', key: 'homePosts' }, { label: '清理板块跨界帖子', key: 'crossPosts' }, { label: '清理板块平行帖子', key: 'parallelPosts' }, { label: '清理我发的帖子', key: 'myPosts' }, { label: '清理全部收藏帖子', key: 'savedPosts' }, { label: '清理全部私信记录', key: 'dmConversations' }]
+  const items = [{ label: '清理主页全部帖子', key: 'homePosts' }, { label: '清理板块跨界帖子', key: 'crossPosts' }, { label: '清理板块平行帖子', key: 'parallelPosts' }, { label: '清理我发的帖子', key: 'myPosts' }, { label: '清理全部收藏帖子', key: 'savedPosts' }, { label: '清理全部私信记录', key: 'dmConversations' }, { label: '清理全部记忆', key: 'memories' }]
   for (const item of items) {
     const row = el('div', { class: 'rf-settings-item', onclick: async () => { const ok = await roche.ui.confirm({ title: '确认清理', message: `确定要${item.label}吗？此操作不可撤销。` }); if (!ok) return; state[item.key] = []; await save(item.key); roche.ui.toast(`✦ 已${item.label}`) } })
-    const left = el('div', { style: 'display:flex;align-items:center;gap:10px' }); const iw = el('div', { style: 'width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;color:#c00' }); iw.appendChild(mkSvg(ICONS.trash)); left.appendChild(iw); left.appendChild(el('span', { class: 'rf-settings-label', style: 'color:#c00' }, item.label)); row.appendChild(left)
+    const left = el('div', { style: 'display:flex;align-items:center;gap:10px' })
+    const iw = el('div', { style: 'width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;color:#c00' }); iw.appendChild(mkSvg(ICONS.trash)); left.appendChild(iw); left.appendChild(el('span', { class: 'rf-settings-label', style: 'color:#c00' }, item.label)); row.appendChild(left)
     const arrow = el('div', { style: 'width:16px;height:16px;color:#ccc;flex-shrink:0' }); arrow.appendChild(mkSvg(ICONS.chevronRight)); row.appendChild(arrow); content.appendChild(row)
   }
   wrap.appendChild(content); container.appendChild(wrap)
@@ -923,9 +1179,8 @@ function renderMain(container) {
 // ═══════════════════════════════════════════════════════════
 let _styleEl = null
 window.RochePlugin.register({
-  id: 'roche-forum', name: '✦ 角色论坛', version: '6.0.0',
-  apps: [{
-    id: 'roche-forum-main', name: '角色论坛', icon: 'forum', iconImage: '',
+  id: 'roche-forum', name: '✦ 角色论坛', version: '7.0.0',
+  apps: [{ id: 'roche-forum-main', name: '角色论坛', icon: 'forum', iconImage: '',
     async mount(container, rocheApi) {
       roche = rocheApi
       _styleEl = document.createElement('style'); _styleEl.textContent = CSS; document.head.appendChild(_styleEl)
