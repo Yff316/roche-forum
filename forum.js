@@ -1,4 +1,5 @@
 ;(function () {
+
 // ═══════════════════════════════════════════════════════════
 // CSS
 // ═══════════════════════════════════════════════════════════
@@ -77,7 +78,7 @@ const CSS = `
 `
 
 // ═══════════════════════════════════════════════════════════
-// SVG icons
+// SVG icons（全部简约线条风）
 // ═══════════════════════════════════════════════════════════
 const ICONS = {
   home: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>`,
@@ -91,7 +92,7 @@ const ICONS = {
   heart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>`,
   comment: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
   star: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>`,
-  // 设置页图标
+  // 设置页专用线条图标
   settingAvatar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>`,
   settingProfile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg>`,
   settingWorld: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20"/><path d="M12 2a15.3 15.3 0 000 20"/></svg>`,
@@ -193,10 +194,9 @@ async function save(key) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// AI post generation（不读取角色库，只用世界书 + AI 自由创作）
+// AI 帖子生成（不读取角色库，只用世界书 + AI 自由创作）
 // ═══════════════════════════════════════════════════════════
 async function generatePosts(mode) {
-  // 只读取绑定的世界书，不调用 character.list()
   let wbContext = ''
   for (const catId of state.boundWorldbooks) {
     try {
@@ -214,7 +214,7 @@ async function generatePosts(mode) {
     state.userProfile.appearance,
   ].filter(Boolean).join('，')
 
-  const systemPrompt = `你是一个角色论坛AI内容生成器。角色由你自由选择，不受任何预设角色列表限制，从高人气游戏/动漫/小说中选取合适角色。
+  const systemPrompt = `你是一个角色论坛AI内容生成器。角色由你自由选择，从高人气游戏/动漫/小说中选取合适角色，不受任何预设角色列表限制。
 
 世界观规则：
 ${state.worldview}
@@ -306,15 +306,13 @@ function postCard(post, content, listKey) {
 
   const actions = el('div', { class: 'rf-post-actions' })
 
-  const commentCount = post.comments?.length || 0
   const commentBtn = el('button', { class: 'rf-post-action-btn' })
   commentBtn.appendChild(mkSvg(ICONS.comment))
-  commentBtn.appendChild(document.createTextNode(' ' + commentCount))
+  commentBtn.appendChild(document.createTextNode(' ' + (post.comments?.length || 0)))
   commentBtn.onclick = () => {
     const existing = content.querySelector(`[data-cmt="${post.id}"]`)
     if (existing) { existing.remove(); return }
-    const cmtEl = buildComments(post)
-    card.after(cmtEl)
+    card.after(buildComments(post))
   }
   actions.appendChild(commentBtn)
 
@@ -371,7 +369,7 @@ function buildComments(post) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// Top bar
+// Top bar builders
 // ═══════════════════════════════════════════════════════════
 function topBar(title, rightEl) {
   const bar = el('div', { class: 'rf-topbar' })
@@ -499,8 +497,7 @@ function pageSection(container) {
   const tabsEl = el('div', { class: 'rf-section-tabs' })
   const tabNames = ['跨界', '平行']
   const tabEls = tabNames.map((name, i) => {
-    const t = el('button', { class: 'rf-section-tab' + (state.sectionTab === i ? ' active' : ''), onclick: () => switchTab(i) }, name)
-    return t
+    return el('button', { class: 'rf-section-tab' + (state.sectionTab === i ? ' active' : ''), onclick: () => switchTab(i) }, name)
   })
   tabEls.forEach(t => tabsEl.appendChild(t))
   wrap.appendChild(tabsEl)
@@ -587,8 +584,7 @@ function pageProfile(container) {
   const tabNames = ['我的动态', '资料', '收藏', '更多']
   const profTabsEl = el('div', { class: 'rf-profile-tabs' })
   const profTabEls = tabNames.map((name, i) => {
-    const t = el('button', { class: 'rf-profile-tab' + (state.profileTab === i ? ' active' : ''), onclick: () => switchPTab(i) }, name)
-    return t
+    return el('button', { class: 'rf-profile-tab' + (state.profileTab === i ? ' active' : ''), onclick: () => switchPTab(i) }, name)
   })
   profTabEls.forEach(t => profTabsEl.appendChild(t))
   wrap.appendChild(profTabsEl)
@@ -648,11 +644,11 @@ function pageSettings(container) {
   const content = el('div', { class: 'rf-content' })
 
   const items = [
-    { label: '头像设置', icon: 'settingAvatar', fn: () => pageAvatar(container) },
-    { label: '资料设置', icon: 'settingProfile', fn: () => pageProfileEdit(container) },
-    { label: '世界观设定', icon: 'settingWorld', fn: () => pageWorldview(container) },
-    { label: '绑定世界书', icon: 'settingBook', fn: () => pageWorldbook(container) },
-    { label: '清理数据', icon: 'settingTrash', fn: () => pageCleanup(container) },
+    { label: '头像设置',   icon: 'settingAvatar',  fn: () => pageAvatar(container) },
+    { label: '资料设置',   icon: 'settingProfile', fn: () => pageProfileEdit(container) },
+    { label: '世界观设定', icon: 'settingWorld',   fn: () => pageWorldview(container) },
+    { label: '绑定世界书', icon: 'settingBook',    fn: () => pageWorldbook(container) },
+    { label: '清理数据',   icon: 'settingTrash',   fn: () => pageCleanup(container) },
   ]
 
   for (const item of items) {
@@ -680,10 +676,10 @@ function pageProfileEdit(container) {
   wrap.appendChild(backTopBar('编辑资料', () => pageSettings(container), saveBtn))
   const content = el('div', { class: 'rf-content' })
   const fields = [
-    { key: 'handle', label: '论坛昵称（被@的名字）', placeholder: '例如：小樱' },
-    { key: 'name', label: '姓名', placeholder: '你的真实名字' },
-    { key: 'age', label: '年龄', placeholder: '例如：18' },
-    { key: 'appearance', label: '外貌描述', placeholder: '例如：长黑发，琥珀色眼睛…' },
+    { key: 'handle',     label: '论坛昵称（被@的名字）', placeholder: '例如：小樱' },
+    { key: 'name',       label: '姓名',         placeholder: '你的真实名字' },
+    { key: 'age',        label: '年龄',         placeholder: '例如：18' },
+    { key: 'appearance', label: '外貌描述',     placeholder: '例如：长黑发，琥珀色眼睛…' },
   ]
   const inputs = {}
   for (const f of fields) {
@@ -745,7 +741,7 @@ function pageAvatar(container) {
   g2.appendChild(fileInput)
   content.appendChild(g2)
 
-  const saveBtn = el('button', {
+  content.appendChild(el('button', {
     class: 'rf-btn rf-btn-primary',
     style: 'margin:12px 16px;width:calc(100% - 32px)',
     onclick: async () => {
@@ -754,8 +750,8 @@ function pageAvatar(container) {
       roche.ui.toast('✦ 头像已保存')
       pageSettings(container)
     }
-  }, '保存头像')
-  content.appendChild(saveBtn)
+  }, '保存头像'))
+
   wrap.appendChild(content)
   container.appendChild(wrap)
 }
@@ -801,11 +797,11 @@ async function pageWorldbook(container) {
       const cb = el('input', { type: 'checkbox', id: 'wb-' + cat.id })
       cb.checked = selected.has(cat.id)
       cb.onchange = () => { cb.checked ? selected.add(cat.id) : selected.delete(cat.id) }
-      const lbl = el('label', { for: 'wb-' + cat.id }, cat.name || cat.title || cat.id)
-      item.appendChild(cb); item.appendChild(lbl)
+      item.appendChild(cb)
+      item.appendChild(el('label', { for: 'wb-' + cat.id }, cat.name || cat.title || cat.id))
       content.appendChild(item)
     }
-    const saveBtn = el('button', {
+    content.appendChild(el('button', {
       class: 'rf-btn rf-btn-primary',
       style: 'margin:12px 16px;width:calc(100% - 32px)',
       onclick: async () => {
@@ -814,8 +810,7 @@ async function pageWorldbook(container) {
         roche.ui.toast('✦ 绑定已保存')
         pageSettings(container)
       }
-    }, '保存绑定')
-    content.appendChild(saveBtn)
+    }, '保存绑定'))
   } catch (e) {
     content.innerHTML = ''
     content.appendChild(el('div', { class: 'rf-empty' }, '加载失败：' + e.message))
@@ -827,11 +822,12 @@ async function pageCleanup(container) {
   const wrap = el('div', { class: 'rf' })
   wrap.appendChild(backTopBar('清理数据', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content' })
+
   const items = [
     { label: '清理主页全部帖子', key: 'homePosts' },
     { label: '清理板块跨界帖子', key: 'crossPosts' },
     { label: '清理板块平行帖子', key: 'parallelPosts' },
-    { label: '清理我发的帖子', key: 'myPosts' },
+    { label: '清理我发的帖子',   key: 'myPosts' },
     { label: '清理全部收藏帖子', key: 'savedPosts' },
   ]
   for (const item of items) {
@@ -863,7 +859,7 @@ async function pageCleanup(container) {
 function renderMain(container) {
   container.innerHTML = ''
   let wrap
-  if (state.page === 'home') wrap = pageHome(container)
+  if (state.page === 'home')    wrap = pageHome(container)
   if (state.page === 'section') wrap = pageSection(container)
   if (state.page === 'message') wrap = pageMessage(container)
   if (state.page === 'profile') wrap = pageProfile(container)
@@ -877,7 +873,7 @@ let _styleEl = null
 window.RochePlugin.register({
   id: 'roche-forum',
   name: '✦ 角色论坛',
-  version: '1.0.0',
+  version: '2.0.0',
   apps: [
     {
       id: 'roche-forum-main',
@@ -899,4 +895,5 @@ window.RochePlugin.register({
     },
   ],
 })
+
 })()
