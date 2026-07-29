@@ -1,7 +1,7 @@
 {
   "id": "roche-forum",
   "name": "✦ 角色论坛",
-  "version": "8.0.0",
+  "version": "8.1.0",
   "description": "模拟 X 风格角色论坛，AI 自由生成角色发帖互动",
   "author": "朵朵",
   "entry": "https://raw.githubusercontent.com/Yff316/roche-forum/main/forum.js",
