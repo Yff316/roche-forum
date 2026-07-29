@@ -1200,7 +1200,7 @@ let _styleEl = null
 window.RochePlugin.register({
   id: 'roche-forum',
   name: '✦ 角色论坛',
-  version: '9.0.0',
+  version: '9.1.0',
   apps: [{
     id: 'roche-forum-main',
     name: '角色论坛',
