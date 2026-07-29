@@ -1369,5 +1369,28 @@ function renderMain(container) {
 // ═══════════════════════════════════════════════════════════
 // Plugin registration
 // ═══════════════════════════════════════════════════════════
-let _styleEl = null
-window.
+  let _styleEl = null
+  window.RochePlugin.register({
+    id: 'roche-forum',
+    name: '✦ 角色论坛',
+    version: '8.0.0',
+    apps: [{
+      id: 'roche-forum-main',
+      name: '角色论坛',
+      icon: 'forum',
+      iconImage: '',
+      async mount(container, rocheApi) {
+        roche = rocheApi
+        _styleEl = document.createElement('style')
+        _styleEl.textContent = CSS
+        document.head.appendChild(_styleEl)
+        await loadStorage()
+        renderMain(container)
+      },
+      async unmount(container) {
+        container.replaceChildren()
+        if (_styleEl) { _styleEl.remove(); _styleEl = null }
+      }
+    }]
+  })
+})()
