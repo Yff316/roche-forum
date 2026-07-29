@@ -49,7 +49,6 @@ const CSS = `
 .rf-section-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
 .rf-section-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 14px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
 .rf-section-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
-/* Profile */
 .rf-profile-scroll { flex: 1; overflow-y: auto; }
 .rf-profile-cover { width: 100%; height: 42vh; min-height: 200px; background: linear-gradient(135deg,#e0e0e0,#c8c8c8); overflow: hidden; }
 .rf-profile-cover img { width: 100%; height: 100%; object-fit: cover; }
@@ -61,7 +60,6 @@ const CSS = `
 .rf-profile-tabs { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; background: #fff; position: sticky; top: 0; z-index: 5; }
 .rf-profile-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 12px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
 .rf-profile-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
-/* Char profile */
 .rf-char-cover { width: 100%; height: 30vh; min-height: 140px; background: linear-gradient(135deg,#f0f0f0,#ddd); overflow: hidden; }
 .rf-char-cover img { width: 100%; height: 100%; object-fit: cover; }
 .rf-char-header { padding: 0 14px 10px; border-bottom: 1px solid #e5e5e5; margin-top: -28px; position: relative; }
@@ -71,7 +69,6 @@ const CSS = `
 .rf-char-name { font-size: 17px; font-weight: 700; }
 .rf-char-follow-btn { padding: 4px 14px; border-radius: 14px; font-size: 12px; font-weight: 600; border: 1.5px solid #000; background: none; cursor: pointer; color: #000; }
 .rf-char-follow-btn.following { background: #000; color: #fff; }
-/* Settings */
 .rf-settings-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
 .rf-settings-item:hover { background: #fafafa; }
 .rf-settings-label { font-size: 14px; }
@@ -87,7 +84,6 @@ const CSS = `
 .rf-worldbook-item label { flex: 1; font-size: 14px; cursor: pointer; }
 .rf-empty { text-align: center; color: #999; padding: 56px 24px; font-size: 14px; line-height: 1.8; }
 .rf-wip { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #aaa; gap: 12px; font-size: 14px; }
-/* Detail */
 .rf-detail-header { padding: 14px 14px 0; display: flex; gap: 10px; }
 .rf-detail-text { padding: 8px 14px 12px; font-size: 15px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; border-bottom: 1px solid #e5e5e5; cursor: pointer; }
 .rf-detail-stats { display: flex; gap: 18px; padding: 10px 14px; border-bottom: 1px solid #e5e5e5; font-size: 13px; color: #666; }
@@ -106,7 +102,6 @@ const CSS = `
 .rf-reply-item { font-size: 12px; color: #555; padding: 3px 0; border-bottom: 1px solid #e8e8e8; line-height: 1.4; }
 .rf-reply-item:last-child { border-bottom: none; }
 .rf-reply-item b { color: #000; }
-/* DM */
 .rf-dm-nav { display: flex; border-bottom: 1px solid #e5e5e5; flex-shrink: 0; }
 .rf-dm-nav-tab { flex: 1; text-align: center; padding: 10px 0; cursor: pointer; font-size: 14px; color: #666; border: none; background: none; border-bottom: 2px solid transparent; font-family: inherit; }
 .rf-dm-nav-tab.active { color: #000; font-weight: 700; border-bottom-color: #000; }
@@ -119,7 +114,6 @@ const CSS = `
 .rf-dm-preview { color: #888; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
 .rf-dm-time { color: #aaa; font-size: 11px; flex-shrink: 0; }
 .rf-dm-unread { width: 8px; height: 8px; border-radius: 50%; background: #000; flex-shrink: 0; margin-left: 4px; }
-/* Follow tab */
 .rf-follow-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
 .rf-follow-item:hover { background: #fafafa; }
 .rf-follow-av { width: 46px; height: 46px; border-radius: 50%; border: 1px solid #e5e5e5; background: #f0f0f0; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 18px; }
@@ -127,7 +121,6 @@ const CSS = `
 .rf-follow-info { flex: 1; min-width: 0; }
 .rf-follow-name { font-weight: 700; font-size: 14px; }
 .rf-follow-tag { font-size: 11px; color: #666; }
-/* Chat */
 .rf-chat-wrap { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 .rf-chat-messages { flex: 1; overflow-y: auto; padding: 12px 14px; display: flex; flex-direction: column; gap: 12px; }
 .rf-chat-msg { display: flex; gap: 8px; align-items: flex-end; }
@@ -142,12 +135,10 @@ const CSS = `
 .rf-chat-input textarea:focus { border-color: #000; }
 .rf-chat-typing { color: #aaa; font-size: 12px; padding: 4px 8px; font-style: italic; }
 .rf-chat-shared-post { background: #f8f8f8; border: 1px solid #e5e5e5; border-radius: 10px; padding: 8px 12px; font-size: 12px; color: #666; }
-/* Loading */
 .rf-loading-overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; gap: 12px; }
 .rf-loading-spinner { font-size: 52px; animation: rf-spin 1s linear infinite; display: inline-block; }
 .rf-loading-hint { font-size: 13px; color: #888; }
 @keyframes rf-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-/* Misc */
 .rf-beauty-group { padding: 14px 16px; border-bottom: 1px solid #f0f0f0; }
 .rf-beauty-label { font-size: 13px; color: #555; margin-bottom: 10px; display: flex; justify-content: space-between; }
 .rf-beauty-label span { color: #000; font-weight: 600; }
@@ -197,11 +188,8 @@ const ICONS = {
   comment: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
   retweet: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>`,
   star: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>`,
-  // 纸飞机 → 转发到私信
   share: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`,
-  // 人形+加号 → 私信新增角色
   adduser: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>`,
-  // 星星 → 召唤评论
   summon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
   plus: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
   send: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`,
@@ -231,7 +219,11 @@ function el(tag, attrs = {}, ...children) {
     else if (k.startsWith('on')) e.addEventListener(k.slice(2), v)
     else e.setAttribute(k, v)
   }
-  for (const c of children) { if (c == null) continue; if (typeof c === 'string') e.appendChild(document.createTextNode(c)); else e.appendChild(c) }
+  for (const c of children) {
+    if (c == null) continue
+    if (typeof c === 'string') e.appendChild(document.createTextNode(c))
+    else e.appendChild(c)
+  }
   return e
 }
 function fmtTime(ts) {
@@ -268,9 +260,7 @@ let roche = null
 const state = {
   page: 'home', sectionTab: 0, profileTab: 0, loading: false,
   homePosts: [], crossPosts: [], parallelPosts: [], myPosts: [], savedPosts: [],
-  dmConversations: [],
-  // 角色注册表: [{id, name, worldTag, avatar, persona, following, ownPosts:[]}]
-  characters: [],
+  dmConversations: [], characters: [],
   userProfile: { handle: '', name: '', age: '', appearance: '', avatarUrl: '', coverUrl: '' },
   worldview: `这是一个论坛，发帖人是角色本人发帖。角色由AI自由选择，来自游戏、动漫、小说等高热门作品。
 $角色发帖日常、剧情、小烦恼等
@@ -283,11 +273,9 @@ $绝对禁止出现耽美小说漫画等角色（禁止BL，不要出现任何BL
 2. 有没有出现开拓者/旅行者等游戏主角？有就改。
 3. 角色有没有将用户认为是男生？有就改。
 4. 有没有出现耽美角色或真人？有就改。`,
-  boundWorldbooks: [],
-  beauty: { topbarPadding: 10 },
+  boundWorldbooks: [], beauty: { topbarPadding: 10 },
   postSettings: { postCount: 5, commentPerPost: 3 },
-  dataLibrary: [],
-  memories: [],
+  dataLibrary: [], memories: [],
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -302,24 +290,18 @@ async function loadStorage() {
 async function save(key) { await roche.storage.set(key, state[key]) }
 
 // ═══════════════════════════════════════════════════════════
-// Character Registry helpers
+// Character Registry
 // ═══════════════════════════════════════════════════════════
-function findChar(name, worldTag) {
-  return state.characters.find(c => c.name === name && c.worldTag === worldTag)
-}
+function findChar(name, worldTag) { return state.characters.find(c => c.name === name && c.worldTag === worldTag) }
 function getOrCreateChar(name, worldTag) {
   let c = findChar(name, worldTag)
   if (!c) {
-    c = { id: crypto.randomUUID(), name, worldTag, avatar: '', persona: '', following: false, ownPosts: [] }
-    state.characters.push(c)
-    save('characters')
+    c = { id: crypto.randomUUID(), name, worldTag, avatar: '', coverUrl: '', persona: '', following: false, ownPosts: [] }
+    state.characters.push(c); save('characters')
   }
   return c
 }
-function getCharAvatar(name, worldTag) {
-  const c = findChar(name, worldTag)
-  return c ? c.avatar : ''
-}
+function getCharAvatar(name, worldTag) { const c = findChar(name, worldTag); return c ? c.avatar : '' }
 
 // ═══════════════════════════════════════════════════════════
 // AI Context
@@ -363,32 +345,22 @@ ${memContext ? `论坛记忆参考：\n${memContext}` : ''}
   if (mode === 'home') userPrompt = `生成${postCount}条主页帖子。每条帖子选一个游戏/动漫/小说角色，内容是角色日常/剧情/小烦恼。⚠️每条帖子恰好${commentPerPost}条评论，评论者必须来自与发帖角色【完全相同的作品】。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmt}`
   else if (mode === 'cross') userPrompt = `生成${postCount}条跨界板块帖子，发帖人来自不同游戏/动漫/小说作品。评论区有其他作品角色跨界评论（此板块允许跨作品）。恰好${commentPerPost}条评论。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmtCross}`
   else userPrompt = `生成${postCount}条平行板块帖子，内容是游戏/动漫/小说角色与用户@${userHandle}的恋爱日常，温馨乙女向。⚠️${commentPerPost}条评论，评论者必须来自与发帖角色【相同的作品】。严格遵守世界观规则，绝对禁止真人/电视剧/影视角色。${memHint}\nJSON格式：${jsonFmt}`
-
   const result = await roche.ai.chat({ messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userPrompt }], temperature: 0.93 })
   let parsed
   try { const raw = result.text.trim(); parsed = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}')+1)) } catch (e) { throw new Error('AI返回格式错误，请重试') }
   const posts = (parsed.posts || []).map(p => ({
-    id: crypto.randomUUID(),
-    timestamp: Date.now() - Math.floor(Math.random() * 7200000),
-    authorName: p.name || '未知角色',
-    worldTag: p.worldTag || '',
-    text: p.text || '',
-    likes: p.likes || Math.floor(Math.random() * 80),
-    retweets: p.retweets || Math.floor(Math.random() * 30),
-    comments: (p.comments || []).map(c => ({
-      name: c.name || '角色', worldTag: c.worldTag || p.worldTag || '',
-      text: c.text || '', avatar: getCharAvatar(c.name, c.worldTag || p.worldTag), replies: []
-    })),
+    id: crypto.randomUUID(), timestamp: Date.now() - Math.floor(Math.random() * 7200000),
+    authorName: p.name || '未知角色', worldTag: p.worldTag || '', text: p.text || '',
+    likes: p.likes || Math.floor(Math.random() * 80), retweets: p.retweets || Math.floor(Math.random() * 30),
+    comments: (p.comments || []).map(c => ({ name: c.name || '角色', worldTag: c.worldTag || p.worldTag || '', text: c.text || '', avatar: getCharAvatar(c.name, c.worldTag || p.worldTag), replies: [] })),
   }))
-  // 注册角色并记录帖子
   for (const post of posts) {
     const char = getOrCreateChar(post.authorName, post.worldTag)
     post.avatar = char.avatar
     char.ownPosts = [{ id: post.id, text: post.text, timestamp: post.timestamp }, ...(char.ownPosts || [])].slice(0, 20)
     for (const c of post.comments) { getOrCreateChar(c.name, c.worldTag) }
   }
-  await save('characters')
-  return posts
+  await save('characters'); return posts
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -413,24 +385,21 @@ JSON格式：{"comments":[{"name":"角色名","worldTag":"${post.worldTag||'同�
   const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, { role: 'user', content: usr }], temperature: 0.9 })
   let parsed
   try { const raw = result.text.trim(); parsed = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}')+1)) } catch (e) { throw new Error('AI返回格式错误') }
-  return (parsed.comments || []).map(c => ({
-    name: c.name, worldTag: c.worldTag || post.worldTag || '',
-    text: c.text || '', avatar: getCharAvatar(c.name, c.worldTag || post.worldTag), replies: []
-  }))
+  return (parsed.comments || []).map(c => ({ name: c.name, worldTag: c.worldTag || post.worldTag || '', text: c.text || '', avatar: getCharAvatar(c.name, c.worldTag || post.worldTag), replies: [] }))
 }
 
 // ═══════════════════════════════════════════════════════════
-// Generate character persona (官方人设)
+// Generate character persona
 // ═══════════════════════════════════════════════════════════
 async function generateCharPersona(name, worldTag) {
   const sys = `你是角色百科AI。根据角色名和作品，生成简短官方人设卡，严格按模板输出，不要多余内容。`
   const usr = `角色：${name}（${worldTag || ''}）
 请按以下模板生成人设：
-姓名: 
-年龄: 
-性格: 
-关系网: 
-人生重要经历: `
+姓名:
+年龄:
+性格:
+关系网:
+人生重要经历:`
   const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, { role: 'user', content: usr }], temperature: 0.7 })
   return result.text.trim()
 }
@@ -444,8 +413,7 @@ async function dmAiReply(conv) {
   const char = findChar(conv.charName, conv.worldTag)
   const persona = char?.persona || conv.persona || ''
   const recentPosts = conv.showRecentPosts !== false
-    ? (char?.ownPosts || []).slice(0, 2).map(p => `我最近发了：${p.text.slice(0,50)}`).join('；')
-    : ''
+    ? (char?.ownPosts || []).slice(0, 2).map(p => `我最近发了：${p.text.slice(0,50)}`).join('；') : ''
   const sys = `你现在扮演${conv.charName}（来自${conv.worldTag||'动漫/游戏'}），以角色身份与用户私信聊天。保持角色人设，不要出戏。用户是女生，请用符合角色语气的中文回复，不要超过100字。
 ${persona ? `角色人设：\n${persona}\n` : ''}${recentPosts ? `${recentPosts}\n` : ''}${conv.useMemory !== false && memContext ? `论坛记忆：${memContext}\n` : ''}`
   const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, ...lastMsgs], temperature: 0.88 })
@@ -453,7 +421,7 @@ ${persona ? `角色人设：\n${persona}\n` : ''}${recentPosts ? `${recentPosts}
 }
 
 // ═══════════════════════════════════════════════════════════
-// Generate random DM refresh (陌生角色来私信)
+// Generate random DM
 // ═══════════════════════════════════════════════════════════
 async function generateRandomDmChar() {
   const existing = state.characters.map(c => `${c.name}（${c.worldTag}）`).join('、')
@@ -478,9 +446,7 @@ async function summarizeToMemory() {
   const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, { role: 'user', content: `今日帖子：\n${postSummaries}` }], temperature: 0.7 })
   const now = new Date()
   const mem = { id: crypto.randomUUID(), date: `${now.getMonth()+1}/${now.getDate()}`, summary: result.text.trim(), enabled: true }
-  state.memories = [mem, ...state.memories].slice(0, 30)
-  await save('memories')
-  return mem
+  state.memories = [mem, ...state.memories].slice(0, 30); await save('memories'); return mem
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -504,22 +470,18 @@ function postCard(post, listKey, onOpenDetail, onCharClick) {
   body.appendChild(el('div', { class: 'rf-post-text' }, post.text))
   const actions = el('div', { class: 'rf-post-actions' })
   actions.onclick = e => e.stopPropagation()
-  // comment
   const cmtBtn = el('button', { class: 'rf-post-action-btn' })
   cmtBtn.appendChild(mkSvg(ICONS.comment)); cmtBtn.appendChild(document.createTextNode(' ' + (post.comments?.length || 0)))
   cmtBtn.onclick = e => { e.stopPropagation(); onOpenDetail && onOpenDetail(post) }
   actions.appendChild(cmtBtn)
-  // retweet
   const rtBtn = el('button', { class: 'rf-post-action-btn' })
   rtBtn.appendChild(mkSvg(ICONS.retweet)); const rtCount = el('span', {}, ' ' + (post.retweets || 0)); rtBtn.appendChild(rtCount)
   rtBtn.onclick = e => { e.stopPropagation(); post.retweets = (post.retweets||0)+1; rtCount.textContent = ' '+post.retweets; save(listKey) }
   actions.appendChild(rtBtn)
-  // like
   const likeBtn = el('button', { class: 'rf-post-action-btn' })
   likeBtn.appendChild(mkSvg(ICONS.heart)); const likeCount = el('span', {}, ' ' + (post.likes || 0)); likeBtn.appendChild(likeCount)
   likeBtn.onclick = e => { e.stopPropagation(); post.likes = (post.likes||0)+1; likeCount.textContent = ' '+post.likes; save(listKey) }
   actions.appendChild(likeBtn)
-  // bookmark
   const bkBtn = el('button', { class: 'rf-post-action-btn' }); bkBtn.appendChild(mkSvg(ICONS.star))
   bkBtn.onclick = async e => {
     e.stopPropagation()
@@ -528,7 +490,6 @@ function postCard(post, listKey, onOpenDetail, onCharClick) {
     await save('savedPosts')
   }
   actions.appendChild(bkBtn)
-  // share to DM
   const shareBtn = el('button', { class: 'rf-post-action-btn' }); shareBtn.appendChild(mkSvg(ICONS.share))
   shareBtn.onclick = e => { e.stopPropagation(); showShareToDmModal(post, card.closest('.rf')) }
   actions.appendChild(shareBtn)
@@ -547,14 +508,14 @@ function showShareToDmModal(post, wrapEl) {
   const modal = el('div', { class: 'rf-modal' })
   modal.appendChild(el('div', { class: 'rf-modal-title' }, '转发到私信'))
   for (const conv of state.dmConversations) {
+    const char = findChar(conv.charName, conv.worldTag)
+    const avUrl = char?.avatar || conv.avatar || ''
     const item = el('div', { class: 'rf-settings-item', onclick: async () => {
       const sharedText = `📌 转发帖子\n【${post.authorName}·${post.worldTag}】\n${post.text}`
       conv.messages.push({ role: 'shared', text: sharedText, ts: Date.now() })
       await save('dmConversations'); overlay.remove(); roche.ui.toast(`✦ 已转发给 ${conv.charName}`)
     }})
-    const char = findChar(conv.charName, conv.worldTag)
     const av = el('div', { class: 'rf-dm-av', style: 'width:36px;height:36px;font-size:14px' })
-    const avUrl = char?.avatar || conv.avatar || ''
     if (avUrl) { const img = el('img', { src: avUrl }); img.onerror = () => img.remove(); av.appendChild(img) }
     item.appendChild(av)
     item.appendChild(el('span', { class: 'rf-settings-label' }, conv.charName + (conv.worldTag ? ` ·【${conv.worldTag}】` : '')))
@@ -679,21 +640,23 @@ function pagePostDetail(container, post, listKey, onBack, openCharPage) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// Character Profile Page
+// Character Profile Page（修复：无多余设置按钮、支持封面设置、有删除按钮）
 // ═══════════════════════════════════════════════════════════
 function pageCharProfile(container, charName, worldTag, onBack, listKey) {
   container.innerHTML = ''
   const char = getOrCreateChar(charName, worldTag)
   const wrap = el('div', { class: 'rf' })
-  // topbar: back | title | settings
-  const settingsBtn = el('button', { class: 'rf-icon-btn' }); settingsBtn.appendChild(mkSvg(ICONS.settings))
-  wrap.appendChild(buildBackTopBar(charName, onBack, settingsBtn))
+  // ★修复1：顶栏不再有多余设置按钮，传null
+  wrap.appendChild(buildBackTopBar(charName, onBack, null))
   const scroll = el('div', { class: 'rf-profile-scroll' })
-  // cover
+  // ★修复3：封面读 char.coverUrl，没有封面时用头像模糊填充
   const coverEl = el('div', { class: 'rf-char-cover' })
-  if (char.avatar) { const img = el('img', { src: char.avatar, alt: '' }); img.onerror = () => img.remove(); coverEl.appendChild(img) }
+  if (char.coverUrl) {
+    const img = el('img', { src: char.coverUrl, alt: '' }); img.onerror = () => img.remove(); coverEl.appendChild(img)
+  } else if (char.avatar) {
+    const img = el('img', { src: char.avatar, alt: '', style: 'width:100%;height:100%;object-fit:cover;filter:blur(8px) brightness(0.8);transform:scale(1.1)' }); img.onerror = () => img.remove(); coverEl.appendChild(img)
+  }
   scroll.appendChild(coverEl)
-  // header
   const header = el('div', { class: 'rf-char-header' })
   const avEl = el('div', { class: 'rf-char-av' })
   if (char.avatar) { const img = el('img', { src: char.avatar, alt: '' }); img.onerror = () => img.remove(); avEl.appendChild(img) }
@@ -701,7 +664,6 @@ function pageCharProfile(container, charName, worldTag, onBack, listKey) {
   const nameRow = el('div', { class: 'rf-char-name-row' })
   nameRow.appendChild(el('span', { class: 'rf-char-name' }, char.name))
   if (char.worldTag) nameRow.appendChild(el('span', { class: 'rf-post-tag' }, char.worldTag))
-  // follow button
   const followBtn = el('button', { class: 'rf-char-follow-btn' + (char.following ? ' following' : '') }, char.following ? '已关注' : '关注')
   followBtn.onclick = async () => {
     char.following = !char.following
@@ -710,7 +672,6 @@ function pageCharProfile(container, charName, worldTag, onBack, listKey) {
     await save('characters'); roche.ui.toast(char.following ? '✦ 已关注' : '已取消关注')
   }
   nameRow.appendChild(followBtn); header.appendChild(nameRow); scroll.appendChild(header)
-  // tabs
   const tabNames = ['个人主页', '资料']
   let charTabIdx = 0
   const tabsEl = el('div', { class: 'rf-profile-tabs' })
@@ -718,28 +679,59 @@ function pageCharProfile(container, charName, worldTag, onBack, listKey) {
   tabEls.forEach(t => tabsEl.appendChild(t)); scroll.appendChild(tabsEl)
   const tabContent = el('div', {}); scroll.appendChild(tabContent)
   wrap.appendChild(scroll)
+
   function switchCharTab(i) {
     charTabIdx = i; tabEls.forEach((t, idx) => t.className = 'rf-profile-tab' + (idx === i ? ' active' : '')); drawCharTabContent()
   }
+
   function drawCharTabContent() {
     tabContent.innerHTML = ''
     if (charTabIdx === 0) {
-      // 个人主页：该角色在论坛发的帖子
       const charPosts = [...state.homePosts, ...state.crossPosts, ...state.parallelPosts]
         .filter(p => p.authorName === char.name && p.worldTag === char.worldTag)
       if (!charPosts.length) { tabContent.appendChild(el('div', { class: 'rf-empty' }, '还没有帖子')); return }
       for (const p of charPosts) tabContent.appendChild(postCard(p, listKey || 'homePosts', (post) => {
-        pagePostDetail(container, post, listKey || 'homePosts', () => pageCharProfile(container, charName, worldTag, onBack, listKey), (n, w) => pageCharProfile(container, n, w, () => pageCharProfile(container, charName, worldTag, onBack, listKey), listKey))
+        pagePostDetail(container, post, listKey || 'homePosts',
+          () => pageCharProfile(container, charName, worldTag, onBack, listKey),
+          (n, w) => pageCharProfile(container, n, w, () => pageCharProfile(container, charName, worldTag, onBack, listKey), listKey))
       }, null))
     } else {
-      // 资料：头像、姓名、人设
+      // 官方人设卡
       if (char.persona) {
         const pc = el('div', { class: 'rf-persona-card' })
         pc.appendChild(el('div', { class: 'rf-persona-label' }, '官方人设'))
         pc.appendChild(document.createTextNode(char.persona))
         tabContent.appendChild(pc)
       }
-      // avatar
+
+      // ★修复2：封面设置
+      tabContent.appendChild(el('div', { class: 'rf-divider-label' }, '角色封面'))
+      const coverPreview = el('div', { style: 'width:100%;height:80px;background:#f0f0f0;overflow:hidden' })
+      if (char.coverUrl) {
+        const img = el('img', { src: char.coverUrl, alt: '', style: 'width:100%;height:100%;object-fit:cover' }); img.onerror = () => img.remove(); coverPreview.appendChild(img)
+      }
+      tabContent.appendChild(coverPreview)
+      const cvg1 = el('div', { class: 'rf-form-group' }); cvg1.appendChild(el('div', { class: 'rf-form-label' }, '封面图片 URL'))
+      const coverInput = el('input', { class: 'rf-form-input', type: 'url', placeholder: 'https://…' }); coverInput.value = char.coverUrl || ''; cvg1.appendChild(coverInput); tabContent.appendChild(cvg1)
+      const cvg2 = el('div', { class: 'rf-form-group' }); cvg2.appendChild(el('div', { class: 'rf-form-label' }, '或从相册选择封面'))
+      const coverFile = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
+      coverFile.onchange = e => {
+        const f = e.target.files[0]; if (!f) return; const r = new FileReader()
+        r.onload = ev => { coverInput.value = ev.target.result; coverPreview.innerHTML = ''; coverPreview.appendChild(el('img', { src: ev.target.result, alt: '', style: 'width:100%;height:100%;object-fit:cover' })) }
+        r.readAsDataURL(f)
+      }
+      cvg2.appendChild(coverFile); tabContent.appendChild(cvg2)
+      tabContent.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', style: 'margin:8px 16px;width:calc(100% - 32px)', onclick: async () => {
+        char.coverUrl = coverInput.value.trim(); await save('characters'); roche.ui.toast('✦ 封面已保存')
+        coverPreview.innerHTML = ''
+        if (char.coverUrl) { const img = el('img', { src: char.coverUrl, alt: '', style: 'width:100%;height:100%;object-fit:cover' }); img.onerror = () => img.remove(); coverPreview.appendChild(img) }
+        // 同步顶部封面显示区
+        coverEl.innerHTML = ''
+        if (char.coverUrl) { const img = el('img', { src: char.coverUrl, alt: '' }); img.onerror = () => img.remove(); coverEl.appendChild(img) }
+        else if (char.avatar) { const img = el('img', { src: char.avatar, alt: '', style: 'width:100%;height:100%;object-fit:cover;filter:blur(8px) brightness(0.8);transform:scale(1.1)' }); img.onerror = () => img.remove(); coverEl.appendChild(img) }
+      }}, '保存封面'))
+
+      // 头像设置
       tabContent.appendChild(el('div', { class: 'rf-divider-label' }, '头像'))
       const avPreview = el('div', { style: 'display:flex;justify-content:center;padding:12px 0 6px' })
       const avCircle = el('div', { class: 'rf-profile-avatar', style: 'margin:0;width:60px;height:60px' })
@@ -749,19 +741,26 @@ function pageCharProfile(container, charName, worldTag, onBack, listKey) {
       const avInput = el('input', { class: 'rf-form-input', type: 'url', placeholder: 'https://…' }); avInput.value = char.avatar || ''; ag.appendChild(avInput); tabContent.appendChild(ag)
       const ag2 = el('div', { class: 'rf-form-group' }); ag2.appendChild(el('div', { class: 'rf-form-label' }, '或从相册选择'))
       const avFile = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
-      avFile.onchange = e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = ev => { avInput.value = ev.target.result; avCircle.innerHTML = ''; avCircle.appendChild(el('img', { src: ev.target.result, alt: '' })) }; r.readAsDataURL(f) }
+      avFile.onchange = e => {
+        const f = e.target.files[0]; if (!f) return; const r = new FileReader()
+        r.onload = ev => { avInput.value = ev.target.result; avCircle.innerHTML = ''; avCircle.appendChild(el('img', { src: ev.target.result, alt: '' })) }
+        r.readAsDataURL(f)
+      }
       ag2.appendChild(avFile); tabContent.appendChild(ag2)
       tabContent.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'margin:10px 16px;width:calc(100% - 32px)', onclick: async () => {
         char.avatar = avInput.value.trim()
-        // 同步到论坛帖子头像
         for (const post of [...state.homePosts, ...state.crossPosts, ...state.parallelPosts]) {
           if (post.authorName === char.name && post.worldTag === char.worldTag) post.avatar = char.avatar
           for (const c of (post.comments || [])) { if (c.name === char.name && c.worldTag === char.worldTag) c.avatar = char.avatar }
         }
         await save('characters'); await save('homePosts'); await save('crossPosts'); await save('parallelPosts')
-        roche.ui.toast('✦ 头像已保存（论坛同步更新）'); avCircle.innerHTML = ''; if (char.avatar) { const img = el('img', { src: char.avatar, alt: '' }); img.onerror = () => img.remove(); avCircle.appendChild(img) }
-      } }, '保存头像'))
-      // persona
+        roche.ui.toast('✦ 头像已保存（论坛同步更新）')
+        avCircle.innerHTML = ''; if (char.avatar) { const img = el('img', { src: char.avatar, alt: '' }); img.onerror = () => img.remove(); avCircle.appendChild(img) }
+        avEl.innerHTML = ''; if (char.avatar) { const img = el('img', { src: char.avatar, alt: '' }); img.onerror = () => img.remove(); avEl.appendChild(img) }
+        if (!char.coverUrl) { coverEl.innerHTML = ''; if (char.avatar) { const img = el('img', { src: char.avatar, alt: '', style: 'width:100%;height:100%;object-fit:cover;filter:blur(8px) brightness(0.8);transform:scale(1.1)' }); img.onerror = () => img.remove(); coverEl.appendChild(img) } }
+      }}, '保存头像'))
+
+      // 人设
       tabContent.appendChild(el('div', { class: 'rf-divider-label' }, '人设'))
       const pg = el('div', { class: 'rf-form-group' }); pg.appendChild(el('div', { class: 'rf-form-label' }, '角色人设（私聊时AI参考）'))
       const pTa = el('textarea', { class: 'rf-worldview-text', style: 'min-height:120px' }); pTa.value = char.persona || ''; pg.appendChild(pTa); tabContent.appendChild(pg)
@@ -769,14 +768,14 @@ function pageCharProfile(container, charName, worldTag, onBack, listKey) {
         const ov = showLoadingOverlay(wrap, '生成官方人设…')
         try { char.persona = await generateCharPersona(char.name, char.worldTag); pTa.value = char.persona; await save('characters'); roche.ui.toast('✦ 人设已生成') }
         catch (e) { roche.ui.toast('生成失败：' + e.message) } finally { hideLoadingOverlay(ov) }
-      } }, 'AI生成官方人设'))
+      }}, 'AI生成官方人设'))
       tabContent.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'margin:6px 16px;width:calc(100% - 32px)', onclick: async () => {
         char.persona = pTa.value.trim(); await save('characters'); roche.ui.toast('✦ 人设已保存')
-      } }, '保存人设'))
-      // send DM
+      }}, '保存人设'))
+
+      // 发私信
       tabContent.appendChild(el('div', { class: 'rf-divider-label' }, '私信'))
       tabContent.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', style: 'margin:10px 16px;width:calc(100% - 32px)', onclick: () => {
-        // 找到或创建DM conversation
         let conv = state.dmConversations.find(c => c.charName === char.name && c.worldTag === char.worldTag)
         if (!conv) {
           conv = { id: crypto.randomUUID(), charName: char.name, worldTag: char.worldTag, avatar: char.avatar, persona: char.persona, showRecentPosts: true, useMemory: true, messages: [], unread: false }
@@ -784,12 +783,26 @@ function pageCharProfile(container, charName, worldTag, onBack, listKey) {
         }
         state.page = 'message'
         pageDmChat(container, conv, () => { state.page = 'message'; renderMain(container) })
-      } }, '发私信'))
+      }}, '发私信'))
+
+      // ★修复1的配套：删除角色按钮
+      tabContent.appendChild(el('div', { class: 'rf-divider-label' }, '危险操作'))
+      const delCharRow = el('div', { class: 'rf-settings-item', onclick: async () => {
+        const ok = await roche.ui.confirm({ title: '删除角色', message: `确定删除 ${char.name} 的所有数据（含私信记录）吗？此操作不可撤销。` })
+        if (!ok) return
+        state.characters = state.characters.filter(c => c.id !== char.id)
+        state.dmConversations = state.dmConversations.filter(c => !(c.charName === char.name && c.worldTag === char.worldTag))
+        await save('characters'); await save('dmConversations')
+        roche.ui.toast(`✦ 已删除 ${char.name}`); onBack()
+      }})
+      const delLeft = el('div', { style: 'display:flex;align-items:center;gap:10px' })
+      const delIw = el('div', { style: 'width:20px;height:20px;flex-shrink:0;color:#c00' }); delIw.appendChild(mkSvg(ICONS.trash))
+      delLeft.appendChild(delIw); delLeft.appendChild(el('span', { class: 'rf-settings-label', style: 'color:#c00' }, '删除此角色及私信'))
+      delCharRow.appendChild(delLeft); tabContent.appendChild(delCharRow)
     }
   }
-  drawCharTabContent()
-  settingsBtn.onclick = () => switchCharTab(1)
-  container.appendChild(wrap)
+
+  drawCharTabContent(); container.appendChild(wrap)
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -824,7 +837,7 @@ function bottomNav(container) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// Page: Home 顶栏：〈exit | title | 🔄refresh
+// Page: Home
 // ═══════════════════════════════════════════════════════════
 function pageHome(container) {
   const wrap = el('div', { class: 'rf', style: 'position:relative' })
@@ -834,12 +847,8 @@ function pageHome(container) {
   const content = el('div', { class: 'rf-content' }); wrap.appendChild(content)
   wrap.appendChild(bottomNav(container))
   const fab = el('button', { class: 'rf-fab', style: 'bottom:70px' }, '+'); wrap.appendChild(fab)
-  function openCharPage(name, worldTag) {
-    pageCharProfile(container, name, worldTag, () => { state.page = 'home'; renderMain(container) }, 'homePosts')
-  }
-  function openDetail(post) {
-    pagePostDetail(container, post, 'homePosts', () => { state.page = 'home'; renderMain(container) }, openCharPage)
-  }
+  function openCharPage(name, worldTag) { pageCharProfile(container, name, worldTag, () => { state.page = 'home'; renderMain(container) }, 'homePosts') }
+  function openDetail(post) { pagePostDetail(container, post, 'homePosts', () => { state.page = 'home'; renderMain(container) }, openCharPage) }
   function drawPosts() {
     content.innerHTML = ''
     if (!state.homePosts.length) { content.appendChild(el('div', { class: 'rf-empty' }, '暂无帖子\n点击右上角刷新生成 ↑')); return }
@@ -854,8 +863,7 @@ function pageHome(container) {
     hideLoadingOverlay(ov); state.loading = false; refreshBtn.disabled = false; drawPosts()
   }
   fab.onclick = () => {
-    const overlay = el('div', { class: 'rf-modal-overlay' })
-    const modal = el('div', { class: 'rf-modal' })
+    const overlay = el('div', { class: 'rf-modal-overlay' }); const modal = el('div', { class: 'rf-modal' })
     modal.appendChild(el('div', { class: 'rf-modal-title' }, '✦ 发帖'))
     const ta = el('textarea', { class: 'rf-textarea', placeholder: '分享你的想法…' }); modal.appendChild(ta)
     const btnRow = el('div', { style: 'display:flex;gap:8px;margin-top:10px;justify-content:flex-end' })
@@ -909,18 +917,16 @@ function pageSection(container) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// Page: Message — 私信 + 关注双导航
+// Page: Message
 // ═══════════════════════════════════════════════════════════
 function pageMessage(container) {
   const wrap = el('div', { class: 'rf', style: 'position:relative' })
   const closeBtn = el('button', { class: 'rf-icon-btn', onclick: () => roche.ui.closeApp() }); closeBtn.appendChild(mkSvg(ICONS.close))
-  let dmNavTab = 0 // 0=私信 1=关注
-  // right: refresh (私信tab) or nothing (关注tab)
+  let dmNavTab = 0
   const refreshDmBtn = el('button', { class: 'rf-icon-btn', title: '刷新（新私信）' }); refreshDmBtn.appendChild(mkSvg(ICONS.refresh))
   const addDmBtn = el('button', { class: 'rf-icon-btn', title: '添加角色私信' }); addDmBtn.appendChild(mkSvg(ICONS.adduser))
   const rightGroup = el('div', { class: 'rf-topbar-right' }); rightGroup.appendChild(refreshDmBtn); rightGroup.appendChild(addDmBtn)
   wrap.appendChild(buildTopBar('✦ Messages', closeBtn, rightGroup))
-  // tabs
   const dmNavEl = el('div', { class: 'rf-dm-nav' })
   const dmNavTabs = ['私信', '关注'].map((name, i) => el('button', { class: 'rf-dm-nav-tab' + (i === 0 ? ' active' : ''), onclick: () => switchDmNav(i) }, name))
   dmNavTabs.forEach(t => dmNavEl.appendChild(t)); wrap.appendChild(dmNavEl)
@@ -928,19 +934,15 @@ function pageMessage(container) {
   wrap.appendChild(bottomNav(container))
   function switchDmNav(i) {
     dmNavTab = i; dmNavTabs.forEach((t, idx) => t.className = 'rf-dm-nav-tab' + (idx === i ? ' active' : ''))
-    refreshDmBtn.style.display = i === 0 ? '' : 'none'
-    addDmBtn.style.display = i === 0 ? '' : 'none'
-    drawContent()
+    refreshDmBtn.style.display = i === 0 ? '' : 'none'; addDmBtn.style.display = i === 0 ? '' : 'none'; drawContent()
   }
   function openChat(conv) { pageDmChat(container, conv, () => { state.page = 'message'; renderMain(container) }) }
   function drawContent() {
     content.innerHTML = ''
     if (dmNavTab === 0) {
-      // 私信列表
       if (!state.dmConversations.length) { content.appendChild(el('div', { class: 'rf-empty' }, '还没有私信\n点击右上角 + 开始新对话')); return }
       for (const conv of state.dmConversations) {
-        const char = findChar(conv.charName, conv.worldTag)
-        const avUrl = char?.avatar || conv.avatar || ''
+        const char = findChar(conv.charName, conv.worldTag); const avUrl = char?.avatar || conv.avatar || ''
         const item = el('div', { class: 'rf-dm-item', onclick: () => openChat(conv) })
         const av = el('div', { class: 'rf-dm-av' }); if (avUrl) { const img = el('img', { src: avUrl }); img.onerror = () => img.remove(); av.appendChild(img) }
         item.appendChild(av)
@@ -954,7 +956,6 @@ function pageMessage(container) {
         content.appendChild(item)
       }
     } else {
-      // 关注列表
       const followed = state.characters.filter(c => c.following)
       if (!followed.length) { content.appendChild(el('div', { class: 'rf-empty' }, '还没有关注任何角色\n在帖子中点击角色名可进入主页关注')); return }
       for (const char of followed) {
@@ -965,37 +966,27 @@ function pageMessage(container) {
         info.appendChild(el('div', { class: 'rf-follow-name' }, char.name))
         if (char.worldTag) info.appendChild(el('div', { class: 'rf-follow-tag' }, char.worldTag))
         item.appendChild(info)
-        const unfollowBtn = el('button', { class: 'rf-char-follow-btn following', style: 'flex-shrink:0' }, '已关注')
-        unfollowBtn.onclick = async (e) => { e.stopPropagation(); char.following = false; await save('characters'); roche.ui.toast('已取消关注'); drawContent() }
-        item.appendChild(unfollowBtn)
-        content.appendChild(item)
+        const unfBtn = el('button', { class: 'rf-char-follow-btn following', style: 'flex-shrink:0' }, '已关注')
+        unfBtn.onclick = async (e) => { e.stopPropagation(); char.following = false; await save('characters'); roche.ui.toast('已取消关注'); drawContent() }
+        item.appendChild(unfBtn); content.appendChild(item)
       }
     }
   }
   drawContent()
-  // refresh DM: AI随机来新私信
   refreshDmBtn.onclick = async () => {
-    refreshDmBtn.disabled = true
-    const ov = showLoadingOverlay(wrap, '角色发来私信…')
+    refreshDmBtn.disabled = true; const ov = showLoadingOverlay(wrap, '角色发来私信…')
     try {
-      const data = await generateRandomDmChar()
-      if (!data?.name) throw new Error('生成失败')
+      const data = await generateRandomDmChar(); if (!data?.name) throw new Error('生成失败')
       const char = getOrCreateChar(data.name, data.worldTag || '')
-      // 生成人设
       if (!char.persona) { char.persona = await generateCharPersona(char.name, char.worldTag); await save('characters') }
       let conv = state.dmConversations.find(c => c.charName === data.name && c.worldTag === (data.worldTag || ''))
-      if (!conv) {
-        conv = { id: crypto.randomUUID(), charName: data.name, worldTag: data.worldTag || '', avatar: char.avatar, persona: char.persona, showRecentPosts: true, useMemory: true, messages: [], unread: true }
-        state.dmConversations = [conv, ...state.dmConversations]
-      }
+      if (!conv) { conv = { id: crypto.randomUUID(), charName: data.name, worldTag: data.worldTag || '', avatar: char.avatar, persona: char.persona, showRecentPosts: true, useMemory: true, messages: [], unread: true }; state.dmConversations = [conv, ...state.dmConversations] }
       conv.messages.push({ role: 'char', text: data.greeting, ts: Date.now() }); conv.unread = true
       await save('dmConversations'); drawContent(); roche.ui.toast(`✦ ${data.name} 发来私信`)
     } catch (e) { roche.ui.toast('刷新失败：' + e.message) } finally { hideLoadingOverlay(ov); refreshDmBtn.disabled = false }
   }
-  // add DM
   addDmBtn.onclick = () => {
-    const overlay = el('div', { class: 'rf-modal-overlay' })
-    const modal = el('div', { class: 'rf-modal' })
+    const overlay = el('div', { class: 'rf-modal-overlay' }); const modal = el('div', { class: 'rf-modal' })
     modal.appendChild(el('div', { class: 'rf-modal-title' }, '✦ 新私信'))
     const cg = el('div', { style: 'margin-bottom:10px' }); cg.appendChild(el('div', { class: 'rf-form-label' }, '角色名称'))
     const charInput = el('input', { class: 'rf-form-input', type: 'text', placeholder: '例如：银狼' }); cg.appendChild(charInput); modal.appendChild(cg)
@@ -1009,16 +1000,11 @@ function pageMessage(container) {
       const ov = showLoadingOverlay(wrap, '角色准备中…')
       try {
         const char = getOrCreateChar(charName, worldInput.value.trim() || '')
-        // 生成人设
         if (!char.persona) { char.persona = await generateCharPersona(charName, char.worldTag); await save('characters') }
-        // 生成开场白
-        const sys = `你现在扮演${charName}（来自${char.worldTag || '动漫/游戏'}），以角色身份主动给用户发第一条私信。用符合角色人设的语气，简短自然，不要超过60字。\n${char.persona ? `人设参考：\n${char.persona}` : ''}`
+        const sys = `你现在扮演${charName}（来自${char.worldTag||'动漫/游戏'}），以角色身份主动给用户发第一条私信。用符合角色人设的语气，简短自然，不要超过60字。\n${char.persona ? `人设参考：\n${char.persona}` : ''}`
         const result = await roche.ai.chat({ messages: [{ role: 'system', content: sys }, { role: 'user', content: '发出第一条私信' }], temperature: 0.9 })
         let conv = state.dmConversations.find(c => c.charName === charName && c.worldTag === char.worldTag)
-        if (!conv) {
-          conv = { id: crypto.randomUUID(), charName, worldTag: char.worldTag, avatar: char.avatar, persona: char.persona, showRecentPosts: true, useMemory: true, messages: [], unread: true }
-          state.dmConversations = [conv, ...state.dmConversations]
-        }
+        if (!conv) { conv = { id: crypto.randomUUID(), charName, worldTag: char.worldTag, avatar: char.avatar, persona: char.persona, showRecentPosts: true, useMemory: true, messages: [], unread: true }; state.dmConversations = [conv, ...state.dmConversations] }
         conv.messages.push({ role: 'char', text: result.text.trim(), ts: Date.now() }); conv.unread = true
         await save('dmConversations'); drawContent(); openChat(conv)
       } catch (e) { roche.ui.toast('创建失败：' + e.message) } finally { hideLoadingOverlay(ov) }
@@ -1038,7 +1024,7 @@ function pageDmChat(container, conv, onBack) {
   const wrap = el('div', { class: 'rf', style: 'position:relative' })
   conv.unread = false; save('dmConversations')
   const settingsBtn = el('button', { class: 'rf-icon-btn' }); settingsBtn.appendChild(mkSvg(ICONS.settings))
-  settingsBtn.onclick = () => pageDmSettings(container, conv, () => pageDmChat(container, conv, onBack))
+  settingsBtn.onclick = () => pageCharProfile(container, conv.charName, conv.worldTag, () => pageDmChat(container, conv, onBack), 'homePosts')
   wrap.appendChild(buildBackTopBar(conv.charName + (conv.worldTag ? ` ·【${conv.worldTag}】` : ''), onBack, settingsBtn))
   const chatWrap = el('div', { class: 'rf-chat-wrap' })
   const messages = el('div', { class: 'rf-chat-messages' })
@@ -1050,9 +1036,7 @@ function pageDmChat(container, conv, onBack) {
       if (m.role === 'shared') {
         const row = el('div', { class: 'rf-chat-msg them' })
         const av = el('div', { class: 'rf-chat-av' }); const avUrl = getConvAvatar(); if (avUrl) { const img = el('img', { src: avUrl }); img.onerror = () => img.remove(); av.appendChild(img) }; row.appendChild(av)
-        const bubble = el('div', { class: 'rf-chat-bubble' })
-        const sp = el('div', { class: 'rf-chat-shared-post' }); sp.innerHTML = m.text.replace(/\n/g, '<br>'); bubble.appendChild(sp)
-        row.appendChild(bubble); messages.appendChild(row); continue
+        const bubble = el('div', { class: 'rf-chat-bubble' }); const sp = el('div', { class: 'rf-chat-shared-post' }); sp.innerHTML = m.text.replace(/\n/g, '<br>'); bubble.appendChild(sp); row.appendChild(bubble); messages.appendChild(row); continue
       }
       const isMe = m.role === 'user'
       const row = el('div', { class: 'rf-chat-msg ' + (isMe ? 'me' : 'them') })
@@ -1069,30 +1053,18 @@ function pageDmChat(container, conv, onBack) {
   sendBtn.onclick = async () => {
     const text = ta.value.trim(); if (!text) return
     conv.messages.push({ role: 'user', text, ts: Date.now() }); ta.value = ''; ta.style.height = 'auto'; renderMessages(); await save('dmConversations')
-    const typingRow = el('div', { class: 'rf-chat-msg them' })
-    const typingAv = el('div', { class: 'rf-chat-av' }); typingRow.appendChild(typingAv)
+    const typingRow = el('div', { class: 'rf-chat-msg them' }); const typingAv = el('div', { class: 'rf-chat-av' }); typingRow.appendChild(typingAv)
     typingRow.appendChild(el('div', { class: 'rf-chat-typing' }, `${conv.charName} 正在输入…`))
     messages.appendChild(typingRow); messages.scrollTop = messages.scrollHeight
-    try {
-      const reply = await dmAiReply(conv); typingRow.remove()
-      conv.messages.push({ role: 'char', text: reply, ts: Date.now() }); renderMessages(); await save('dmConversations')
-    } catch (e) { typingRow.remove(); roche.ui.toast('回复失败：' + e.message) }
+    try { const reply = await dmAiReply(conv); typingRow.remove(); conv.messages.push({ role: 'char', text: reply, ts: Date.now() }); renderMessages(); await save('dmConversations') }
+    catch (e) { typingRow.remove(); roche.ui.toast('回复失败：' + e.message) }
   }
   inputBar.appendChild(ta); inputBar.appendChild(sendBtn); chatWrap.appendChild(inputBar)
   wrap.appendChild(chatWrap); container.appendChild(wrap)
 }
 
 // ═══════════════════════════════════════════════════════════
-// DM Settings
-// ═══════════════════════════════════════════════════════════
-function pageDmSettings(container, conv, onBack) {
-  const char = findChar(conv.charName, conv.worldTag) || {}
-  // Just open char profile data tab
-  pageCharProfile(container, conv.charName, conv.worldTag, onBack, 'homePosts')
-}
-
-// ═══════════════════════════════════════════════════════════
-// Page: Profile 顶栏：〈exit | title | ⚙️settings
+// Page: Profile
 // ═══════════════════════════════════════════════════════════
 function pageProfile(container) {
   const wrap = el('div', { class: 'rf' })
@@ -1163,8 +1135,7 @@ function pageSettings(container) {
 }
 
 function pagePostSettings(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' })
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' })
   const saveBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:13px;padding:6px 14px' }, '保存')
   wrap.appendChild(buildBackTopBar('Post Settings', () => pageSettings(container), saveBtn))
   const content = el('div', { class: 'rf-content' })
@@ -1181,8 +1152,7 @@ function pagePostSettings(container) {
 }
 
 function pageDataLibrary(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' })
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' })
   const addBtn = el('button', { class: 'rf-icon-btn' }); addBtn.appendChild(mkSvg(ICONS.plus))
   wrap.appendChild(buildBackTopBar('Library', () => pageSettings(container), addBtn))
   const content = el('div', { class: 'rf-content' }); wrap.appendChild(content)
@@ -1191,8 +1161,7 @@ function pageDataLibrary(container) {
     content.appendChild(el('div', { style: 'font-size:11px;color:#aaa;padding:10px 16px;line-height:1.6;border-bottom:1px solid #f0f0f0' }, '勾选的条款刷新时作为参考提供给AI。'))
     if (!state.dataLibrary.length) { content.appendChild(el('div', { class: 'rf-empty' }, '暂无资料\n点击右上角 + 添加')); return }
     for (let i = 0; i < state.dataLibrary.length; i++) {
-      const entry = state.dataLibrary[i]
-      const row = el('div', { class: 'rf-library-item' })
+      const entry = state.dataLibrary[i]; const row = el('div', { class: 'rf-library-item' })
       const cb = el('input', { type: 'checkbox' }); cb.checked = entry.enabled !== false; cb.onchange = async () => { entry.enabled = cb.checked; await save('dataLibrary') }; row.appendChild(cb)
       const body = el('div', { class: 'rf-library-item-body' })
       if (entry.category) body.appendChild(el('div', { class: 'rf-library-cat' }, entry.category))
@@ -1209,7 +1178,7 @@ function pageDataLibrary(container) {
     const cg = el('div', { style: 'margin-bottom:10px' }); cg.appendChild(el('div', { class: 'rf-form-label' }, '分类（选填）'))
     const catInput = el('input', { class: 'rf-form-input', type: 'text', placeholder: '例如：崩铁角色' }); cg.appendChild(catInput); modal.appendChild(cg)
     const mg = el('div', { style: 'margin-bottom:10px' }); mg.appendChild(el('div', { class: 'rf-form-label' }, '条款内容'))
-    const ta = el('textarea', { class: 'rf-textarea', placeholder: '例如：银狼是崩铁中的黑客少女，喜欢游戏，说话傲娇…', style: 'min-height:100px' }); mg.appendChild(ta); modal.appendChild(mg)
+    const ta = el('textarea', { class: 'rf-textarea', placeholder: '例如：银狼是崩铁中的黑客少女…', style: 'min-height:100px' }); mg.appendChild(ta); modal.appendChild(mg)
     const btnRow = el('div', { style: 'display:flex;gap:8px;justify-content:flex-end' })
     btnRow.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', onclick: () => overlay.remove() }, '取消'))
     const confBtn = el('button', { class: 'rf-btn rf-btn-primary' }, '添加')
@@ -1221,8 +1190,7 @@ function pageDataLibrary(container) {
 }
 
 function pageMemorySystem(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' })
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' })
   const genBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:12px;padding:5px 12px' }, '总结今日')
   wrap.appendChild(buildBackTopBar('Memory', () => pageSettings(container), genBtn))
   const content = el('div', { class: 'rf-content' }); wrap.appendChild(content)
@@ -1231,11 +1199,9 @@ function pageMemorySystem(container) {
     content.appendChild(el('div', { style: 'font-size:11px;color:#aaa;padding:10px 16px;line-height:1.6;border-bottom:1px solid #f0f0f0' }, '勾选的记忆条目将在刷新帖子和私信时提供给AI作为参考。'))
     if (!state.memories.length) { content.appendChild(el('div', { class: 'rf-empty' }, '暂无记忆\n点击右上角「总结今日」创建')); return }
     for (let i = 0; i < state.memories.length; i++) {
-      const mem = state.memories[i]
-      const row = el('div', { class: 'rf-memory-item' })
+      const mem = state.memories[i]; const row = el('div', { class: 'rf-memory-item' })
       const cb = el('input', { type: 'checkbox' }); cb.checked = mem.enabled !== false; cb.onchange = async () => { mem.enabled = cb.checked; await save('memories') }; row.appendChild(cb)
-      const body = el('div', { class: 'rf-memory-body' })
-      body.appendChild(el('div', { class: 'rf-memory-date' }, mem.date)); body.appendChild(el('div', { class: 'rf-memory-text' }, mem.summary)); row.appendChild(body)
+      const body = el('div', { class: 'rf-memory-body' }); body.appendChild(el('div', { class: 'rf-memory-date' }, mem.date)); body.appendChild(el('div', { class: 'rf-memory-text' }, mem.summary)); row.appendChild(body)
       const delBtn = el('button', { class: 'rf-memory-del' }); delBtn.appendChild(mkSvg(ICONS.trash))
       delBtn.onclick = async () => { state.memories.splice(i, 1); await save('memories'); renderMemories() }
       row.appendChild(delBtn); content.appendChild(row)
@@ -1251,8 +1217,7 @@ function pageMemorySystem(container) {
 }
 
 function pageAvatar(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' }); wrap.appendChild(buildBackTopBar('Avatar & Cover', () => pageSettings(container)))
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' }); wrap.appendChild(buildBackTopBar('Avatar & Cover', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content' })
   content.appendChild(el('div', { class: 'rf-divider-label' }, '主页封面'))
   const coverPreview = el('div', { style: 'width:100%;height:100px;background:#f0f0f0;overflow:hidden' })
@@ -1264,7 +1229,7 @@ function pageAvatar(container) {
   const coverFile = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
   coverFile.onchange = e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = ev => { coverInput.value = ev.target.result; coverPreview.innerHTML = ''; coverPreview.appendChild(el('img', { src: ev.target.result, alt: '', style: 'width:100%;height:100%;object-fit:cover' })) }; r.readAsDataURL(f) }
   cg2.appendChild(coverFile); content.appendChild(cg2)
-  content.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', style: 'margin:8px 16px;width:calc(100% - 32px)', onclick: async () => { state.userProfile.coverUrl = coverInput.value.trim(); await save('userProfile'); roche.ui.toast('✦ 封面已保存') } }, '保存封面'))
+  content.appendChild(el('button', { class: 'rf-btn rf-btn-ghost', style: 'margin:8px 16px;width:calc(100% - 32px)', onclick: async () => { state.userProfile.coverUrl = coverInput.value.trim(); await save('userProfile'); roche.ui.toast('✦ 封面已保存') }}, '保存封面'))
   content.appendChild(el('div', { class: 'rf-divider-label', style: 'margin-top:8px' }, '头像'))
   const avPreview = el('div', { style: 'display:flex;justify-content:center;padding:16px 0 8px' })
   const avCircle = el('div', { class: 'rf-profile-avatar', style: 'margin:0;width:64px;height:64px' })
@@ -1276,13 +1241,12 @@ function pageAvatar(container) {
   const fileInput = el('input', { type: 'file', accept: 'image/*', style: 'margin-top:6px' })
   fileInput.onchange = e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = ev => { urlInput.value = ev.target.result; avCircle.innerHTML = ''; avCircle.appendChild(el('img', { src: ev.target.result, alt: '' })) }; r.readAsDataURL(f) }
   ag2.appendChild(fileInput); content.appendChild(ag2)
-  content.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'margin:12px 16px;width:calc(100% - 32px)', onclick: async () => { state.userProfile.avatarUrl = urlInput.value.trim(); await save('userProfile'); roche.ui.toast('✦ 头像已保存') } }, '保存头像'))
+  content.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'margin:12px 16px;width:calc(100% - 32px)', onclick: async () => { state.userProfile.avatarUrl = urlInput.value.trim(); await save('userProfile'); roche.ui.toast('✦ 头像已保存') }}, '保存头像'))
   wrap.appendChild(content); container.appendChild(wrap)
 }
 
 function pageProfileEdit(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' })
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' })
   const saveBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:13px;padding:6px 14px' }, '保存')
   wrap.appendChild(buildBackTopBar('Edit Profile', () => pageSettings(container), saveBtn))
   const content = el('div', { class: 'rf-content' })
@@ -1295,8 +1259,7 @@ function pageProfileEdit(container) {
 }
 
 function pageWorldview(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' })
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' })
   const saveBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:13px;padding:6px 14px' }, '保存')
   wrap.appendChild(buildBackTopBar('Worldview', () => pageSettings(container), saveBtn))
   const content = el('div', { class: 'rf-content', style: 'padding:12px 16px' })
@@ -1308,25 +1271,20 @@ function pageWorldview(container) {
 }
 
 async function pageWorldbook(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' }); wrap.appendChild(buildBackTopBar('Worldbook', () => pageSettings(container)))
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' }); wrap.appendChild(buildBackTopBar('Worldbook', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content' }); content.appendChild(el('div', { style: 'text-align:center;color:#888;padding:32px;font-size:13px' }, '加载世界书分类…'))
   wrap.appendChild(content); container.appendChild(wrap)
   try {
     const categories = await roche.worldbook.list(); content.innerHTML = ''
     if (!categories?.length) { content.appendChild(el('div', { class: 'rf-empty' }, '暂无世界书分类\n请先在 Roche 中创建世界书')); return }
     const selected = new Set(state.boundWorldbooks)
-    for (const cat of categories) {
-      const item = el('div', { class: 'rf-worldbook-item' }); const cb = el('input', { type: 'checkbox', id: 'wb-' + cat.id }); cb.checked = selected.has(cat.id); cb.onchange = () => { cb.checked ? selected.add(cat.id) : selected.delete(cat.id) }
-      item.appendChild(cb); item.appendChild(el('label', { for: 'wb-' + cat.id }, cat.name || cat.title || cat.id)); content.appendChild(item)
-    }
-    content.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'margin:12px 16px;width:calc(100% - 32px)', onclick: async () => { state.boundWorldbooks = [...selected]; await save('boundWorldbooks'); roche.ui.toast('✦ 绑定已保存'); pageSettings(container) } }, '保存绑定'))
+    for (const cat of categories) { const item = el('div', { class: 'rf-worldbook-item' }); const cb = el('input', { type: 'checkbox', id: 'wb-' + cat.id }); cb.checked = selected.has(cat.id); cb.onchange = () => { cb.checked ? selected.add(cat.id) : selected.delete(cat.id) }; item.appendChild(cb); item.appendChild(el('label', { for: 'wb-' + cat.id }, cat.name || cat.title || cat.id)); content.appendChild(item) }
+    content.appendChild(el('button', { class: 'rf-btn rf-btn-primary', style: 'margin:12px 16px;width:calc(100% - 32px)', onclick: async () => { state.boundWorldbooks = [...selected]; await save('boundWorldbooks'); roche.ui.toast('✦ 绑定已保存'); pageSettings(container) }}, '保存绑定'))
   } catch (e) { content.innerHTML = ''; content.appendChild(el('div', { class: 'rf-empty' }, '加载失败：' + e.message)) }
 }
 
 function pageBeauty(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' })
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' })
   const saveBtn = el('button', { class: 'rf-btn rf-btn-primary', style: 'font-size:13px;padding:6px 14px' }, '保存')
   wrap.appendChild(buildBackTopBar('Beautify', () => pageSettings(container), saveBtn))
   const content = el('div', { class: 'rf-content' }); content.appendChild(el('div', { class: 'rf-divider-label' }, '顶部栏'))
@@ -1339,16 +1297,28 @@ function pageBeauty(container) {
 }
 
 async function pageCleanup(container) {
-  container.innerHTML = ''
-  const wrap = el('div', { class: 'rf' }); wrap.appendChild(buildBackTopBar('Clear Data', () => pageSettings(container)))
+  container.innerHTML = ''; const wrap = el('div', { class: 'rf' }); wrap.appendChild(buildBackTopBar('Clear Data', () => pageSettings(container)))
   const content = el('div', { class: 'rf-content' })
-  const items = [{ label: '清理主页全部帖子', key: 'homePosts' }, { label: '清理板块跨界帖子', key: 'crossPosts' }, { label: '清理板块平行帖子', key: 'parallelPosts' }, { label: '清理我发的帖子', key: 'myPosts' }, { label: '清理全部收藏帖子', key: 'savedPosts' }, { label: '清理全部私信记录', key: 'dmConversations' }, { label: '清理角色注册表', key: 'characters' }, { label: '清理全部记忆', key: 'memories' }]
+  const items = [
+    { label: '清理主页全部帖子', key: 'homePosts' },
+    { label: '清理板块跨界帖子', key: 'crossPosts' },
+    { label: '清理板块平行帖子', key: 'parallelPosts' },
+    { label: '清理我发的帖子', key: 'myPosts' },
+    { label: '清理全部收藏帖子', key: 'savedPosts' },
+    { label: '清理全部私信记录', key: 'dmConversations' },
+    { label: '清理角色注册表', key: 'characters' },
+    { label: '清理全部记忆', key: 'memories' },
+  ]
   for (const item of items) {
-    const row = el('div', { class: 'rf-settings-item', onclick: async () => { const ok = await roche.ui.confirm({ title: '确认清理', message: `确定要${item.label}吗？此操作不可撤销。` }); if (!ok) return; state[item.key] = []; await save(item.key); roche.ui.toast(`✦ 已${item.label}`) } })
+    const row = el('div', { class: 'rf-settings-item', onclick: async () => {
+      const ok = await roche.ui.confirm({ title: '确认清理', message: `确定要${item.label}吗？此操作不可撤销。` })
+      if (!ok) return; state[item.key] = []; await save(item.key); roche.ui.toast(`✦ 已${item.label}`)
+    }})
     const left = el('div', { style: 'display:flex;align-items:center;gap:10px' })
     const iw = el('div', { style: 'width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;color:#c00' }); iw.appendChild(mkSvg(ICONS.trash))
     left.appendChild(iw); left.appendChild(el('span', { class: 'rf-settings-label', style: 'color:#c00' }, item.label)); row.appendChild(left)
-    const arrow = el('div', { style: 'width:16px;height:16px;color:#ccc;flex-shrink:0' }); arrow.appendChild(mkSvg(ICONS.chevronRight)); row.appendChild(arrow); content.appendChild(row)
+    const arrow = el('div', { style: 'width:16px;height:16px;color:#ccc;flex-shrink:0' }); arrow.appendChild(mkSvg(ICONS.chevronRight)); row.appendChild(arrow)
+    content.appendChild(row)
   }
   wrap.appendChild(content); container.appendChild(wrap)
 }
@@ -1369,28 +1339,28 @@ function renderMain(container) {
 // ═══════════════════════════════════════════════════════════
 // Plugin registration
 // ═══════════════════════════════════════════════════════════
-  let _styleEl = null
-  window.RochePlugin.register({
-    id: 'roche-forum',
-    name: '✦ 角色论坛',
-    version: '8.0.0',
-    apps: [{
-      id: 'roche-forum-main',
-      name: '角色论坛',
-      icon: 'forum',
-      iconImage: '',
-      async mount(container, rocheApi) {
-        roche = rocheApi
-        _styleEl = document.createElement('style')
-        _styleEl.textContent = CSS
-        document.head.appendChild(_styleEl)
-        await loadStorage()
-        renderMain(container)
-      },
-      async unmount(container) {
-        container.replaceChildren()
-        if (_styleEl) { _styleEl.remove(); _styleEl = null }
-      }
-    }]
-  })
+let _styleEl = null
+window.RochePlugin.register({
+  id: 'roche-forum',
+  name: '✦ 角色论坛',
+  version: '8.1.0',
+  apps: [{
+    id: 'roche-forum-main',
+    name: '角色论坛',
+    icon: 'forum',
+    iconImage: '',
+    async mount(container, rocheApi) {
+      roche = rocheApi
+      _styleEl = document.createElement('style')
+      _styleEl.textContent = CSS
+      document.head.appendChild(_styleEl)
+      await loadStorage()
+      renderMain(container)
+    },
+    async unmount(container) {
+      container.replaceChildren()
+      if (_styleEl) { _styleEl.remove(); _styleEl = null }
+    }
+  }]
+})
 })()
